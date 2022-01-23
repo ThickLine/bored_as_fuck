@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter/app/app.logger.dart';
-import 'package:starter/core/managers/stopable_service.dart';
+import 'package:baf/app/app.logger.dart';
+import 'package:baf/core/managers/stopable_service.dart';
 
 /// A manager to start/stop [StoppableService]s when the app goes/returns into/from the background
 /// Stop and start long running services

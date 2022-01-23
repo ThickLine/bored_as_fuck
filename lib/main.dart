@@ -1,18 +1,17 @@
+import 'package:baf/app/app.locator.dart';
+import 'package:baf/app/app.router.dart';
+import 'package:baf/core/managers/core_manager.dart';
+import 'package:baf/mixin/lock_phone.mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:starter/core/shared/themes.dart' as themes;
+import 'package:baf/core/shared/themes.dart' as themes;
 import 'package:stacked_themes/stacked_themes.dart';
-import 'package:starter/app/app.locator.dart';
-import 'package:starter/app/app.router.dart';
-import 'package:starter/core/managers/core_manager.dart';
-import 'package:starter/mixin/lock_phone.mixin.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await ThemeManager.initialise();
-
   setupLocator();
   runApp(MyApp());
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter/core/shared/styles.dart';
+import 'package:baf/core/shared/styles.dart';
 
 final _lightThemeData = ThemeData.light();
 final _darkThemeData = ThemeData.dark();

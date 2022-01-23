@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter/core/shared/styles.dart';
+import 'package:baf/core/shared/styles.dart';
 
 // Horizontal Spacing
 const Widget kHorizontalSpaceTiny = SizedBox(width: 5.0);
