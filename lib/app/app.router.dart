@@ -9,7 +9,9 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:stacked_services/stacked_services.dart';
 
+import '../models/item/item_model.dart';
 import '../views/config/config_view.dart';
 import '../views/home/home_view.dart';
 import '../views/item/item_view.dart';
@@ -57,22 +59,70 @@ class StackedRouter extends RouterBase {
       );
     },
     ConfigView: (data) {
+      var args = data.getArgs<ConfigViewArguments>(
+        orElse: () => ConfigViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const ConfigView(),
+        builder: (context) => ConfigView(
+          key: args.key,
+          scrollController: args.scrollController,
+          request: args.request,
+          completer: args.completer,
+        ),
         settings: data,
       );
     },
     ItemView: (data) {
+      var args = data.getArgs<ItemViewArguments>(
+        orElse: () => ItemViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const ItemView(),
+        builder: (context) => ItemView(
+          key: args.key,
+          activity: args.activity,
+        ),
         settings: data,
       );
     },
     SavedView: (data) {
+      var args = data.getArgs<SavedViewArguments>(
+        orElse: () => SavedViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const SavedView(),
+        builder: (context) => SavedView(
+          key: args.key,
+          scrollController: args.scrollController,
+        ),
         settings: data,
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// ConfigView arguments holder class
+class ConfigViewArguments {
+  final Key? key;
+  final ScrollController? scrollController;
+  final SheetRequest<dynamic>? request;
+  final dynamic Function(SheetResponse<dynamic>)? completer;
+  ConfigViewArguments(
+      {this.key, this.scrollController, this.request, this.completer});
+}
+
+/// ItemView arguments holder class
+class ItemViewArguments {
+  final Key? key;
+  final ActivityModel? activity;
+  ItemViewArguments({this.key, this.activity});
+}
+
+/// SavedView arguments holder class
+class SavedViewArguments {
+  final Key? key;
+  final ScrollController? scrollController;
+  SavedViewArguments({this.key, this.scrollController});
 }

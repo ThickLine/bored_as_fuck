@@ -10,6 +10,9 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../services/activity_service.dart';
+import '../services/network/api_client.dart';
+import '../services/network/default_client.dart';
 import '../services/shared_preferences_service.dart';
 
 final locator = StackedLocator.instance;
@@ -25,6 +28,9 @@ Future setupLocator(
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => SnackbarService());
   locator.registerLazySingleton(() => BottomSheetService());
+  locator.registerLazySingleton(() => ActivityService());
+  locator.registerLazySingleton(() => ApiClient());
+  locator.registerLazySingleton(() => DefaultClient());
   final sharedPreferencesService = await SharedPreferencesService.getInstance();
   locator.registerSingleton(sharedPreferencesService);
 }

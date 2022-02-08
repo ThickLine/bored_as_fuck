@@ -10,6 +10,6 @@ class HomeViewModel extends IndexTrackingViewModel {
 
   // Route to setting screen
   Future onRoute() async {
-    return _navigationService.navigateTo(Routes.configView);
+    return _navigationService.pushNamedAndRemoveUntil(Routes.configView);
   }
 }

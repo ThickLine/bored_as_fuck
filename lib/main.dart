@@ -2,6 +2,9 @@ import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.router.dart';
 import 'package:baf/core/managers/core_manager.dart';
 import 'package:baf/mixin/lock_phone.mixin.dart';
+import 'package:baf/services/util/stacked_services/bottom_sheet/setup_bottom_sheet_base.dart';
+import 'package:baf/services/util/stacked_services/modal/setup_dialoge_base.dart';
+import 'package:baf/services/util/stacked_services/snackbars/setup_snackbar_base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +16,9 @@ Future main() async {
   await dotenv.load(fileName: ".env");
   await ThemeManager.initialise();
   setupLocator();
+  setupSnackBarBase();
+  setupBottomSheetUi();
+  setupDialogUi();
   runApp(MyApp());
 }
 

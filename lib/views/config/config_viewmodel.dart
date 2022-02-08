@@ -1,19 +1,21 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.logger.dart';
 import 'package:baf/app/app.router.dart';
+import 'package:baf/models/config/config_model.dart';
+import 'package:baf/models/item/item_model.dart';
+import 'package:baf/services/activity_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class ConfigViewModel extends BaseViewModel {
   final log = getLogger('ConfigViewModel');
   final _navigationService = locator<NavigationService>();
+  final _activityService = locator<ActivityService>();
 
-  double _lowerValue = 0;
-  double _upperValue = 0;
   int _statusIndex = 7;
+  ConfigModel _config =
+      ConfigModel(price: PriceModel(), accessibility: AccessibilityModel());
 
-  double get lowerValue => _lowerValue;
-  double get upperValue => _upperValue;
   int get statusIndex => _statusIndex;
   List<String> get categoriesList => [
         "education",
@@ -27,20 +29,56 @@ class ConfigViewModel extends BaseViewModel {
         "busywork"
       ];
 
-  void setSliderValues(
+  ConfigModel get config => _config;
+
+  Future<void> init() async {
+    _config = _activityService.config;
+    addCategoriesFromString();
+    notifyListeners();
+  }
+
+  void setPriceSliderValues(
       {int? handlerIndex, dynamic lowerValue, dynamic upperValue}) {
-    _lowerValue = lowerValue;
-    _upperValue = upperValue;
+    // _lowerValue = lowerValue;
+    // _upperValue = upperValue;
+    _config = config.copyWith.price!(min: lowerValue, max: upperValue);
+    log.wtf(config.price?.min);
+    notifyListeners();
+  }
+
+  void setAccessibilitySliderValues(
+      {int? handlerIndex, dynamic lowerValue, dynamic upperValue}) {
+    // _lowerValue = lowerValue;
+    // _upperValue = upperValue;
+    _config = config.copyWith.accessibility!(min: lowerValue, max: upperValue);
+
     notifyListeners();
   }
 
   void onCatogoriesSelect(int i) async {
     _statusIndex = i;
+    _config = config.copyWith(type: categoriesList[i]);
+    notifyListeners();
+  }
+
+  void addCategoriesFromString() {
+    if (config.type == null) return;
+    _statusIndex = categoriesList.indexOf(config.type!);
+
+    log.wtf(statusIndex);
+  }
+
+  void onParticipant(double data) async {
+    _config = config.copyWith(participant: data);
     notifyListeners();
   }
 
   Future<void> onRoute() async {
-    return _navigationService.navigateTo(Routes.itemView);
+    await _activityService.updateConfig(config);
+    ActivityModel res = await _activityService.fetchActivity();
+
+    return _navigationService.clearTillFirstAndShow(Routes.itemView,
+        arguments: ItemViewArguments(activity: res));
   }
 
   Future<void> onSavedRoute() async {

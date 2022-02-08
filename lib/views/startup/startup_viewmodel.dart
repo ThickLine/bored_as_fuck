@@ -10,7 +10,7 @@ class StartUpViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   Future<void> init() async {
-    return _navigationService.navigateTo(Routes.homeView);
+    return _navigationService.pushNamedAndRemoveUntil(Routes.homeView);
   }
 
   /// Here you can set startup delay Shoudn't exceed more than [3 sec]

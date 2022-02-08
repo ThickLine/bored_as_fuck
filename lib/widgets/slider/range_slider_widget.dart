@@ -7,6 +7,11 @@ class RangeSliderWidget extends StatelessWidget {
   final double highValue;
   final double minValue;
   final double maxValue;
+  final String textMin;
+  final String textMax;
+  final double from;
+  final double step;
+
   final dynamic Function(int, dynamic, dynamic)? onDragging;
 
   const RangeSliderWidget(
@@ -15,7 +20,11 @@ class RangeSliderWidget extends StatelessWidget {
       this.highValue = 100,
       this.minValue = 0,
       this.maxValue = 1000,
-      this.onDragging})
+      this.onDragging,
+      this.from = 0,
+      this.step = 0.01,
+      this.textMin = "Min price",
+      this.textMax = "Max price"})
       : super(key: key);
 
   @override
@@ -36,14 +45,22 @@ class RangeSliderWidget extends StatelessWidget {
               rangeSlider: true,
               selectByTap: true,
               // jump: true,
-              step: const FlutterSliderStep(step: 8),
+              // step: const FlutterSliderStep(step: 8),
+              step: FlutterSliderStep(
+                  step: step, // default
+                  isPercentRange:
+                      true, // ranges are percents, 0% to 20% and so on... . default is true
+                  rangeList: [
+                    FlutterSliderRangeStep(
+                        from: from, to: maxValue, step: step),
+                  ]),
               handlerAnimation: const FlutterSliderHandlerAnimation(
                   curve: Curves.elasticOut,
                   reverseCurve: Curves.bounceIn,
                   duration: Duration(milliseconds: 500),
                   scale: 1.2),
               tooltip: FlutterSliderTooltip(
-                  textStyle: TextStyle(fontSize: 17, color: Colors.white),
+                  textStyle: const TextStyle(fontSize: 17, color: Colors.white),
                   boxStyle: FlutterSliderTooltipBox(
                       decoration: BoxDecoration(
                           color: kcPrimaryColor.withOpacity(0.7)))),
@@ -53,12 +70,12 @@ class RangeSliderWidget extends StatelessWidget {
               onDragging: onDragging,
             )),
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text(
-            "Min price",
+          Text(
+            textMin,
             style: ktsCaptionText,
           ),
-          const Text(
-            "Max price",
+          Text(
+            textMax,
             style: ktsCaptionText,
           )
         ])

@@ -41,7 +41,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(color: kcBlackColor),
+            style: TextStyle(color: kcPlaceholderColor),
           ),
         ],
       ),

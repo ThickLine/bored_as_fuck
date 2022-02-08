@@ -1,3 +1,6 @@
+import 'package:baf/services/activity_service.dart';
+import 'package:baf/services/network/api_client.dart';
+import 'package:baf/services/network/default_client.dart';
 import 'package:baf/views/config/config_view.dart';
 import 'package:baf/views/item/item_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
@@ -23,7 +26,12 @@ import 'package:baf/views/startup/startup_view.dart';
     LazySingleton(classType: SnackbarService),
     LazySingleton(classType: BottomSheetService),
 
+// Services
+    LazySingleton(classType: ActivityService),
+
 // Dependencies
+    LazySingleton(classType: ApiClient),
+    LazySingleton(classType: DefaultClient),
 
     // Presolve functions
     Presolve(

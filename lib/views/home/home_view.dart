@@ -41,7 +41,7 @@ class HomeView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: Row(
                                 children: const [
                                   RotatedBox(
@@ -55,14 +55,13 @@ class HomeView extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Image.asset(
                                     "assets/bored_man.png",
-                                    height: kScreenWidthPercentage(context,
-                                        percentage: 0.45),
+                                    height: 300,
                                   ),
                                 ],
                               ),
