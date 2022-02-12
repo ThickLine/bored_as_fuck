@@ -9,10 +9,6 @@ class ApiClient {
     baseUrl: BASE_URL,
     connectTimeout: 30000,
     receiveTimeout: 20000,
-    headers: {
-      'Platform': 'mobile',
-      'Accept': 'application/json',
-    },
   );
 
   final Dio _dio = Dio(baseOptions)..interceptors.add(Logging());

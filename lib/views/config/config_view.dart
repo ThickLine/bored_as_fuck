@@ -20,12 +20,14 @@ class ConfigView extends StatelessWidget {
   final SheetRequest? request;
   final Function(SheetResponse)? completer;
   final ScrollController? scrollController;
-  const ConfigView({
-    Key? key,
-    this.scrollController,
-    this.request,
-    this.completer,
-  }) : super(key: key);
+  final bool isBottomSheet;
+  const ConfigView(
+      {Key? key,
+      this.scrollController,
+      this.request,
+      this.completer,
+      this.isBottomSheet = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +43,17 @@ class ConfigView extends StatelessWidget {
             backgroundColor: kcWhiteColor,
             title: "Configure",
             actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                    onTap: model.onSavedRoute,
-                    child: const Icon(
-                      Icons.favorite,
-                      color: kcPlaceholderColor,
-                    )),
-              )
+              isBottomSheet != true
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                          onTap: model.onSavedRoute,
+                          child: const Icon(
+                            Icons.favorite,
+                            color: kcPlaceholderColor,
+                          )),
+                    )
+                  : Container()
             ],
           ),
           backgroundColor: kcBlackBackgroundColor,
@@ -150,6 +154,7 @@ class ConfigView extends StatelessWidget {
                   )),
                   kVerticalSpaceMedium,
                   RoundedLoadingButton(
+                      height: 60,
                       color: kcPrimaryColor,
                       child: Text('Generate',
                           style: TextStyle(color: Colors.white)),

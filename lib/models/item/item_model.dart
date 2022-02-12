@@ -23,6 +23,7 @@ class ActivityModel with _$ActivityModel {
       double? price,
       String? link,
       String? key,
+      String? suggestion,
       double? accessibility,
       String? error}) = _ActivityModel;
 

@@ -52,51 +52,37 @@ class ItemView extends StatelessWidget {
                         ),
                       )
                     : Expanded(
-                        child: ListView(
-                        children: [
-                          Container(
-                            child: Icon(Icons.emoji_objects_outlined,
-                                size: 70, color: kcWhiteColor),
-                          ),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Flexible(
-                                  child: Text(model.activity!.activity ?? "",
-                                      textAlign: TextAlign.center,
-                                      style: ktsTitleText.copyWith(
-                                          color: kcWhiteColor)),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Column(
+                        child: SizedBox(
+                          height: kScreenHeightPercentage(context) * 0.4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Divider(
-                                color: kcWhiteColor, //color of divider
-                                height: 5, //height spacing of divider
-                                thickness: 3, //thickness of divier line
-                                indent: 80, //spacing at the start of divider
-                                endIndent: 80, //spacing at the end of divider
-                              ),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
-                                child: Row(children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Icon(Icons.emoji_objects_outlined,
+                                        color: kcWhiteColor),
+                                  ),
+                                  kHorizontalSpaceTiny,
                                   Flexible(
-                                    child: Text(
-                                        model.activity!.suggestion ?? "",
-                                        textAlign: TextAlign.center,
-                                        style: ktsDescriptionText.copyWith(
+                                    flex: 6,
+                                    child: Text(model.activity!.activity ?? "",
+                                        textAlign: TextAlign.left,
+                                        style: ktsTitleText.copyWith(
                                             color: kcWhiteColor)),
-                                  )
-                                ]),
+                                  ),
+                                ],
                               ),
+                              Text(model.activity!.suggestion ?? "",
+                                  style: ktsDescriptionText.copyWith(
+                                      color: kcWhiteColor))
                             ],
                           ),
-                        ],
-                      )),
+                        ),
+                      ),
                 // Controls
                 Container(
                   padding: const EdgeInsets.only(left: 15, right: 15),
@@ -125,7 +111,7 @@ class ItemView extends StatelessWidget {
                                   color: Colors.blue,
                                   padding: const EdgeInsets.all(8),
                                   child: const Icon(
-                                    Icons.arrow_forward_rounded,
+                                    Icons.arrow_forward_sharp,
                                     color: kcWhiteColor,
                                     size: 45.0,
                                   ),

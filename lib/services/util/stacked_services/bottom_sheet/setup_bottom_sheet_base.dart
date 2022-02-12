@@ -29,6 +29,10 @@ class _ConfigWrapperBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WrapperLayout(child: SheetTopWidget(child: ConfigView()));
+    return const WrapperLayout(
+        child: SheetTopWidget(
+            child: ConfigView(
+      isBottomSheet: true,
+    )));
   }
 }

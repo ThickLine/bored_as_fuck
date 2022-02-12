@@ -25,6 +25,7 @@ _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num?)?.toDouble(),
       link: json['link'] as String?,
       key: json['key'] as String?,
+      suggestion: json['suggestion'] as String?,
       accessibility: (json['accessibility'] as num?)?.toDouble(),
       error: json['error'] as String?,
     );
@@ -37,6 +38,7 @@ Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
       'price': instance.price,
       'link': instance.link,
       'key': instance.key,
+      'suggestion': instance.suggestion,
       'accessibility': instance.accessibility,
       'error': instance.error,
     };

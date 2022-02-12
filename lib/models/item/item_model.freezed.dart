@@ -191,6 +191,7 @@ class _$ActivityModelTearOff {
       double? price,
       String? link,
       String? key,
+      String? suggestion,
       double? accessibility,
       String? error}) {
     return _ActivityModel(
@@ -200,6 +201,7 @@ class _$ActivityModelTearOff {
       price: price,
       link: link,
       key: key,
+      suggestion: suggestion,
       accessibility: accessibility,
       error: error,
     );
@@ -221,6 +223,7 @@ mixin _$ActivityModel {
   double? get price => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
   String? get key => throw _privateConstructorUsedError;
+  String? get suggestion => throw _privateConstructorUsedError;
   double? get accessibility => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
@@ -242,6 +245,7 @@ abstract class $ActivityModelCopyWith<$Res> {
       double? price,
       String? link,
       String? key,
+      String? suggestion,
       double? accessibility,
       String? error});
 }
@@ -263,6 +267,7 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? price = freezed,
     Object? link = freezed,
     Object? key = freezed,
+    Object? suggestion = freezed,
     Object? accessibility = freezed,
     Object? error = freezed,
   }) {
@@ -291,6 +296,10 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String?,
+      suggestion: suggestion == freezed
+          ? _value.suggestion
+          : suggestion // ignore: cast_nullable_to_non_nullable
+              as String?,
       accessibility: accessibility == freezed
           ? _value.accessibility
           : accessibility // ignore: cast_nullable_to_non_nullable
@@ -317,6 +326,7 @@ abstract class _$ActivityModelCopyWith<$Res>
       double? price,
       String? link,
       String? key,
+      String? suggestion,
       double? accessibility,
       String? error});
 }
@@ -340,6 +350,7 @@ class __$ActivityModelCopyWithImpl<$Res>
     Object? price = freezed,
     Object? link = freezed,
     Object? key = freezed,
+    Object? suggestion = freezed,
     Object? accessibility = freezed,
     Object? error = freezed,
   }) {
@@ -368,6 +379,10 @@ class __$ActivityModelCopyWithImpl<$Res>
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String?,
+      suggestion: suggestion == freezed
+          ? _value.suggestion
+          : suggestion // ignore: cast_nullable_to_non_nullable
+              as String?,
       accessibility: accessibility == freezed
           ? _value.accessibility
           : accessibility // ignore: cast_nullable_to_non_nullable
@@ -390,6 +405,7 @@ class _$_ActivityModel implements _ActivityModel {
       this.price,
       this.link,
       this.key,
+      this.suggestion,
       this.accessibility,
       this.error});
 
@@ -409,13 +425,15 @@ class _$_ActivityModel implements _ActivityModel {
   @override
   final String? key;
   @override
+  final String? suggestion;
+  @override
   final double? accessibility;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'ActivityModel(activity: $activity, type: $type, participants: $participants, price: $price, link: $link, key: $key, accessibility: $accessibility, error: $error)';
+    return 'ActivityModel(activity: $activity, type: $type, participants: $participants, price: $price, link: $link, key: $key, suggestion: $suggestion, accessibility: $accessibility, error: $error)';
   }
 
   @override
@@ -431,6 +449,8 @@ class _$_ActivityModel implements _ActivityModel {
             const DeepCollectionEquality().equals(other.link, link) &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality()
+                .equals(other.suggestion, suggestion) &&
+            const DeepCollectionEquality()
                 .equals(other.accessibility, accessibility) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
@@ -444,6 +464,7 @@ class _$_ActivityModel implements _ActivityModel {
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(link),
       const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(suggestion),
       const DeepCollectionEquality().hash(accessibility),
       const DeepCollectionEquality().hash(error));
 
@@ -466,6 +487,7 @@ abstract class _ActivityModel implements ActivityModel {
       double? price,
       String? link,
       String? key,
+      String? suggestion,
       double? accessibility,
       String? error}) = _$_ActivityModel;
 
@@ -484,6 +506,8 @@ abstract class _ActivityModel implements ActivityModel {
   String? get link;
   @override
   String? get key;
+  @override
+  String? get suggestion;
   @override
   double? get accessibility;
   @override
