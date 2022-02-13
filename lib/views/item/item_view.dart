@@ -4,9 +4,11 @@ import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/models/item/item_model.dart';
 import 'package:baf/views/item/item_viewmodel.dart';
 import 'package:baf/widgets/buttons/action_button_widget.dart';
+import 'package:baf/widgets/buttons/circle_button.dart';
 import 'package:baf/widgets/common/appbar_widget.dart';
 import 'package:baf/widgets/common/sheet_top_widget.dart';
 import 'package:flutter/material.dart';
+
 import 'package:stacked/stacked.dart';
 
 class ItemView extends StatelessWidget {
@@ -54,10 +56,8 @@ class ItemView extends StatelessWidget {
                     : Expanded(
                         child: ListView(
                         children: [
-                          Container(
-                            child: Icon(Icons.emoji_objects_outlined,
-                                size: 70, color: kcWhiteColor),
-                          ),
+                          const Icon(Icons.emoji_objects_outlined,
+                              size: 70, color: kcWhiteColor),
                           Container(
                             padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
                             child: Row(
@@ -109,9 +109,9 @@ class ItemView extends StatelessWidget {
                         children: [
                           model.activity?.error != null
                               ? Container()
-                              : ActionButtonWidget(
-                                  color: Colors.red,
-                                  padding: const EdgeInsets.all(8),
+                              : CircleButtonWidget(
+                                  backgroundColor: Colors.red,
+                                  isText: false,
                                   child: const Icon(
                                     Icons.favorite,
                                     color: kcWhiteColor,
@@ -121,16 +121,29 @@ class ItemView extends StatelessWidget {
                                 ),
                           model.activity?.error != null
                               ? Container()
-                              : ActionButtonWidget(
-                                  color: Colors.blue,
-                                  padding: const EdgeInsets.all(8),
+                              : CircleButtonWidget(
+                                  onPressed: model.onLoadNext,
+                                  backgroundColor: Colors.blue,
+                                  isText: false,
                                   child: const Icon(
-                                    Icons.arrow_forward_rounded,
+                                    Icons.arrow_forward_sharp,
                                     color: kcWhiteColor,
                                     size: 45.0,
                                   ),
-                                  onPressed: model.onLoadNext,
-                                ),
+                                )
+
+                          // ActionButtonWidget(
+                          //     color: Colors.blue,
+                          //     padding: const EdgeInsets.all(8),
+                          //     child: SaveButtonWidget(
+                          //       child: const Icon(
+                          //         Icons.arrow_forward_sharp,
+                          //         color: kcWhiteColor,
+                          //         size: 45.0,
+                          //       ),
+                          //     ),
+                          //     onPressed: model.onLoadNext,
+                          //   ),
                         ],
                       ),
                     ],
@@ -143,7 +156,9 @@ class ItemView extends StatelessWidget {
               right: 0,
               left: 0,
               child: GestureDetector(
-                  onTap: model.onConfig, child: const SheetTopWidget()),
+                  onVerticalDragUpdate: (d) => model.onConfig(),
+                  onTap: model.onConfig,
+                  child: const SheetTopWidget()),
             ), //Bor
           ],
         ),

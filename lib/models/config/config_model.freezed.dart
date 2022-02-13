@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'config_model.dart';
@@ -24,7 +25,7 @@ class _$ConfigModelTearOff {
   _ConfigModel call(
       {PriceModel? price,
       String? type,
-      double? participant,
+      double? participant = 2,
       AccessibilityModel? accessibility}) {
     return _ConfigModel(
       price: price,
@@ -188,7 +189,8 @@ class __$ConfigModelCopyWithImpl<$Res> extends _$ConfigModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ConfigModel implements _ConfigModel {
-  _$_ConfigModel({this.price, this.type, this.participant, this.accessibility});
+  _$_ConfigModel(
+      {this.price, this.type, this.participant = 2, this.accessibility});
 
   factory _$_ConfigModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConfigModelFromJson(json);
@@ -197,6 +199,7 @@ class _$_ConfigModel implements _ConfigModel {
   final PriceModel? price;
   @override
   final String? type;
+  @JsonKey()
   @override
   final double? participant;
   @override
@@ -438,7 +441,7 @@ AccessibilityModel _$AccessibilityModelFromJson(Map<String, dynamic> json) {
 class _$AccessibilityModelTearOff {
   const _$AccessibilityModelTearOff();
 
-  _AccessibilityModel call({double? min = 0.0, double? max = 1.0}) {
+  _AccessibilityModel call({double? min = 0.0, double? max = 0.2}) {
     return _AccessibilityModel(
       min: min,
       max: max,
@@ -541,7 +544,7 @@ class __$AccessibilityModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AccessibilityModel implements _AccessibilityModel {
-  _$_AccessibilityModel({this.min = 0.0, this.max = 1.0});
+  _$_AccessibilityModel({this.min = 0.0, this.max = 0.2});
 
   factory _$_AccessibilityModel.fromJson(Map<String, dynamic> json) =>
       _$$_AccessibilityModelFromJson(json);

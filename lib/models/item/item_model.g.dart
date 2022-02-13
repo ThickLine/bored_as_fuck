@@ -8,7 +8,9 @@ part of 'item_model.dart';
 
 _$_ItemModel _$$_ItemModelFromJson(Map<String, dynamic> json) => _$_ItemModel(
       saved: json['saved'] as bool?,
-      activity: json['activity'] as String?,
+      activity: json['activity'] == null
+          ? null
+          : ActivityModel.fromJson(json['activity'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ItemModelToJson(_$_ItemModel instance) =>

@@ -7,7 +7,7 @@ part 'item_model.g.dart';
 class ItemModel with _$ItemModel {
   factory ItemModel({
     bool? saved,
-    String? activity,
+    ActivityModel? activity,
   }) = _ItemModel;
 
   factory ItemModel.fromJson(Map<String, dynamic> json) =>

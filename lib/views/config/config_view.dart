@@ -1,18 +1,16 @@
-import 'dart:async';
-
-import 'package:another_xlider/another_xlider.dart';
 import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/config_layout.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/views/config/config_viewmodel.dart';
+import 'package:baf/widgets/buttons/save_button.dart';
 import 'package:baf/widgets/buttons/spinbox_widget.dart';
 import 'package:baf/widgets/common/appbar_widget.dart';
 import 'package:baf/widgets/slider/range_slider_widget.dart';
-import 'package:group_button/group_button.dart';
+import 'package:baf/widgets/text/section_title_widget.dart';
+
 import 'package:flutter/material.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
-import 'package:slider_button/slider_button.dart';
+import 'package:group_button/group_button.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -32,9 +30,9 @@ class ConfigView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = GroupButtonController();
-    final RoundedLoadingButtonController _btnController =
-        RoundedLoadingButtonController();
+
     return ViewModelBuilder<ConfigViewModel>.reactive(
+      onModelReady: ((model) => controller.selectIndex(model.statusIndex)),
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
           appBar: AppBarWidget(
@@ -65,11 +63,12 @@ class ConfigView extends StatelessWidget {
                   ConfigLayout(
                       child: Column(
                     children: [
+                      // Range
                       Row(
-                        children: [
+                        children: const [
                           Text(
-                            "FILTER BY PRICE RANGE",
-                            style: ktsDescriptionText,
+                            "Filter by price range",
+                            style: ktsLabelSmallText,
                           ),
                         ],
                       ),
@@ -87,39 +86,46 @@ class ConfigView extends StatelessWidget {
                                 upperValue: upperValue),
                       ),
                       kVerticalSpaceMedium,
+                      // Category
                       Row(
-                        children: [
+                        children: const [
                           Text(
-                            "FILTER BY Category",
-                            style: ktsDescriptionText,
+                            "Filter by category",
+                            style: ktsLabelSmallText,
                           ),
                         ],
                       ),
                       kVerticalSpaceTiny,
-                      GroupButton.radio(
-                        selectedColor: kcPrimaryColor,
+                      GroupButton(
+                        options: GroupButtonOptions(
+                          selectedColor: kcPrimaryColor,
+                          borderRadius: BorderRadius.circular(30),
+                          spacing: 5,
+                          buttonWidth: 110,
+                          selectedTextStyle: ktsLabelSmallText.copyWith(
+                              fontSize: kCaptionTextSize, color: kcWhiteColor),
+                          unselectedTextStyle: ktsLabelSmallText.copyWith(
+                              fontSize: kCaptionTextSize,
+                              color: kcPlaceholderColor),
+                        ),
                         controller: controller,
-                        selectedButton: model.statusIndex,
-                        spacing: 5,
-                        buttonWidth: 110,
                         buttons: model.categoriesList
                             .map((el) => el.toUpperCase())
                             .toList()
                             .cast<String>(),
-                        borderRadius: BorderRadius.circular(30),
-                        onSelected: (i) {
+                        onSelected: (i, c) {
                           controller.selectIndex(i);
                           model.onCatogoriesSelect(i);
                         },
                       ),
                       kVerticalSpaceMedium,
-                      Row(
-                        children: [
-                          Text(
-                            "FILTER BY Accessibility",
-                            style: ktsDescriptionText,
-                          ),
-                        ],
+
+                      // Accessibility
+
+                      SectionTiteWidget(
+                        isTooltip: true,
+                        title: "Filter by accessibility",
+                        tooltipText: "lower easier to acquire",
                       ),
                       kVerticalSpaceSmall,
                       RangeSliderWidget(
@@ -137,11 +143,12 @@ class ConfigView extends StatelessWidget {
                                 upperValue: upperValue),
                       ),
                       kVerticalSpaceMedium,
+                      // Participant
                       Row(
                         children: const [
                           Text(
-                            "FILTER BY Participant",
-                            style: ktsDescriptionText,
+                            "Filter by participant",
+                            style: ktsLabelSmallText,
                           ),
                         ],
                       ),
@@ -153,19 +160,11 @@ class ConfigView extends StatelessWidget {
                     ],
                   )),
                   kVerticalSpaceMedium,
-                  RoundedLoadingButton(
-                      height: 60,
-                      color: kcPrimaryColor,
-                      child: Text('Generate',
-                          style: TextStyle(color: Colors.white)),
-                      controller: _btnController,
-                      onPressed: () async {
-                        await model.onRoute();
-                        Timer(const Duration(seconds: 2), () {
-                          _btnController.reset();
-                        });
-                        _btnController.success();
-                      }),
+                  SaveButtonWidget(
+                    backgroundColor: kcPrimaryColor,
+                    onPressed: model.onRoute,
+                    title: "Generate",
+                  ),
                   kVerticalSpaceMedium,
                 ],
               ),

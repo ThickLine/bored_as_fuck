@@ -1,13 +1,8 @@
-import 'dart:math';
-import 'dart:ui' as ui;
 import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
-import 'package:baf/widgets/buttons/main_button_widget.dart';
 import 'package:baf/widgets/buttons/save_button.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:stacked/stacked.dart';
 import 'package:baf/views/home/home_viewmodel.dart';
 
@@ -78,7 +73,8 @@ class HomeView extends StatelessWidget {
                   bottom: 0,
                   right: 0,
                   child: SizedBox(
-                    height: kScreenHeightPercentage(context, percentage: 0.28),
+                    height:
+                        kScreenHeightPercentage(context, percentage: 0.2133333),
                     child: Container(
                       padding: EdgeInsets.only(
                           left: 20, right: 20, bottom: 10, top: 10),

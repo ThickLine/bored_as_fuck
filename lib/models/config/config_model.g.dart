@@ -12,7 +12,7 @@ _$_ConfigModel _$$_ConfigModelFromJson(Map<String, dynamic> json) =>
           ? null
           : PriceModel.fromJson(json['price'] as Map<String, dynamic>),
       type: json['type'] as String?,
-      participant: (json['participant'] as num?)?.toDouble(),
+      participant: (json['participant'] as num?)?.toDouble() ?? 2,
       accessibility: json['accessibility'] == null
           ? null
           : AccessibilityModel.fromJson(
@@ -43,7 +43,7 @@ _$_AccessibilityModel _$$_AccessibilityModelFromJson(
         Map<String, dynamic> json) =>
     _$_AccessibilityModel(
       min: (json['min'] as num?)?.toDouble() ?? 0.0,
-      max: (json['max'] as num?)?.toDouble() ?? 1.0,
+      max: (json['max'] as num?)?.toDouble() ?? 0.2,
     );
 
 Map<String, dynamic> _$$_AccessibilityModelToJson(

@@ -8,7 +8,7 @@ class ConfigModel with _$ConfigModel {
   factory ConfigModel(
       {PriceModel? price,
       String? type,
-      double? participant,
+      @Default(2) double? participant,
       AccessibilityModel? accessibility}) = _ConfigModel;
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) =>
@@ -30,7 +30,7 @@ class PriceModel with _$PriceModel {
 class AccessibilityModel with _$AccessibilityModel {
   factory AccessibilityModel({
     @Default(0.0) double? min,
-    @Default(1.0) double? max,
+    @Default(0.2) double? max,
   }) = _AccessibilityModel;
 
   factory AccessibilityModel.fromJson(Map<String, dynamic> json) =>

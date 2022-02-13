@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'item_model.dart';
@@ -21,7 +22,7 @@ ItemModel _$ItemModelFromJson(Map<String, dynamic> json) {
 class _$ItemModelTearOff {
   const _$ItemModelTearOff();
 
-  _ItemModel call({bool? saved, String? activity}) {
+  _ItemModel call({bool? saved, ActivityModel? activity}) {
     return _ItemModel(
       saved: saved,
       activity: activity,
@@ -39,7 +40,7 @@ const $ItemModel = _$ItemModelTearOff();
 /// @nodoc
 mixin _$ItemModel {
   bool? get saved => throw _privateConstructorUsedError;
-  String? get activity => throw _privateConstructorUsedError;
+  ActivityModel? get activity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,9 @@ mixin _$ItemModel {
 abstract class $ItemModelCopyWith<$Res> {
   factory $ItemModelCopyWith(ItemModel value, $Res Function(ItemModel) then) =
       _$ItemModelCopyWithImpl<$Res>;
-  $Res call({bool? saved, String? activity});
+  $Res call({bool? saved, ActivityModel? activity});
+
+  $ActivityModelCopyWith<$Res>? get activity;
 }
 
 /// @nodoc
@@ -75,8 +78,19 @@ class _$ItemModelCopyWithImpl<$Res> implements $ItemModelCopyWith<$Res> {
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ActivityModel?,
     ));
+  }
+
+  @override
+  $ActivityModelCopyWith<$Res>? get activity {
+    if (_value.activity == null) {
+      return null;
+    }
+
+    return $ActivityModelCopyWith<$Res>(_value.activity!, (value) {
+      return _then(_value.copyWith(activity: value));
+    });
   }
 }
 
@@ -86,7 +100,10 @@ abstract class _$ItemModelCopyWith<$Res> implements $ItemModelCopyWith<$Res> {
           _ItemModel value, $Res Function(_ItemModel) then) =
       __$ItemModelCopyWithImpl<$Res>;
   @override
-  $Res call({bool? saved, String? activity});
+  $Res call({bool? saved, ActivityModel? activity});
+
+  @override
+  $ActivityModelCopyWith<$Res>? get activity;
 }
 
 /// @nodoc
@@ -111,7 +128,7 @@ class __$ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ActivityModel?,
     ));
   }
 }
@@ -127,7 +144,7 @@ class _$_ItemModel implements _ItemModel {
   @override
   final bool? saved;
   @override
-  final String? activity;
+  final ActivityModel? activity;
 
   @override
   String toString() {
@@ -161,7 +178,7 @@ class _$_ItemModel implements _ItemModel {
 }
 
 abstract class _ItemModel implements ItemModel {
-  factory _ItemModel({bool? saved, String? activity}) = _$_ItemModel;
+  factory _ItemModel({bool? saved, ActivityModel? activity}) = _$_ItemModel;
 
   factory _ItemModel.fromJson(Map<String, dynamic> json) =
       _$_ItemModel.fromJson;
@@ -169,7 +186,7 @@ abstract class _ItemModel implements ItemModel {
   @override
   bool? get saved;
   @override
-  String? get activity;
+  ActivityModel? get activity;
   @override
   @JsonKey(ignore: true)
   _$ItemModelCopyWith<_ItemModel> get copyWith =>

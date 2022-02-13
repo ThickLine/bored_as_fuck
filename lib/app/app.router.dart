@@ -68,6 +68,7 @@ class StackedRouter extends RouterBase {
           scrollController: args.scrollController,
           request: args.request,
           completer: args.completer,
+          isBottomSheet: args.isBottomSheet,
         ),
         settings: data,
       );
@@ -109,8 +110,13 @@ class ConfigViewArguments {
   final ScrollController? scrollController;
   final SheetRequest<dynamic>? request;
   final dynamic Function(SheetResponse<dynamic>)? completer;
+  final bool isBottomSheet;
   ConfigViewArguments(
-      {this.key, this.scrollController, this.request, this.completer});
+      {this.key,
+      this.scrollController,
+      this.request,
+      this.completer,
+      this.isBottomSheet = false});
 }
 
 /// ItemView arguments holder class

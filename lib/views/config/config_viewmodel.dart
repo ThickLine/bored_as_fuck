@@ -38,20 +38,14 @@ class ConfigViewModel extends BaseViewModel {
   }
 
   void setPriceSliderValues(
-      {int? handlerIndex, dynamic lowerValue, dynamic upperValue}) {
-    // _lowerValue = lowerValue;
-    // _upperValue = upperValue;
+      {int? handlerIndex, double? lowerValue, double? upperValue}) {
     _config = config.copyWith.price!(min: lowerValue, max: upperValue);
-    log.wtf(config.price?.min);
     notifyListeners();
   }
 
   void setAccessibilitySliderValues(
-      {int? handlerIndex, dynamic lowerValue, dynamic upperValue}) {
-    // _lowerValue = lowerValue;
-    // _upperValue = upperValue;
+      {int? handlerIndex, double? lowerValue, double? upperValue}) {
     _config = config.copyWith.accessibility!(min: lowerValue, max: upperValue);
-
     notifyListeners();
   }
 

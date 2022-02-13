@@ -14,9 +14,9 @@ class SpinBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSpinBox(
-      min: 1,
-      max: 100,
-      value: 50,
+      min: min,
+      max: max,
+      value: value,
       onChanged: onChanged,
     );
   }

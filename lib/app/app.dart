@@ -1,6 +1,7 @@
 import 'package:baf/services/activity_service.dart';
 import 'package:baf/services/network/api_client.dart';
 import 'package:baf/services/network/default_client.dart';
+import 'package:baf/services/save_service.dart';
 import 'package:baf/views/config/config_view.dart';
 import 'package:baf/views/item/item_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
@@ -28,6 +29,7 @@ import 'package:baf/views/startup/startup_view.dart';
 
 // Services
     LazySingleton(classType: ActivityService),
+    LazySingleton(classType: SaveService),
 
 // Dependencies
     LazySingleton(classType: ApiClient),

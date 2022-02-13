@@ -35,6 +35,9 @@ const TextStyle ktsDescriptionText = TextStyle(
     fontSize: kDescriptionTextSize,
     fontFamily: fontFamily);
 
+const TextStyle ktsLabelSmallText = TextStyle(
+    color: kcBlackColor, fontSize: kButtonTextSize, fontFamily: fontFamily);
+
 const TextStyle ktsCaptionText = TextStyle(
     color: kcAccentColor, fontSize: kCaptionTextSize, fontFamily: fontFamily);
 
