@@ -1,9 +1,10 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.logger.dart';
 import 'package:baf/core/enum/systemwide_enums.dart';
+import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/api/exceptions/network_exceptions.dart';
 import 'package:baf/models/config/config_model.dart';
-import 'package:baf/models/item/item_model.dart';
+
 import 'package:baf/services/network/default_client.dart';
 
 class ActivityService {

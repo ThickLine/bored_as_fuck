@@ -9,6 +9,7 @@ const Color kcBlackColor = Color(0xff000000);
 const Color kcWhiteColor = Color(0xffFFFFFF);
 const Color kcNavyBlueColor = Color(0xff185083);
 const Color kcBackgroundColor = Color(0xffF6F5F5);
+const Color kcDarkPlaceholderColor = Color(0xff8B9BAC);
 const Color kcPlaceholderColor = Color(0xffBFBFBF);
 const Color kcBlackBackgroundColor = Color.fromRGBO(12, 13, 52, 0.9);
 const Color kcLightBackgroundColor = Color(0xff2CB9B0);

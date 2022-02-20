@@ -1,9 +1,12 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.logger.dart';
 import 'package:baf/app/app.router.dart';
+import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/config/config_model.dart';
-import 'package:baf/models/item/item_model.dart';
 import 'package:baf/services/activity_service.dart';
+import 'package:baf/views/about/about_view.dart';
+import 'package:baf/views/item/item_view.dart';
+import 'package:baf/views/saved/saved_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,11 +15,11 @@ class ConfigViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _activityService = locator<ActivityService>();
 
-  int _statusIndex = 7;
+  int? _statusIndex;
   ConfigModel _config =
       ConfigModel(price: PriceModel(), accessibility: AccessibilityModel());
 
-  int get statusIndex => _statusIndex;
+  int? get statusIndex => _statusIndex;
   List<String> get categoriesList => [
         "education",
         "recreational",
@@ -58,8 +61,6 @@ class ConfigViewModel extends BaseViewModel {
   void addCategoriesFromString() {
     if (config.type == null) return;
     _statusIndex = categoriesList.indexOf(config.type!);
-
-    log.wtf(statusIndex);
   }
 
   void onParticipant(double data) async {
@@ -76,6 +77,12 @@ class ConfigViewModel extends BaseViewModel {
   }
 
   Future<void> onSavedRoute() async {
-    return _navigationService.navigateTo(Routes.savedView);
+    return await _navigationService.navigateWithTransition(const SavedView(),
+        transition: "cupertino", duration: const Duration(milliseconds: 500));
+  }
+
+  Future<void> onAboutRoute() async {
+    return await _navigationService.navigateWithTransition(const AboutView(),
+        transition: "cupertino", duration: const Duration(milliseconds: 500));
   }
 }

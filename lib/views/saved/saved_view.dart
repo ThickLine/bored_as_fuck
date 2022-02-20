@@ -13,6 +13,7 @@ class SavedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final keys = GlobalKey<AnimatedListState>();
     return ViewModelBuilder<SavedViewModel>.reactive(
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
@@ -35,27 +36,170 @@ class SavedView extends StatelessWidget {
             toolbarHeight: 100, // default is 56
             toolbarOpacity: 0.5,
             elevation: 0,
-            title: "Saved Items",
+
+            title: const Text(
+              "Saved Items",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: kcDarkPlaceholderColor),
+            ),
           ),
           body: Container(
               padding: kPagePadding,
-              child: ListView(children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  controller: scrollController,
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: model.list.length,
-                  itemBuilder: (context, index) => Card(
-                    child: ListTile(
-                      leading: FlutterLogo(),
-                      title: Text('These ListTiles are expanded '),
-                      trailing: const Icon(
-                        Icons.more_vert,
-                        size: 16.0,
+              child: Stack(children: [
+                AnimatedList(
+                  key: keys,
+                  initialItemCount: model.list.length,
+                  itemBuilder: (context, index, animation) {
+                    return SlideTransition(
+                      position: animation.drive(
+                          Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+                              .chain(CurveTween(curve: Curves.ease))),
+                      child: InkWell(
+                        onTap: () => model.onRoute(model.list[index]),
+                        child: Card(
+                          child: ListTile(
+                            leading: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.favorite,
+                                color: kcPlaceholderColor,
+                                size: 25.0,
+                              ),
+                            ),
+                            title: Text(model.list[index].activity ?? ""),
+                            trailing: PopupMenuButton(
+                              onSelected: (value) async {
+                                if (value == "share") {
+                                  await model.onShare(model.list[index]);
+                                }
+
+                                if (value == "delete") {
+                                  var item = model.list[index];
+                                  var res = await model.onDeleteItem();
+
+                                  if (res == true) {
+                                    keys.currentState!.removeItem(index,
+                                        (_, animation) {
+                                      return SizeTransition(
+                                        sizeFactor: animation,
+                                        child: Card(
+                                          child: ListTile(
+                                              leading: const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Icon(
+                                                  Icons.favorite,
+                                                  color: kcPlaceholderColor,
+                                                  size: 25.0,
+                                                ),
+                                              ),
+                                              title: Text(
+                                                  model.list[index].activity ??
+                                                      ""),
+                                              trailing:
+                                                  const Icon(Icons.more_vert)),
+                                        ),
+                                      );
+                                    },
+                                        duration:
+                                            const Duration(milliseconds: 500));
+                                    await model.deleteItem(item);
+                                  }
+                                }
+                              },
+                              child: const Icon(Icons.more_vert),
+                              itemBuilder: (context) {
+                                return [
+                                  PopupMenuItem(
+                                    value: "share",
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Icon(Icons.share),
+                                        Text('Share'),
+                                      ],
+                                    ),
+                                  ),
+                                  PopupMenuItem(
+                                    value: "delete",
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Icon(Icons.delete),
+                                        Text('Delete')
+                                      ],
+                                    ),
+                                  )
+                                ];
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
+                // ListView.builder(
+                //   shrinkWrap: true,
+                //   controller: scrollController,
+                //   physics: const ClampingScrollPhysics(),
+                //   itemCount: model.list.length,
+                //   itemBuilder: (context, index) => InkWell(
+                //     onTap: () => model.onRoute(model.list[index]),
+                //     child: Card(
+                //       child: ListTile(
+                //         leading: const Padding(
+                //           padding: EdgeInsets.all(8.0),
+                //           child: Icon(
+                //             Icons.favorite,
+                //             color: kcPlaceholderColor,
+                //             size: 25.0,
+                //           ),
+                //         ),
+                //         title: Text(model.list[index].activity ?? ""),
+                //         trailing: PopupMenuButton(
+                //           onSelected: (value) async {
+                //             if (value == "share") {
+                //               await model.onShare(model.list[index]);
+                //             }
+
+                //             if (value == "delete") {
+                //               await model.onDeleteItem(model.list[index]);
+                //             }
+                //           },
+                //           child: const Icon(Icons.more_vert),
+                //           itemBuilder: (context) {
+                //             return [
+                //               PopupMenuItem(
+                //                 value: "share",
+                //                 child: Row(
+                //                   mainAxisAlignment:
+                //                       MainAxisAlignment.spaceBetween,
+                //                   children: const [
+                //                     Icon(Icons.share),
+                //                     Text('Share'),
+                //                   ],
+                //                 ),
+                //               ),
+                //               PopupMenuItem(
+                //                 value: "delete",
+                //                 child: Row(
+                //                   mainAxisAlignment:
+                //                       MainAxisAlignment.spaceBetween,
+                //                   children: const [
+                //                     Icon(Icons.delete),
+                //                     Text('Delete')
+                //                   ],
+                //                 ),
+                //               )
+                //             ];
+                //           },
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ])),
         ),
       ),

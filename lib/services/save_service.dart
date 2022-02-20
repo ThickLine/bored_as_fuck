@@ -1,18 +1,33 @@
 import 'package:baf/app/app.logger.dart';
-import 'package:baf/models/item/item_model.dart';
+import 'package:baf/hive/boxes_hive.dart';
+import 'package:baf/models/activity/activity_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SaveService {
   final log = getLogger('SaveService');
 
-  List<ItemModel> _itemList = [];
+  List<ActivityModel> _itemList = [];
 
-  List<ItemModel> get itemList => _itemList;
+  List<ActivityModel> get itemList => _itemList;
+  ItemModel get item => ItemModel(items: itemList);
 
-  void addItemToList(ItemModel item) {
-    _itemList.add(item);
+  Future<void> initItem() async {
+    Box<ItemModel> box = Boxes.getFile();
+    var list = box.get("myActivity");
+    _itemList = list?.items ?? [];
   }
 
-  void removeItemFromList(ItemModel item) {
+  void addItemToList(ActivityModel item) async {
+    _itemList.add(item);
+    await saveToHive();
+  }
+
+  Future<void> saveToHive() async {
+    Box<ItemModel> box = Boxes.getFile();
+    box.put("myActivity", item);
+  }
+
+  void removeItemFromList(ActivityModel item) {
     _itemList.remove(item);
   }
 }

@@ -11,7 +11,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../models/item/item_model.dart';
+import '../models/activity/activity_model.dart';
+import '../views/about/about_view.dart';
 import '../views/config/config_view.dart';
 import '../views/home/home_view.dart';
 import '../views/item/item_view.dart';
@@ -24,12 +25,14 @@ class Routes {
   static const String configView = '/config-view';
   static const String itemView = '/item-view';
   static const String savedView = '/saved-view';
+  static const String aboutView = '/about-view';
   static const all = <String>{
     startUpView,
     homeView,
     configView,
     itemView,
     savedView,
+    aboutView,
   };
 }
 
@@ -42,6 +45,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.configView, page: ConfigView),
     RouteDef(Routes.itemView, page: ItemView),
     RouteDef(Routes.savedView, page: SavedView),
+    RouteDef(Routes.aboutView, page: AboutView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -94,6 +98,12 @@ class StackedRouter extends RouterBase {
           key: args.key,
           scrollController: args.scrollController,
         ),
+        settings: data,
+      );
+    },
+    AboutView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const AboutView(),
         settings: data,
       );
     },

@@ -32,14 +32,31 @@ class ConfigView extends StatelessWidget {
     final controller = GroupButtonController();
 
     return ViewModelBuilder<ConfigViewModel>.reactive(
-      onModelReady: ((model) => controller.selectIndex(model.statusIndex)),
+      onModelReady: ((model) {
+        if (model.statusIndex != null) {
+          controller.selectIndex(model.statusIndex!);
+        }
+      }),
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
           appBar: AppBarWidget(
-            leading: Container(),
+            leading: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon:
+                      const Icon(Icons.info_outline, color: kcPlaceholderColor),
+                  onPressed: model.onAboutRoute,
+                ),
+              ],
+            ),
             preferredSize: const Size.fromHeight(56),
             backgroundColor: kcWhiteColor,
-            title: "Configure",
+            title: const Text(
+              "Configure",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: kcPlaceholderColor),
+            ),
             actions: [
               isBottomSheet != true
                   ? Padding(
@@ -63,6 +80,15 @@ class ConfigView extends StatelessWidget {
                   ConfigLayout(
                       child: Column(
                     children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 50),
+                        child: Text(
+                          "Here you set generator settings. Or just press generate for a random one.",
+                          textAlign: TextAlign.center,
+                          style: ktsDescriptionText.copyWith(
+                              color: kcPlaceholderColor),
+                        ),
+                      ),
                       // Range
                       Row(
                         children: const [

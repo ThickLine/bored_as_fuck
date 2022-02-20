@@ -73,10 +73,9 @@ class HomeView extends StatelessWidget {
                   bottom: 0,
                   right: 0,
                   child: SizedBox(
-                    height:
-                        kScreenHeightPercentage(context, percentage: 0.2133333),
+                    height: 200,
                     child: Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 20, right: 20, bottom: 10, top: 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'item_model.dart';
+part of 'activity_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -22,10 +22,9 @@ ItemModel _$ItemModelFromJson(Map<String, dynamic> json) {
 class _$ItemModelTearOff {
   const _$ItemModelTearOff();
 
-  _ItemModel call({bool? saved, ActivityModel? activity}) {
+  _ItemModel call({@HiveField(0) List<ActivityModel>? items}) {
     return _ItemModel(
-      saved: saved,
-      activity: activity,
+      items: items,
     );
   }
 
@@ -39,8 +38,8 @@ const $ItemModel = _$ItemModelTearOff();
 
 /// @nodoc
 mixin _$ItemModel {
-  bool? get saved => throw _privateConstructorUsedError;
-  ActivityModel? get activity => throw _privateConstructorUsedError;
+  @HiveField(0)
+  List<ActivityModel>? get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,9 +51,7 @@ mixin _$ItemModel {
 abstract class $ItemModelCopyWith<$Res> {
   factory $ItemModelCopyWith(ItemModel value, $Res Function(ItemModel) then) =
       _$ItemModelCopyWithImpl<$Res>;
-  $Res call({bool? saved, ActivityModel? activity});
-
-  $ActivityModelCopyWith<$Res>? get activity;
+  $Res call({@HiveField(0) List<ActivityModel>? items});
 }
 
 /// @nodoc
@@ -67,30 +64,14 @@ class _$ItemModelCopyWithImpl<$Res> implements $ItemModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? saved = freezed,
-    Object? activity = freezed,
+    Object? items = freezed,
   }) {
     return _then(_value.copyWith(
-      saved: saved == freezed
-          ? _value.saved
-          : saved // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      activity: activity == freezed
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as ActivityModel?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ActivityModel>?,
     ));
-  }
-
-  @override
-  $ActivityModelCopyWith<$Res>? get activity {
-    if (_value.activity == null) {
-      return null;
-    }
-
-    return $ActivityModelCopyWith<$Res>(_value.activity!, (value) {
-      return _then(_value.copyWith(activity: value));
-    });
   }
 }
 
@@ -100,10 +81,7 @@ abstract class _$ItemModelCopyWith<$Res> implements $ItemModelCopyWith<$Res> {
           _ItemModel value, $Res Function(_ItemModel) then) =
       __$ItemModelCopyWithImpl<$Res>;
   @override
-  $Res call({bool? saved, ActivityModel? activity});
-
-  @override
-  $ActivityModelCopyWith<$Res>? get activity;
+  $Res call({@HiveField(0) List<ActivityModel>? items});
 }
 
 /// @nodoc
@@ -117,18 +95,13 @@ class __$ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? saved = freezed,
-    Object? activity = freezed,
+    Object? items = freezed,
   }) {
     return _then(_ItemModel(
-      saved: saved == freezed
-          ? _value.saved
-          : saved // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      activity: activity == freezed
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as ActivityModel?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ActivityModel>?,
     ));
   }
 }
@@ -136,19 +109,18 @@ class __$ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ItemModel implements _ItemModel {
-  _$_ItemModel({this.saved, this.activity});
+  _$_ItemModel({@HiveField(0) this.items});
 
   factory _$_ItemModel.fromJson(Map<String, dynamic> json) =>
       _$$_ItemModelFromJson(json);
 
   @override
-  final bool? saved;
-  @override
-  final ActivityModel? activity;
+  @HiveField(0)
+  final List<ActivityModel>? items;
 
   @override
   String toString() {
-    return 'ItemModel(saved: $saved, activity: $activity)';
+    return 'ItemModel(items: $items)';
   }
 
   @override
@@ -156,15 +128,12 @@ class _$_ItemModel implements _ItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ItemModel &&
-            const DeepCollectionEquality().equals(other.saved, saved) &&
-            const DeepCollectionEquality().equals(other.activity, activity));
+            const DeepCollectionEquality().equals(other.items, items));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(saved),
-      const DeepCollectionEquality().hash(activity));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
 
   @JsonKey(ignore: true)
   @override
@@ -178,15 +147,14 @@ class _$_ItemModel implements _ItemModel {
 }
 
 abstract class _ItemModel implements ItemModel {
-  factory _ItemModel({bool? saved, ActivityModel? activity}) = _$_ItemModel;
+  factory _ItemModel({@HiveField(0) List<ActivityModel>? items}) = _$_ItemModel;
 
   factory _ItemModel.fromJson(Map<String, dynamic> json) =
       _$_ItemModel.fromJson;
 
   @override
-  bool? get saved;
-  @override
-  ActivityModel? get activity;
+  @HiveField(0)
+  List<ActivityModel>? get items;
   @override
   @JsonKey(ignore: true)
   _$ItemModelCopyWith<_ItemModel> get copyWith =>
@@ -202,17 +170,19 @@ class _$ActivityModelTearOff {
   const _$ActivityModelTearOff();
 
   _ActivityModel call(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      String? error}) {
+      {@HiveField(0) String? activity,
+      @HiveField(1) bool saved = false,
+      @HiveField(2) String? type,
+      @HiveField(3) int? participants,
+      @HiveField(4) double? price,
+      @HiveField(5) String? link,
+      @HiveField(6) String? key,
+      @HiveField(7) String? suggestion,
+      @HiveField(8) double? accessibility,
+      @HiveField(9) String? error}) {
     return _ActivityModel(
       activity: activity,
+      saved: saved,
       type: type,
       participants: participants,
       price: price,
@@ -234,14 +204,25 @@ const $ActivityModel = _$ActivityModelTearOff();
 
 /// @nodoc
 mixin _$ActivityModel {
+  @HiveField(0)
   String? get activity => throw _privateConstructorUsedError;
+  @HiveField(1)
+  bool get saved => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get type => throw _privateConstructorUsedError;
+  @HiveField(3)
   int? get participants => throw _privateConstructorUsedError;
+  @HiveField(4)
   double? get price => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get link => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get key => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get suggestion => throw _privateConstructorUsedError;
+  @HiveField(8)
   double? get accessibility => throw _privateConstructorUsedError;
+  @HiveField(9)
   String? get error => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -256,15 +237,16 @@ abstract class $ActivityModelCopyWith<$Res> {
           ActivityModel value, $Res Function(ActivityModel) then) =
       _$ActivityModelCopyWithImpl<$Res>;
   $Res call(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      String? error});
+      {@HiveField(0) String? activity,
+      @HiveField(1) bool saved,
+      @HiveField(2) String? type,
+      @HiveField(3) int? participants,
+      @HiveField(4) double? price,
+      @HiveField(5) String? link,
+      @HiveField(6) String? key,
+      @HiveField(7) String? suggestion,
+      @HiveField(8) double? accessibility,
+      @HiveField(9) String? error});
 }
 
 /// @nodoc
@@ -279,6 +261,7 @@ class _$ActivityModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? activity = freezed,
+    Object? saved = freezed,
     Object? type = freezed,
     Object? participants = freezed,
     Object? price = freezed,
@@ -293,6 +276,10 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
               as String?,
+      saved: saved == freezed
+          ? _value.saved
+          : saved // ignore: cast_nullable_to_non_nullable
+              as bool,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -337,15 +324,16 @@ abstract class _$ActivityModelCopyWith<$Res>
       __$ActivityModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      String? error});
+      {@HiveField(0) String? activity,
+      @HiveField(1) bool saved,
+      @HiveField(2) String? type,
+      @HiveField(3) int? participants,
+      @HiveField(4) double? price,
+      @HiveField(5) String? link,
+      @HiveField(6) String? key,
+      @HiveField(7) String? suggestion,
+      @HiveField(8) double? accessibility,
+      @HiveField(9) String? error});
 }
 
 /// @nodoc
@@ -362,6 +350,7 @@ class __$ActivityModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? activity = freezed,
+    Object? saved = freezed,
     Object? type = freezed,
     Object? participants = freezed,
     Object? price = freezed,
@@ -376,6 +365,10 @@ class __$ActivityModelCopyWithImpl<$Res>
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
               as String?,
+      saved: saved == freezed
+          ? _value.saved
+          : saved // ignore: cast_nullable_to_non_nullable
+              as bool,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -416,41 +409,55 @@ class __$ActivityModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ActivityModel implements _ActivityModel {
   _$_ActivityModel(
-      {this.activity,
-      this.type,
-      this.participants,
-      this.price,
-      this.link,
-      this.key,
-      this.suggestion,
-      this.accessibility,
-      this.error});
+      {@HiveField(0) this.activity,
+      @HiveField(1) this.saved = false,
+      @HiveField(2) this.type,
+      @HiveField(3) this.participants,
+      @HiveField(4) this.price,
+      @HiveField(5) this.link,
+      @HiveField(6) this.key,
+      @HiveField(7) this.suggestion,
+      @HiveField(8) this.accessibility,
+      @HiveField(9) this.error});
 
   factory _$_ActivityModel.fromJson(Map<String, dynamic> json) =>
       _$$_ActivityModelFromJson(json);
 
   @override
+  @HiveField(0)
   final String? activity;
+  @JsonKey()
   @override
+  @HiveField(1)
+  final bool saved;
+  @override
+  @HiveField(2)
   final String? type;
   @override
+  @HiveField(3)
   final int? participants;
   @override
+  @HiveField(4)
   final double? price;
   @override
+  @HiveField(5)
   final String? link;
   @override
+  @HiveField(6)
   final String? key;
   @override
+  @HiveField(7)
   final String? suggestion;
   @override
+  @HiveField(8)
   final double? accessibility;
   @override
+  @HiveField(9)
   final String? error;
 
   @override
   String toString() {
-    return 'ActivityModel(activity: $activity, type: $type, participants: $participants, price: $price, link: $link, key: $key, suggestion: $suggestion, accessibility: $accessibility, error: $error)';
+    return 'ActivityModel(activity: $activity, saved: $saved, type: $type, participants: $participants, price: $price, link: $link, key: $key, suggestion: $suggestion, accessibility: $accessibility, error: $error)';
   }
 
   @override
@@ -459,6 +466,7 @@ class _$_ActivityModel implements _ActivityModel {
         (other.runtimeType == runtimeType &&
             other is _ActivityModel &&
             const DeepCollectionEquality().equals(other.activity, activity) &&
+            const DeepCollectionEquality().equals(other.saved, saved) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
                 .equals(other.participants, participants) &&
@@ -476,6 +484,7 @@ class _$_ActivityModel implements _ActivityModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(activity),
+      const DeepCollectionEquality().hash(saved),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(participants),
       const DeepCollectionEquality().hash(price),
@@ -498,36 +507,49 @@ class _$_ActivityModel implements _ActivityModel {
 
 abstract class _ActivityModel implements ActivityModel {
   factory _ActivityModel(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      String? error}) = _$_ActivityModel;
+      {@HiveField(0) String? activity,
+      @HiveField(1) bool saved,
+      @HiveField(2) String? type,
+      @HiveField(3) int? participants,
+      @HiveField(4) double? price,
+      @HiveField(5) String? link,
+      @HiveField(6) String? key,
+      @HiveField(7) String? suggestion,
+      @HiveField(8) double? accessibility,
+      @HiveField(9) String? error}) = _$_ActivityModel;
 
   factory _ActivityModel.fromJson(Map<String, dynamic> json) =
       _$_ActivityModel.fromJson;
 
   @override
+  @HiveField(0)
   String? get activity;
   @override
+  @HiveField(1)
+  bool get saved;
+  @override
+  @HiveField(2)
   String? get type;
   @override
+  @HiveField(3)
   int? get participants;
   @override
+  @HiveField(4)
   double? get price;
   @override
+  @HiveField(5)
   String? get link;
   @override
+  @HiveField(6)
   String? get key;
   @override
+  @HiveField(7)
   String? get suggestion;
   @override
+  @HiveField(8)
   double? get accessibility;
   @override
+  @HiveField(9)
   String? get error;
   @override
   @JsonKey(ignore: true)
