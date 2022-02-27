@@ -1,7 +1,6 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.router.dart';
 import 'package:baf/models/activity/activity_model.dart';
-import 'package:baf/services/activity_service.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:stacked/stacked.dart';

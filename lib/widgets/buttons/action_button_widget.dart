@@ -23,8 +23,8 @@ class ActionButtonWidget extends StatelessWidget {
       elevation: elevation ?? 4.0,
       fillColor: color ?? Colors.transparent,
       child: child,
-      padding: padding ?? EdgeInsets.all(0),
-      shape: CircleBorder(),
+      padding: padding ?? const EdgeInsets.all(0),
+      shape: const CircleBorder(),
     );
   }
 }

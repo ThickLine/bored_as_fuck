@@ -1,11 +1,11 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.logger.dart';
 import 'package:baf/app/app.router.dart';
+import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/config/config_model.dart';
 import 'package:baf/services/activity_service.dart';
 import 'package:baf/views/about/about_view.dart';
-import 'package:baf/views/item/item_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -14,6 +14,7 @@ class ConfigViewModel extends BaseViewModel {
   final log = getLogger('ConfigViewModel');
   final _navigationService = locator<NavigationService>();
   final _activityService = locator<ActivityService>();
+  final _bottomSheetService = locator<BottomSheetService>();
 
   int? _statusIndex;
   ConfigModel _config =
@@ -78,11 +79,15 @@ class ConfigViewModel extends BaseViewModel {
 
   Future<void> onSavedRoute() async {
     return await _navigationService.navigateWithTransition(const SavedView(),
-        transition: "cupertino", duration: const Duration(milliseconds: 500));
+        transition: "cupertino", duration: kPageDuration);
   }
 
   Future<void> onAboutRoute() async {
     return await _navigationService.navigateWithTransition(const AboutView(),
-        transition: "cupertino", duration: const Duration(milliseconds: 500));
+        transition: "cupertino", duration: kPageDuration);
+  }
+
+  Future<void> onBottomsheetClose() async {
+    return _bottomSheetService.completeSheet(SheetResponse(confirmed: false));
   }
 }

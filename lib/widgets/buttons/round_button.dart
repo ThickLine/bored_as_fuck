@@ -12,7 +12,7 @@ class RoundElevatedButtonWidget extends StatelessWidget {
   final RoundedRectangleBorder? shape;
   final double borderRadius;
 
-  RoundElevatedButtonWidget({
+  const RoundElevatedButtonWidget({
     Key? key,
     this.onPressed,
     this.title,
@@ -33,11 +33,10 @@ class RoundElevatedButtonWidget extends StatelessWidget {
           primary: backgroundColor,
           minimumSize: minimumSize,
           padding: padding,
-          shape: shape != null
-              ? shape
-              : RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius),
-                ),
+          shape: shape ??
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
         ),
         child: isText == true
             ? Text(title ?? "", style: ktsButtonWhiteText)

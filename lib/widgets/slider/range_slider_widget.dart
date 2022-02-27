@@ -83,6 +83,7 @@ class RangeSliderWidget extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _Container(String text) {
     return Container(
       padding: const EdgeInsets.all(8),

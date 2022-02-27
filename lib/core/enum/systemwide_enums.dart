@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 enum RequestType { POST, GET, PUT, DELETE }
 enum ConnectivityStatus { Cellular, WiFi, Offline }
 enum DialogType { BASIC, FORM, ERROR }

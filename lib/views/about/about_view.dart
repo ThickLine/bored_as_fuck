@@ -28,10 +28,10 @@ class AboutView extends StatelessWidget {
           toolbarHeight: 100, // default is 56
           toolbarOpacity: 0.5,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "About",
             textAlign: TextAlign.center,
-            style: const TextStyle(color: kcWhiteColor),
+            style: TextStyle(color: kcWhiteColor),
           ),
         ),
         body: Container(

@@ -1,4 +1,5 @@
 import 'package:baf/app/app.locator.dart';
+import 'package:baf/core/shared/ui_helpers.dart';
 
 import 'package:baf/views/config/config_view.dart';
 
@@ -13,7 +14,7 @@ class HomeViewModel extends IndexTrackingViewModel {
   // Route to setting screen
   Future onRoute() async {
     return _navigationService.replaceWithTransition(const ConfigView(),
-        transition: "cupertino", duration: const Duration(seconds: 2));
+        transition: "cupertino", duration: kPageDuration);
 
     // Routes.configView
   }

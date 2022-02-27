@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'network_exceptions.freezed.dart';
@@ -93,7 +94,9 @@ abstract class NetworkExceptions with _$NetworkExceptions {
         }
         return networkExceptions;
       } on FormatException catch (e) {
-        print(e.toString());
+        if (kDebugMode) {
+          print(e.toString());
+        }
         // Helper.printError(e.toString());
         return const NetworkExceptions.formatException();
       } catch (_) {

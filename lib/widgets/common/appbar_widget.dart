@@ -1,4 +1,3 @@
-import 'package:baf/core/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
@@ -11,6 +10,8 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final double toolbarOpacity;
   final List<Widget>? actions;
   final double elevation;
+  final ShapeBorder? shape;
+  final Function()? onTap;
 
   const AppBarWidget({
     Key? key,
@@ -20,7 +21,9 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     this.toolbarHeight = 56,
     this.toolbarOpacity = 0.5,
     this.actions,
+    this.shape,
     this.title,
+    this.onTap,
     this.elevation = 0,
   }) : super(key: key);
 
@@ -28,17 +31,21 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
-
+      shape: shape,
       centerTitle: true,
       backgroundColor: backgroundColor,
       toolbarHeight: toolbarHeight, // default is 56
       toolbarOpacity: toolbarOpacity,
       elevation: elevation,
       actions: actions,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [title ?? Container()],
+
+      title: GestureDetector(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [title ?? Container()],
+        ),
       ),
     );
   }

@@ -18,7 +18,7 @@ class DefaultClient {
       String? serviceURL,
       dynamic postData,
       dynamic params}) async {
-    var response;
+    Response? response;
 
     try {
       if (requestType == RequestType.POST) {
@@ -29,7 +29,7 @@ class DefaultClient {
         log.e("No method found");
       }
 
-      return ApiResult.success(data: response.data);
+      return ApiResult.success(data: response?.data);
     } on SocketException catch (e) {
       throw SocketException(e.toString());
     } on DioError catch (e) {

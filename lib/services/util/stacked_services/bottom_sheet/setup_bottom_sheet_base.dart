@@ -1,8 +1,8 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/core/enum/systemwide_enums.dart';
+import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/views/config/config_view.dart';
-import 'package:baf/widgets/common/sheet_top_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -28,10 +28,12 @@ class _ConfigWrapperBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WrapperLayout(
-        child: SheetTopWidget(
-            child: ConfigView(
-      isBottomSheet: true,
-    )));
+    return WrapperLayout(
+        child: Container(
+      margin: EdgeInsets.only(top: kScreenHeightPercentage(context) * 0.1),
+      child: const ConfigView(
+        isBottomSheet: true,
+      ),
+    ));
   }
 }

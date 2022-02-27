@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 part 'activity_model.freezed.dart';
 part 'activity_model.g.dart';
 
 @freezed
 @HiveType(typeId: 0, adapterName: 'ItemAdapter')
 class ItemModel with _$ItemModel {
+  // ignore_for_file: non_constant_identifier_names
   factory ItemModel({
     @HiveField(0) List<ActivityModel>? items,
   }) = _ItemModel;

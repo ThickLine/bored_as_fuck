@@ -40,6 +40,15 @@ class ConfigView extends StatelessWidget {
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
           appBar: AppBarWidget(
+            onTap: () => model.onBottomsheetClose(),
+            toolbarHeight: 100,
+            preferredSize: const Size.fromHeight(80),
+            elevation: 1,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(isBottomSheet == false ? 0 : 25.0),
+                    topRight:
+                        Radius.circular(isBottomSheet == false ? 0 : 25.0))),
             leading: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -50,7 +59,6 @@ class ConfigView extends StatelessWidget {
                 ),
               ],
             ),
-            preferredSize: const Size.fromHeight(56),
             backgroundColor: kcWhiteColor,
             title: const Text(
               "Configure",
@@ -71,130 +79,134 @@ class ConfigView extends StatelessWidget {
                   : Container()
             ],
           ),
-          backgroundColor: kcBlackBackgroundColor,
-          body: ListView(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ConfigLayout(
-                      child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(5, 0, 5, 50),
-                        child: Text(
-                          "Here you set generator settings. Or just press generate for a random one.",
-                          textAlign: TextAlign.center,
-                          style: ktsDescriptionText.copyWith(
-                              color: kcPlaceholderColor),
+          backgroundColor: Colors.transparent,
+          body: Container(
+            color: kcBlackBackgroundColor,
+            child: ListView(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ConfigLayout(
+                        child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 50),
+                          child: Text(
+                            "Here you set generator settings. Or just press generate for a random one.",
+                            textAlign: TextAlign.center,
+                            style: ktsDescriptionText.copyWith(
+                                color: kcPlaceholderColor),
+                          ),
                         ),
-                      ),
-                      // Range
-                      Row(
-                        children: const [
-                          Text(
-                            "Filter by price range",
-                            style: ktsLabelSmallText,
-                          ),
-                        ],
-                      ),
-                      kVerticalSpaceSmall,
-                      RangeSliderWidget(
-                        lowValue: model.config.price?.min ?? 0,
-                        highValue: model.config.price?.max ?? 0,
-                        maxValue: 1500,
-                        from: 0,
-                        step: 10,
-                        onDragging: (handlerIndex, lowerValue, upperValue) =>
-                            model.setPriceSliderValues(
-                                handlerIndex: handlerIndex,
-                                lowerValue: lowerValue,
-                                upperValue: upperValue),
-                      ),
-                      kVerticalSpaceMedium,
-                      // Category
-                      Row(
-                        children: const [
-                          Text(
-                            "Filter by category",
-                            style: ktsLabelSmallText,
-                          ),
-                        ],
-                      ),
-                      kVerticalSpaceTiny,
-                      GroupButton(
-                        options: GroupButtonOptions(
-                          selectedColor: kcPrimaryColor,
-                          borderRadius: BorderRadius.circular(30),
-                          spacing: 5,
-                          buttonWidth: 110,
-                          selectedTextStyle: ktsLabelSmallText.copyWith(
-                              fontSize: kCaptionTextSize, color: kcWhiteColor),
-                          unselectedTextStyle: ktsLabelSmallText.copyWith(
-                              fontSize: kCaptionTextSize,
-                              color: kcPlaceholderColor),
+                        // Range
+                        Row(
+                          children: const [
+                            Text(
+                              "Filter by price range",
+                              style: ktsLabelSmallText,
+                            ),
+                          ],
                         ),
-                        controller: controller,
-                        buttons: model.categoriesList
-                            .map((el) => el.toUpperCase())
-                            .toList()
-                            .cast<String>(),
-                        onSelected: (i, c) {
-                          controller.selectIndex(i);
-                          model.onCatogoriesSelect(i);
-                        },
-                      ),
-                      kVerticalSpaceMedium,
-
-                      // Accessibility
-
-                      SectionTiteWidget(
-                        isTooltip: true,
-                        title: "Filter by accessibility",
-                        tooltipText: "lower easier to acquire",
-                      ),
-                      kVerticalSpaceSmall,
-                      RangeSliderWidget(
-                        lowValue: model.config.accessibility?.min ?? 0,
-                        highValue: model.config.accessibility?.max ?? 0,
-                        from: 0,
-                        maxValue: 1.0,
-                        step: 0.01,
-                        textMin: "Min accessibility",
-                        textMax: "Max accessibility",
-                        onDragging: (handlerIndex, lowerValue, upperValue) =>
-                            model.setAccessibilitySliderValues(
-                                handlerIndex: handlerIndex,
-                                lowerValue: lowerValue,
-                                upperValue: upperValue),
-                      ),
-                      kVerticalSpaceMedium,
-                      // Participant
-                      Row(
-                        children: const [
-                          Text(
-                            "Filter by participant",
-                            style: ktsLabelSmallText,
+                        kVerticalSpaceSmall,
+                        RangeSliderWidget(
+                          lowValue: model.config.price?.min ?? 0,
+                          highValue: model.config.price?.max ?? 0,
+                          maxValue: 1500,
+                          from: 0,
+                          step: 10,
+                          onDragging: (handlerIndex, lowerValue, upperValue) =>
+                              model.setPriceSliderValues(
+                                  handlerIndex: handlerIndex,
+                                  lowerValue: lowerValue,
+                                  upperValue: upperValue),
+                        ),
+                        kVerticalSpaceMedium,
+                        // Category
+                        Row(
+                          children: const [
+                            Text(
+                              "Filter by category",
+                              style: ktsLabelSmallText,
+                            ),
+                          ],
+                        ),
+                        kVerticalSpaceTiny,
+                        GroupButton(
+                          options: GroupButtonOptions(
+                            selectedColor: kcPrimaryColor,
+                            borderRadius: BorderRadius.circular(30),
+                            spacing: 5,
+                            buttonWidth: 110,
+                            selectedTextStyle: ktsLabelSmallText.copyWith(
+                                fontSize: kCaptionTextSize,
+                                color: kcWhiteColor),
+                            unselectedTextStyle: ktsLabelSmallText.copyWith(
+                                fontSize: kCaptionTextSize,
+                                color: kcPlaceholderColor),
                           ),
-                        ],
-                      ),
-                      kVerticalSpaceTiny,
-                      SpinBoxWidget(
-                        value: model.config.participant ?? 1,
-                        onChanged: model.onParticipant,
-                      )
-                    ],
-                  )),
-                  kVerticalSpaceMedium,
-                  SaveButtonWidget(
-                    backgroundColor: kcPrimaryColor,
-                    onPressed: model.onRoute,
-                    title: "Generate",
-                  ),
-                  kVerticalSpaceMedium,
-                ],
-              ),
-            ],
+                          controller: controller,
+                          buttons: model.categoriesList
+                              .map((el) => el.toUpperCase())
+                              .toList()
+                              .cast<String>(),
+                          onSelected: (i, c) {
+                            controller.selectIndex(i);
+                            model.onCatogoriesSelect(i);
+                          },
+                        ),
+                        kVerticalSpaceMedium,
+
+                        // Accessibility
+
+                        const SectionTiteWidget(
+                          isTooltip: true,
+                          title: "Filter by accessibility",
+                          tooltipText: "lower easier to acquire",
+                        ),
+                        kVerticalSpaceSmall,
+                        RangeSliderWidget(
+                          lowValue: model.config.accessibility?.min ?? 0,
+                          highValue: model.config.accessibility?.max ?? 0,
+                          from: 0,
+                          maxValue: 1.0,
+                          step: 0.01,
+                          textMin: "Min accessibility",
+                          textMax: "Max accessibility",
+                          onDragging: (handlerIndex, lowerValue, upperValue) =>
+                              model.setAccessibilitySliderValues(
+                                  handlerIndex: handlerIndex,
+                                  lowerValue: lowerValue,
+                                  upperValue: upperValue),
+                        ),
+                        kVerticalSpaceMedium,
+                        // Participant
+                        Row(
+                          children: const [
+                            Text(
+                              "Filter by participant",
+                              style: ktsLabelSmallText,
+                            ),
+                          ],
+                        ),
+                        kVerticalSpaceTiny,
+                        SpinBoxWidget(
+                          value: model.config.participant ?? 1,
+                          onChanged: model.onParticipant,
+                        )
+                      ],
+                    )),
+                    kVerticalSpaceMedium,
+                    SaveButtonWidget(
+                      backgroundColor: kcPrimaryColor,
+                      onPressed: model.onRoute,
+                      title: "Generate",
+                    ),
+                    kVerticalSpaceMedium,
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

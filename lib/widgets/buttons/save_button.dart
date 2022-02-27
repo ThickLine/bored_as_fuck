@@ -13,7 +13,7 @@ class SaveButtonWidget extends StatelessWidget {
   final Widget? child;
   final bool? isDisabled;
 
-  SaveButtonWidget({
+  const SaveButtonWidget({
     Key? key,
     this.onPressed,
     this.title,

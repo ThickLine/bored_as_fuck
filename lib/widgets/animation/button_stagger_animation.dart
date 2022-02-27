@@ -18,7 +18,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
   final Size? minimumSize;
   final bool? disable;
 
-  ButtonStaggerAnimation({
+  const ButtonStaggerAnimation({
     Key? key,
     this.controller,
     this.color,
@@ -94,8 +94,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
             isText: false,
             backgroundColor: color,
             child: _buttonChild(),
-            onPressed:
-                disable == true ? null : () => this.onPressed!(controller!),
+            onPressed: disable == true ? null : () => onPressed!(controller!),
           ),
         );
       },

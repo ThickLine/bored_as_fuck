@@ -4,6 +4,7 @@ part 'config_model.freezed.dart';
 part 'config_model.g.dart';
 
 @freezed
+// ignore: non_constant_identifier_names
 class ConfigModel with _$ConfigModel {
   factory ConfigModel(
       {PriceModel? price,

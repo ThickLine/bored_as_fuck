@@ -25,7 +25,7 @@ class SectionTiteWidget extends StatelessWidget {
                   style: ktsLabelSmallText,
                 ),
                 kHorizontalSpaceSmall,
-                Center(
+                const Center(
                     child: Icon(
                   Icons.info_outline,
                   color: Colors.blue,

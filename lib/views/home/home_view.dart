@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
                     height: 200,
                     child: Container(
                       padding: const EdgeInsets.only(
-                          left: 20, right: 20, bottom: 10, top: 10),
+                          left: 20, right: 20, bottom: 10, top: 20),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -88,7 +88,7 @@ class HomeView extends StatelessWidget {
                               ),
                               kVerticalSpaceSmall,
                               Text(
-                                " Create your individual & unique style and look amazing everyday",
+                                "Get interesting activities that will keep you entertained for hours.",
                                 style: ktsDescriptionText,
                                 textAlign: TextAlign.center,
                               ),
@@ -142,9 +142,9 @@ class RPSCustomPainter extends CustomPainter {
     path_0.lineTo(0, 0);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Color(0xffe8fffa).withOpacity(1.0);
-    canvas.drawPath(path_0, paint_0_fill);
+    Paint paint0Fill = Paint()..style = PaintingStyle.fill;
+    paint0Fill.color = const Color(0xffe8fffa).withOpacity(1.0);
+    canvas.drawPath(path_0, paint0Fill);
 
     Path path_1 = Path();
     path_1.moveTo(0, 0);
@@ -166,9 +166,9 @@ class RPSCustomPainter extends CustomPainter {
     path_1.lineTo(0, 0);
     path_1.close();
 
-    Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    paint_1_fill.color = Color(0xff185083).withOpacity(1.0);
-    canvas.drawPath(path_1, paint_1_fill);
+    Paint paint1Fill = Paint()..style = PaintingStyle.fill;
+    paint1Fill.color = const Color(0xff185083).withOpacity(1.0);
+    canvas.drawPath(path_1, paint1Fill);
   }
 
   @override

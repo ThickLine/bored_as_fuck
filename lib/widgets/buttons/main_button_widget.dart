@@ -11,13 +11,15 @@ class MainButtonWidget extends StatelessWidget {
   final double width;
   final Widget? child;
 
-  MainButtonWidget(
-      {this.type = ButtonType.PRIMARY,
+  const MainButtonWidget(
+      {Key? key,
+      this.type = ButtonType.PRIMARY,
       this.onPressed,
       this.text,
       this.child,
       this.elevation = true,
-      this.width = double.infinity});
+      this.width = double.infinity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

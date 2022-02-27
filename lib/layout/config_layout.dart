@@ -18,15 +18,8 @@ class ConfigLayout extends StatelessWidget {
       child: Column(
         children: [
           kVerticalSpaceRegular,
-          // const Center(
-          //   child: Text(
-          //     "Configure",
-          //     style: ktsTitleText,
-          //   ),
-          // ),
-          // kVerticalSpaceRegular,
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
             child: child ?? Container(),
           )
         ],

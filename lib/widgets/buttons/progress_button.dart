@@ -37,7 +37,8 @@ class ProgressButton extends StatefulWidget {
   /// The child to display on the button.
   final Widget? child;
 
-  ProgressButton({
+  const ProgressButton({
+    Key? key,
     @required this.child,
     @required this.onPressed,
     this.color = Colors.blue,
@@ -50,7 +51,7 @@ class ProgressButton extends StatefulWidget {
     this.progressIndicatorSize = 30,
     this.borderRadius = const BorderRadius.all(Radius.circular(0)),
     this.animationDuration = const Duration(milliseconds: 300),
-  });
+  }) : super(key: key);
 
   @override
   _ProgressButtonState createState() => _ProgressButtonState();

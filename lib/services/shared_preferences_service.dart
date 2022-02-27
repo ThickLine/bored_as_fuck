@@ -12,7 +12,7 @@ class SharedPreferencesService {
         );
   }
 
-  final enableLogs;
+  final bool enableLogs;
 
   final SharedPreferences _pref;
 

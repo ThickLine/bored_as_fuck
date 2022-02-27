@@ -146,9 +146,10 @@ class ItemView extends StatelessWidget {
                                   backgroundColor: Colors.blue,
                                   isText: false,
                                   child: const Icon(
-                                    Icons.arrow_forward_sharp,
+                                    // Icons.arrow_forward_sharp,
+                                    Icons.arrow_forward_rounded,
                                     color: kcWhiteColor,
-                                    size: 45.0,
+                                    size: 40.0,
                                   ),
                                 )
                         ],
