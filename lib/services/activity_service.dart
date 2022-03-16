@@ -6,18 +6,42 @@ import 'package:baf/models/api/exceptions/network_exceptions.dart';
 import 'package:baf/models/config/config_model.dart';
 
 import 'package:baf/services/network/default_client.dart';
+import 'package:stacked/stacked.dart';
 
-class ActivityService {
+class ActivityService with ReactiveServiceMixin {
   final log = getLogger('ActivityService');
 
   final _defaultClient = locator<DefaultClient>();
 
-  ConfigModel _config = ConfigModel();
+  final ReactiveValue<ConfigModel> _config = ReactiveValue<ConfigModel>(
+      ConfigModel(price: PriceModel(), accessibility: AccessibilityModel()));
 
-  ConfigModel get config => _config;
+  // ConfigModel _config = ConfigModel();
+
+  ConfigModel get config => _config.value;
 
   Future<void> updateConfig(ConfigModel data) async {
-    _config = data;
+    _config.value = data;
+  }
+
+  Future<void> resetConfig() async {
+    _config.value =
+        ConfigModel(price: PriceModel(), accessibility: AccessibilityModel());
+  }
+
+  void setPriceSliderValues(
+      {int? handlerIndex, double? lowerValue, double? upperValue}) {
+    _config.value = config.copyWith.price!(min: lowerValue, max: upperValue);
+  }
+
+  void setAccessibilitySliderValues(
+      {int? handlerIndex, double? lowerValue, double? upperValue}) {
+    _config.value =
+        config.copyWith.accessibility!(min: lowerValue, max: upperValue);
+  }
+
+  void setParticipant(double data) async {
+    _config.value = config.copyWith(participant: data);
   }
 
   Future<ActivityModel> fetchActivity() async {
@@ -26,6 +50,7 @@ class ActivityService {
       "type": payload.type,
       "minprice": payload.price?.min,
       "maxprice": payload.price?.max,
+      "participants": payload.participant,
       "minaccessibility": payload.accessibility!.min,
       "maxaccessibility": payload.accessibility!.max,
     };

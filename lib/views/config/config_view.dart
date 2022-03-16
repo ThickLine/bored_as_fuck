@@ -3,13 +3,16 @@ import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/config_layout.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/views/config/config_viewmodel.dart';
+import 'package:baf/widgets/animation/coaching_widget.dart';
 import 'package:baf/widgets/buttons/save_button.dart';
 import 'package:baf/widgets/buttons/spinbox_widget.dart';
 import 'package:baf/widgets/common/appbar_widget.dart';
 import 'package:baf/widgets/slider/range_slider_widget.dart';
 import 'package:baf/widgets/text/section_title_widget.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:group_button/group_button.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -30,12 +33,23 @@ class ConfigView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = GroupButtonController();
+    GlobalKey<EnsureVisibleState> ensureVisibleGlobalKey =
+        GlobalKey<EnsureVisibleState>();
 
     return ViewModelBuilder<ConfigViewModel>.reactive(
       onModelReady: ((model) {
+        model.init();
         if (model.statusIndex != null) {
           controller.selectIndex(model.statusIndex!);
         }
+        if (isBottomSheet == true) return;
+        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+          FeatureDiscovery.discoverFeatures(context, <String>[
+            'feature1',
+            'feature2',
+            'feature3',
+          ]);
+        });
       }),
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
@@ -51,13 +65,7 @@ class ConfigView extends StatelessWidget {
                         Radius.circular(isBottomSheet == false ? 0 : 25.0))),
             leading: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon:
-                      const Icon(Icons.info_outline, color: kcPlaceholderColor),
-                  onPressed: model.onAboutRoute,
-                ),
-              ],
+              children: [_feature1(model, controller)],
             ),
             backgroundColor: kcWhiteColor,
             title: const Text(
@@ -69,13 +77,7 @@ class ConfigView extends StatelessWidget {
               isBottomSheet != true
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                          onTap: model.onSavedRoute,
-                          child: const Icon(
-                            Icons.favorite,
-                            color: kcPlaceholderColor,
-                          )),
-                    )
+                      child: _feature2(model))
                   : Container()
             ],
           ),
@@ -116,7 +118,7 @@ class ConfigView extends StatelessWidget {
                           from: 0,
                           step: 10,
                           onDragging: (handlerIndex, lowerValue, upperValue) =>
-                              model.setPriceSliderValues(
+                              model.onPriceSliderValues(
                                   handlerIndex: handlerIndex,
                                   lowerValue: lowerValue,
                                   upperValue: upperValue),
@@ -132,7 +134,9 @@ class ConfigView extends StatelessWidget {
                           ],
                         ),
                         kVerticalSpaceTiny,
+
                         GroupButton(
+                          enableDeselect: true,
                           options: GroupButtonOptions(
                             selectedColor: kcPrimaryColor,
                             borderRadius: BorderRadius.circular(30),
@@ -151,14 +155,14 @@ class ConfigView extends StatelessWidget {
                               .toList()
                               .cast<String>(),
                           onSelected: (i, c) {
+                            model.onCatogoriesSelect(i, c);
+                            if (c == false) return controller.unselectIndex(i);
                             controller.selectIndex(i);
-                            model.onCatogoriesSelect(i);
                           },
                         ),
                         kVerticalSpaceMedium,
 
                         // Accessibility
-
                         const SectionTiteWidget(
                           isTooltip: true,
                           title: "Filter by accessibility",
@@ -174,7 +178,7 @@ class ConfigView extends StatelessWidget {
                           textMin: "Min accessibility",
                           textMax: "Max accessibility",
                           onDragging: (handlerIndex, lowerValue, upperValue) =>
-                              model.setAccessibilitySliderValues(
+                              model.onAccessibilitySliderValues(
                                   handlerIndex: handlerIndex,
                                   lowerValue: lowerValue,
                                   upperValue: upperValue),
@@ -191,26 +195,120 @@ class ConfigView extends StatelessWidget {
                         ),
                         kVerticalSpaceTiny,
                         SpinBoxWidget(
+                          enabled: true,
+                          reset: model.config.participant == 2 ? true : false,
                           value: model.config.participant ?? 1,
                           onChanged: model.onParticipant,
                         )
                       ],
                     )),
                     kVerticalSpaceMedium,
-                    SaveButtonWidget(
-                      backgroundColor: kcPrimaryColor,
-                      onPressed: model.onRoute,
-                      title: "Generate",
-                    ),
+                    _feature3(model, ensureVisibleGlobalKey),
                     kVerticalSpaceMedium,
                   ],
-                ),
+                )
               ],
             ),
           ),
         ),
       ),
       viewModelBuilder: () => ConfigViewModel(),
+    );
+  }
+
+  Widget _feature1(model, controller) {
+    return CoachingWidget(
+        featureId: "feature1",
+        targetColor: kcBackgroundColor,
+        textColor: Colors.black,
+        contentLocation: ContentLocation.below,
+        title: Text(
+          'About app',
+          style: ktsTitleText.copyWith(color: kcWhiteColor),
+        ),
+        enablePulsingAnimation: true,
+        overflowMode: OverflowMode.extendBackground,
+        description: Text(
+          'Tap to read about this app',
+          style: ktsDescriptionText.copyWith(color: kcWhiteColor),
+        ),
+        tapTarget: const IconButton(
+          icon: Icon(Icons.info_outline, color: kcInfoColor),
+          onPressed: null,
+        ),
+        child: TextButton(
+          onPressed: () {
+            model.resetConfig();
+            controller.unselectAll();
+            print(model.config.participant);
+          },
+          child: Text("Reset"),
+        ));
+  }
+
+  Widget _feature2(model) {
+    return CoachingWidget(
+      featureId: "feature2",
+      targetColor: kcBackgroundColor,
+      textColor: Colors.black,
+      contentLocation: ContentLocation.trivial,
+      title: Text(
+        'Saved Items',
+        style: ktsTitleText.copyWith(color: kcWhiteColor),
+      ),
+      enablePulsingAnimation: true,
+      overflowMode: OverflowMode.extendBackground,
+      description: Text(
+        'Here you can access your saved activities. These activities are only saved on your phone.',
+        style: ktsDescriptionText.copyWith(color: kcWhiteColor),
+      ),
+      tapTarget: const Icon(
+        Icons.favorite,
+        color: kcErrorColor,
+      ),
+      child: InkWell(
+          onTap: model.onSavedRoute,
+          child: Icon(
+            Icons.favorite,
+            color: model.isSaved ? Colors.red : kcPlaceholderColor,
+          )),
+    );
+  }
+
+  Widget _feature3(model, ensureVisibleGlobalKey) {
+    return CoachingWidget(
+      featureId: "feature3",
+      onOpen: () async {
+        var status = false;
+        if (isBottomSheet == true) return false;
+        WidgetsBinding.instance!.addPostFrameCallback((Duration duration) {
+          ensureVisibleGlobalKey.currentState.ensureVisible();
+          status = true;
+        });
+        return status;
+      },
+      targetColor: kcBackgroundColor,
+      textColor: Colors.black,
+      contentLocation: ContentLocation.above,
+      title: Text(
+        'Generate activity',
+        style: ktsTitleText.copyWith(color: kcWhiteColor),
+      ),
+      enablePulsingAnimation: true,
+      overflowMode: OverflowMode.extendBackground,
+      description: Text(
+        'Use generator settings to generate specific activity or just generate random one.',
+        style: ktsDescriptionText.copyWith(color: kcWhiteColor),
+      ),
+      tapTarget: const Text("Generate"),
+      child: EnsureVisible(
+        key: ensureVisibleGlobalKey,
+        child: SaveButtonWidget(
+          backgroundColor: kcPrimaryColor,
+          onPressed: model.onRoute,
+          title: "Generate",
+        ),
+      ),
     );
   }
 }

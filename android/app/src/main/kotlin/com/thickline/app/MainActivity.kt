@@ -1,4 +1,4 @@
-package com.thickLine.baf
+package app.baf
 
 import io.flutter.embedding.android.FlutterActivity
 

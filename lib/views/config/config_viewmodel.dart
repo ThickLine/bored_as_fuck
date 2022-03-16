@@ -5,20 +5,20 @@ import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/config/config_model.dart';
 import 'package:baf/services/activity_service.dart';
+import 'package:baf/services/save_service.dart';
 import 'package:baf/views/about/about_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class ConfigViewModel extends BaseViewModel {
+class ConfigViewModel extends ReactiveViewModel {
   final log = getLogger('ConfigViewModel');
   final _navigationService = locator<NavigationService>();
   final _activityService = locator<ActivityService>();
   final _bottomSheetService = locator<BottomSheetService>();
+  final _saveService = locator<SaveService>();
 
   int? _statusIndex;
-  ConfigModel _config =
-      ConfigModel(price: PriceModel(), accessibility: AccessibilityModel());
 
   int? get statusIndex => _statusIndex;
   List<String> get categoriesList => [
@@ -33,29 +33,52 @@ class ConfigViewModel extends BaseViewModel {
         "busywork"
       ];
 
-  ConfigModel get config => _config;
+  ConfigModel get config => _activityService.config;
+  bool get isSaved => _saveService.itemList.isNotEmpty ? true : false;
+  @override
+  List<ReactiveServiceMixin> get reactiveServices => [_activityService];
 
   Future<void> init() async {
-    _config = _activityService.config;
     addCategoriesFromString();
     notifyListeners();
   }
 
-  void setPriceSliderValues(
-      {int? handlerIndex, double? lowerValue, double? upperValue}) {
-    _config = config.copyWith.price!(min: lowerValue, max: upperValue);
+  Future<void> resetConfig() async {
+    await _activityService.resetConfig();
+    _statusIndex;
+    addCategoriesFromString();
     notifyListeners();
   }
 
-  void setAccessibilitySliderValues(
+  void onPriceSliderValues(
       {int? handlerIndex, double? lowerValue, double? upperValue}) {
-    _config = config.copyWith.accessibility!(min: lowerValue, max: upperValue);
+    _activityService.setPriceSliderValues(
+        handlerIndex: handlerIndex,
+        lowerValue: lowerValue,
+        upperValue: upperValue);
     notifyListeners();
   }
 
-  void onCatogoriesSelect(int i) async {
-    _statusIndex = i;
-    _config = config.copyWith(type: categoriesList[i]);
+  void onAccessibilitySliderValues(
+      {int? handlerIndex, double? lowerValue, double? upperValue}) {
+    _activityService.setAccessibilitySliderValues(
+        handlerIndex: handlerIndex,
+        lowerValue: lowerValue,
+        upperValue: upperValue);
+    notifyListeners();
+  }
+
+  void onCatogoriesSelect(int i, bool c) async {
+    ConfigModel _config = config;
+    if (c == false) {
+      _statusIndex = null;
+      _config = config.copyWith(type: null);
+    }
+    if (c == true) {
+      _statusIndex = i;
+      _config = config.copyWith(type: categoriesList[i]);
+    }
+    _activityService.updateConfig(config);
     notifyListeners();
   }
 
@@ -64,9 +87,8 @@ class ConfigViewModel extends BaseViewModel {
     _statusIndex = categoriesList.indexOf(config.type!);
   }
 
-  void onParticipant(double data) async {
-    _config = config.copyWith(participant: data);
-    notifyListeners();
+  void onParticipant(double data) {
+    _activityService.setParticipant(data);
   }
 
   Future<void> onRoute() async {

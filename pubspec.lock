@@ -197,6 +197,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  feature_discovery:
+    dependency: "direct main"
+    description:
+      name: feature_discovery
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.14.1"
   ffi:
     dependency: transitive
     description:
@@ -387,6 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -792,14 +806,14 @@ packages:
       name: stacked
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.8"
+    version: "2.3.0"
   stacked_generator:
     dependency: "direct dev"
     description:
       name: stacked_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.7"
+    version: "0.6.0"
   stacked_hooks:
     dependency: "direct main"
     description:

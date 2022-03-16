@@ -4,6 +4,7 @@ import 'package:baf/core/enum/systemwide_enums.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/services/activity_service.dart';
 import 'package:baf/services/save_service.dart';
+import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -60,5 +61,15 @@ class ItemViewModel extends BaseViewModel {
       message: "Copied to clipboard",
       title: "Success",
     );
+  }
+
+  /// [String] format double to currency string
+  String formattedCurrency({double? number, String symbol = "€"}) {
+    final formatter = NumberFormat.currency(
+        locale: "en",
+        customPattern: '#.### \u00a4',
+        symbol: symbol,
+        decimalDigits: 2);
+    return formatter.format(number);
   }
 }

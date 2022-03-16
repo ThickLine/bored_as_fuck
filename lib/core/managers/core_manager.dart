@@ -1,3 +1,4 @@
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:baf/core/managers/lifecycle_manager.dart';
 
@@ -14,7 +15,8 @@ class CoreManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LifeCycleManager(
-      child: child!,
+      child: FeatureDiscovery(
+          recordStepsInSharedPreferences: false, child: child!),
     );
   }
 }
