@@ -47,6 +47,8 @@ dependencies:
   hive_flutter: ^1.1.0
   feature_discovery: ^0.14.1
   intl: ^0.17.0
+  animated_flip_counter: ^0.2.1
+
 
 
   # The following adds the Cupertino Icons font to your application.

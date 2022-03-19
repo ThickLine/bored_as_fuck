@@ -25,7 +25,7 @@ class _$ConfigModelTearOff {
   _ConfigModel call(
       {PriceModel? price,
       String? type,
-      double? participant = 2,
+      int? participant = 1,
       AccessibilityModel? accessibility}) {
     return _ConfigModel(
       price: price,
@@ -47,7 +47,7 @@ const $ConfigModel = _$ConfigModelTearOff();
 mixin _$ConfigModel {
   PriceModel? get price => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
-  double? get participant => throw _privateConstructorUsedError;
+  int? get participant => throw _privateConstructorUsedError;
   AccessibilityModel? get accessibility => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $ConfigModelCopyWith<$Res> {
   $Res call(
       {PriceModel? price,
       String? type,
-      double? participant,
+      int? participant,
       AccessibilityModel? accessibility});
 
   $PriceModelCopyWith<$Res>? get price;
@@ -98,7 +98,7 @@ class _$ConfigModelCopyWithImpl<$Res> implements $ConfigModelCopyWith<$Res> {
       participant: participant == freezed
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       accessibility: accessibility == freezed
           ? _value.accessibility
           : accessibility // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ abstract class _$ConfigModelCopyWith<$Res>
   $Res call(
       {PriceModel? price,
       String? type,
-      double? participant,
+      int? participant,
       AccessibilityModel? accessibility});
 
   @override
@@ -177,7 +177,7 @@ class __$ConfigModelCopyWithImpl<$Res> extends _$ConfigModelCopyWithImpl<$Res>
       participant: participant == freezed
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       accessibility: accessibility == freezed
           ? _value.accessibility
           : accessibility // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ class __$ConfigModelCopyWithImpl<$Res> extends _$ConfigModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfigModel implements _ConfigModel {
   _$_ConfigModel(
-      {this.price, this.type, this.participant = 2, this.accessibility});
+      {this.price, this.type, this.participant = 1, this.accessibility});
 
   factory _$_ConfigModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConfigModelFromJson(json);
@@ -201,7 +201,7 @@ class _$_ConfigModel implements _ConfigModel {
   final String? type;
   @JsonKey()
   @override
-  final double? participant;
+  final int? participant;
   @override
   final AccessibilityModel? accessibility;
 
@@ -246,7 +246,7 @@ abstract class _ConfigModel implements ConfigModel {
   factory _ConfigModel(
       {PriceModel? price,
       String? type,
-      double? participant,
+      int? participant,
       AccessibilityModel? accessibility}) = _$_ConfigModel;
 
   factory _ConfigModel.fromJson(Map<String, dynamic> json) =
@@ -257,7 +257,7 @@ abstract class _ConfigModel implements ConfigModel {
   @override
   String? get type;
   @override
-  double? get participant;
+  int? get participant;
   @override
   AccessibilityModel? get accessibility;
   @override

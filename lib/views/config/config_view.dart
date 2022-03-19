@@ -4,15 +4,13 @@ import 'package:baf/layout/config_layout.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/views/config/config_viewmodel.dart';
 import 'package:baf/widgets/animation/coaching_widget.dart';
+import 'package:baf/widgets/buttons/number_counter/number_counter_view.dart';
 import 'package:baf/widgets/buttons/save_button.dart';
-import 'package:baf/widgets/buttons/spinbox_widget.dart';
 import 'package:baf/widgets/common/appbar_widget.dart';
 import 'package:baf/widgets/slider/range_slider_widget.dart';
 import 'package:baf/widgets/text/section_title_widget.dart';
 import 'package:feature_discovery/feature_discovery.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:group_button/group_button.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -156,7 +154,9 @@ class ConfigView extends StatelessWidget {
                               .cast<String>(),
                           onSelected: (i, c) {
                             model.onCatogoriesSelect(i, c);
-                            if (c == false) return controller.unselectIndex(i);
+                            if (c == false) {
+                              return controller.unselectIndex(i);
+                            }
                             controller.selectIndex(i);
                           },
                         ),
@@ -194,12 +194,12 @@ class ConfigView extends StatelessWidget {
                           ],
                         ),
                         kVerticalSpaceTiny,
-                        SpinBoxWidget(
-                          enabled: true,
-                          reset: model.config.participant == 2 ? true : false,
-                          value: model.config.participant ?? 1,
+                        NumberCounterView(
+                          key: key,
                           onChanged: model.onParticipant,
-                        )
+                          value: model.config.participant ?? 1,
+                        ),
+                        kVerticalSpaceTiny,
                       ],
                     )),
                     kVerticalSpaceMedium,
@@ -240,9 +240,9 @@ class ConfigView extends StatelessWidget {
           onPressed: () {
             model.resetConfig();
             controller.unselectAll();
-            print(model.config.participant);
+            model.onTest();
           },
-          child: Text("Reset"),
+          child: const Text("Reset"),
         ));
   }
 
@@ -279,7 +279,7 @@ class ConfigView extends StatelessWidget {
     return CoachingWidget(
       featureId: "feature3",
       onOpen: () async {
-        var status = false;
+        var status = true;
         if (isBottomSheet == true) return false;
         WidgetsBinding.instance!.addPostFrameCallback((Duration duration) {
           ensureVisibleGlobalKey.currentState.ensureVisible();

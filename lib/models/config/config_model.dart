@@ -9,7 +9,7 @@ class ConfigModel with _$ConfigModel {
   factory ConfigModel(
       {PriceModel? price,
       String? type,
-      @Default(2) double? participant,
+      @Default(1) int? participant,
       AccessibilityModel? accessibility}) = _ConfigModel;
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) =>

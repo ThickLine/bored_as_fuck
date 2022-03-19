@@ -22,15 +22,15 @@ class SharedPreferencesService {
   );
 
   Future<dynamic> getData({String? key}) async {
-    return _pref.getString(key!);
+    return _pref.getBool(key!);
   }
 
   Future<dynamic> getDataInt({String? key}) async {
     return _pref.getInt(key!);
   }
 
-  Future<void> saveData({String? key, String? value}) {
-    return _pref.setString(key!, value!);
+  Future<void> saveData({String? key, bool? value}) {
+    return _pref.setBool(key!, value!);
   }
 
   Future<void> saveDataInt({String? key, int? value}) {

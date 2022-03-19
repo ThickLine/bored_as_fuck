@@ -94,36 +94,37 @@ class ItemView extends StatelessWidget {
                 ),
               ]),
             ),
-            CoachingWidget(
-                featureId: "feature4",
-                targetColor: kcBackgroundColor,
-                textColor: Colors.black,
-                contentLocation: ContentLocation.below,
-                title: Text(
-                  'Copy activity',
-                  style: ktsTitleText.copyWith(color: kcWhiteColor),
-                ),
-                enablePulsingAnimation: true,
-                overflowMode: OverflowMode.extendBackground,
-                description: Text(
-                  'To copy activity, touch text section and press copy icon to copy text to clipboard.',
-                  style: ktsDescriptionText.copyWith(color: kcWhiteColor),
-                ),
-                tapTarget: _copyButton(),
-                child: model.activity?.error != null ||
-                        model.isActiveActivity == false
-                    ? Container()
-                    : Positioned(
-                        bottom: kScreenHeightPercentage(context) * 0.2,
-                        right: kScreenWidthPercentage(context) * 0.43,
-                        child: InkWell(
-                            splashColor: kcPlaceholderColor, // Splash color
-                            onTap: () async {
-                              await Clipboard.setData(ClipboardData(
-                                  text: model.activity?.suggestion));
-                              model.onCopyText();
-                            },
-                            child: _copyButton()))),
+            Positioned(
+              bottom: kScreenHeightPercentage(context) * 0.2,
+              right: kScreenWidthPercentage(context) * 0.43,
+              child: CoachingWidget(
+                  featureId: "feature4",
+                  targetColor: kcBackgroundColor,
+                  textColor: Colors.black,
+                  contentLocation: ContentLocation.below,
+                  title: Text(
+                    'Copy activity',
+                    style: ktsTitleText.copyWith(color: kcWhiteColor),
+                  ),
+                  enablePulsingAnimation: true,
+                  overflowMode: OverflowMode.extendBackground,
+                  description: Text(
+                    'To copy activity, touch text section and press copy icon to copy text to clipboard.',
+                    style: ktsDescriptionText.copyWith(color: kcWhiteColor),
+                  ),
+                  tapTarget: _copyButton(),
+                  child: model.activity?.error != null ||
+                          model.isActiveActivity == false
+                      ? Container()
+                      : InkWell(
+                          splashColor: kcPlaceholderColor, // Splash color
+                          onTap: () async {
+                            await Clipboard.setData(ClipboardData(
+                                text: model.activity?.suggestion));
+                            model.onCopyText();
+                          },
+                          child: _copyButton())),
+            ),
             Positioned(
               bottom: 0,
               right: 0,

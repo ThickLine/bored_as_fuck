@@ -21,6 +21,7 @@ class ActivityService with ReactiveServiceMixin {
   ConfigModel get config => _config.value;
 
   Future<void> updateConfig(ConfigModel data) async {
+    log.wtf(data);
     _config.value = data;
   }
 
@@ -40,7 +41,7 @@ class ActivityService with ReactiveServiceMixin {
         config.copyWith.accessibility!(min: lowerValue, max: upperValue);
   }
 
-  void setParticipant(double data) async {
+  void setParticipant(int data) async {
     _config.value = config.copyWith(participant: data);
   }
 

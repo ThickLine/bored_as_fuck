@@ -5,6 +5,7 @@ import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/config/config_model.dart';
 import 'package:baf/services/activity_service.dart';
+import 'package:baf/services/counter_service.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:baf/views/about/about_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
@@ -15,6 +16,7 @@ class ConfigViewModel extends ReactiveViewModel {
   final log = getLogger('ConfigViewModel');
   final _navigationService = locator<NavigationService>();
   final _activityService = locator<ActivityService>();
+  final _counterService = locator<CounterService>();
   final _bottomSheetService = locator<BottomSheetService>();
   final _saveService = locator<SaveService>();
 
@@ -47,7 +49,9 @@ class ConfigViewModel extends ReactiveViewModel {
     await _activityService.resetConfig();
     _statusIndex;
     addCategoriesFromString();
+    _counterService.resetCount();
     notifyListeners();
+    // Future.delayed(Duration(seconds: 2), () => notifyListeners());
   }
 
   void onPriceSliderValues(
@@ -72,13 +76,13 @@ class ConfigViewModel extends ReactiveViewModel {
     ConfigModel _config = config;
     if (c == false) {
       _statusIndex = null;
-      _config = config.copyWith(type: null);
+      _config = _config.copyWith(type: null);
     }
     if (c == true) {
       _statusIndex = i;
-      _config = config.copyWith(type: categoriesList[i]);
+      _config = _config.copyWith(type: categoriesList[i]);
     }
-    _activityService.updateConfig(config);
+    _activityService.updateConfig(_config);
     notifyListeners();
   }
 
@@ -87,7 +91,7 @@ class ConfigViewModel extends ReactiveViewModel {
     _statusIndex = categoriesList.indexOf(config.type!);
   }
 
-  void onParticipant(double data) {
+  void onParticipant(int data) {
     _activityService.setParticipant(data);
   }
 

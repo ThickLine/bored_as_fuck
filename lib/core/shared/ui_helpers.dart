@@ -27,6 +27,7 @@ double kScreenWidthPercentage(BuildContext context, {double percentage = 1}) =>
 
 // duration
 const Duration kAnimationDuration = Duration(milliseconds: 500);
+const Duration kAnimationFlipCounterDuration = Duration(seconds: 1);
 const Duration kPageDuration = Duration(milliseconds: 500);
 // Page paddings
 const EdgeInsetsGeometry kPagePadding = EdgeInsets.only(
