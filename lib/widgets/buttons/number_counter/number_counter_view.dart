@@ -35,6 +35,7 @@ class NumberCounterView extends StatelessWidget {
                       child: const Icon(
                         Icons.remove,
                         color: kcBlackColor,
+                        size: 30,
                       ),
                       backgroundColor: Colors.white,
                     ),
@@ -59,6 +60,7 @@ class NumberCounterView extends StatelessWidget {
                       child: const Icon(
                         Icons.add,
                         color: kcBlackColor,
+                        size: 30,
                       ),
                       backgroundColor: Colors.white,
                     ),
