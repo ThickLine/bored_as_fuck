@@ -93,7 +93,7 @@ class ConfigView extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.fromLTRB(5, 0, 5, 50),
                           child: Text(
-                            "Here you set generator settings. Or just press generate for a random one.",
+                            "Here you set generator settings. Or just press 'generate' for a random one.",
                             textAlign: TextAlign.center,
                             style: ktsDescriptionText.copyWith(
                                 color: kcPlaceholderColor),
@@ -166,7 +166,7 @@ class ConfigView extends StatelessWidget {
                         const SectionTiteWidget(
                           isTooltip: true,
                           title: "Filter by accessibility",
-                          tooltipText: "lower easier to acquire",
+                          tooltipText: "Lower easier to acquire",
                         ),
                         kVerticalSpaceSmall,
                         RangeSliderWidget(
@@ -223,24 +223,23 @@ class ConfigView extends StatelessWidget {
         textColor: Colors.black,
         contentLocation: ContentLocation.below,
         title: Text(
-          'About app',
+          'Reset search',
           style: ktsTitleText.copyWith(color: kcWhiteColor),
         ),
         enablePulsingAnimation: true,
         overflowMode: OverflowMode.extendBackground,
         description: Text(
-          'Tap to read about this app',
+          'Reset your search query to the default settings',
           style: ktsDescriptionText.copyWith(color: kcWhiteColor),
         ),
-        tapTarget: const IconButton(
-          icon: Icon(Icons.info_outline, color: kcInfoColor),
-          onPressed: null,
+        tapTarget: const Text(
+          "Reset",
+          style: TextStyle(color: Colors.blueAccent),
         ),
         child: TextButton(
           onPressed: () {
             model.resetConfig();
             controller.unselectAll();
-            model.onTest();
           },
           child: const Text("Reset"),
         ));
@@ -259,7 +258,7 @@ class ConfigView extends StatelessWidget {
       enablePulsingAnimation: true,
       overflowMode: OverflowMode.extendBackground,
       description: Text(
-        'Here you can access your saved activities. These activities are only saved on your phone.',
+        'Here you can access your saved activities. These activities are only saved on your phone. Resetting app data will delete them.',
         style: ktsDescriptionText.copyWith(color: kcWhiteColor),
       ),
       tapTarget: const Icon(
@@ -297,7 +296,7 @@ class ConfigView extends StatelessWidget {
       enablePulsingAnimation: true,
       overflowMode: OverflowMode.extendBackground,
       description: Text(
-        'Use generator settings to generate specific activity or just generate random one.',
+        'Use generator settings to generate specific activity or just generate a random one.',
         style: ktsDescriptionText.copyWith(color: kcWhiteColor),
       ),
       tapTarget: const Text("Generate"),

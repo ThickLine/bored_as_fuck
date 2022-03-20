@@ -21,7 +21,6 @@ class ActivityService with ReactiveServiceMixin {
   ConfigModel get config => _config.value;
 
   Future<void> updateConfig(ConfigModel data) async {
-    log.wtf(data);
     _config.value = data;
   }
 

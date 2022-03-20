@@ -1,6 +1,7 @@
 import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
+import 'package:baf/mixin/icon_mixin.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/views/item/item_viewmodel.dart';
 import 'package:baf/widgets/animation/coaching_widget.dart';
@@ -183,34 +184,36 @@ class ItemView extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: Center(
                         child: Icon(
-                            model.activity!.participants > 1
-                                ? Icons.group
-                                : Icons.person,
+                            IconMixin.getPIcon(model.activity!.participants),
                             size: 32,
                             color: kcWhiteColor)),
                   ),
                 )),
             Expanded(
               flex: 3,
-              child: Icon(Icons.emoji_objects_outlined,
-                  size: 70, color: Colors.yellow[100]),
+              child: Image.asset(
+                "assets/logo.png",
+                width: 80,
+                height: 80,
+              ),
+              // Icon(Icons.emoji_objects_outlined,
+              //     size: 70, color: Colors.yellow[100]),
             ),
             Expanded(
                 flex: 3,
                 child: Transform.rotate(
                   angle: math.pi / 12.0,
                   child: Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Center(
-                        child: Text(
-                            "~${model.formattedCurrency(number: model.activity!.price)}",
-                            style: ktsLableText.copyWith(color: kcWhiteColor))),
-                  ),
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: IconMixin.getMIcon(model.activity!.price),
+                      )),
                 ))
           ],
         ),
         Container(
-          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+          padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -225,11 +228,11 @@ class ItemView extends StatelessWidget {
         Column(
           children: [
             const Divider(
-              color: kcWhiteColor, //color of divider
-              height: 5, //height spacing of divider
-              thickness: 3, //thickness of divier line
-              indent: 80, //spacing at the start of divider
-              endIndent: 80, //spacing at the end of divider
+              color: kcWhiteColor,
+              height: 5,
+              thickness: 3,
+              indent: 80,
+              endIndent: 80,
             ),
             GestureDetector(
               onTap: model.onActivity,

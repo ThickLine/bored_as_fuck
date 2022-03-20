@@ -51,7 +51,6 @@ class ConfigViewModel extends ReactiveViewModel {
     addCategoriesFromString();
     _counterService.resetCount();
     notifyListeners();
-    // Future.delayed(Duration(seconds: 2), () => notifyListeners());
   }
 
   void onPriceSliderValues(

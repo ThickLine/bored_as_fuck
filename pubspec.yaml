@@ -1,5 +1,5 @@
 name: baf
-description: A new Flutter project.
+description: Generate random to do an activity..
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -58,7 +58,6 @@ dependencies:
      git: https://github.com/ThickLine/Slider-Button.git
   group_button: ^4.5.0
   another_xlider: ^1.0.0
-  flutter_spinbox: ^0.8.0
   dio: ^4.0.4
   share_plus: ^3.0.5
   flutter_circular_text: ^0.3.1
