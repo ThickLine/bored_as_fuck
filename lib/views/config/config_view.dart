@@ -12,6 +12,7 @@ import 'package:baf/widgets/text/section_title_widget.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -48,6 +49,7 @@ class ConfigView extends StatelessWidget {
             'feature3',
           ]);
         });
+        Appodeal.show(Appodeal.INTERSTITIAL, "default");
       }),
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
@@ -91,7 +93,7 @@ class ConfigView extends StatelessWidget {
                         child: Column(
                       children: [
                         Container(
-                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 50),
+                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                           child: Text(
                             "Here you set generator settings. Or just press 'generate' for a random one.",
                             textAlign: TextAlign.center,
@@ -99,6 +101,13 @@ class ConfigView extends StatelessWidget {
                                 color: kcPlaceholderColor),
                           ),
                         ),
+                        kVerticalSpaceSmall,
+                        // Adds
+                        const AppodealBanner(
+                            adSize: AppodealBannerSize.BANNER,
+                            placement: "top"),
+                        kVerticalSpaceSmall,
+                        // Adds
                         // Range
                         Row(
                           children: const [
@@ -160,8 +169,13 @@ class ConfigView extends StatelessWidget {
                             controller.selectIndex(i);
                           },
                         ),
-                        kVerticalSpaceMedium,
-
+                        kVerticalSpaceSmall,
+                        // Adds
+                        const AppodealBanner(
+                            adSize: AppodealBannerSize.BANNER,
+                            placement: "bottom"),
+                        kVerticalSpaceSmall,
+                        // Adds
                         // Accessibility
                         const SectionTiteWidget(
                           isTooltip: true,

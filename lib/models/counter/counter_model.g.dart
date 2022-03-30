@@ -8,9 +8,9 @@ part of 'counter_model.dart';
 
 _$_CounterModel _$$_CounterModelFromJson(Map<String, dynamic> json) =>
     _$_CounterModel(
-      minValue: json['minValue'] as int? ?? 0,
+      minValue: json['minValue'] as int? ?? 1,
       maxValue: json['maxValue'] as int? ?? 10,
-      value: json['value'] as int? ?? 0,
+      value: json['value'] as int? ?? 1,
     );
 
 Map<String, dynamic> _$$_CounterModelToJson(_$_CounterModel instance) =>

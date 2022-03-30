@@ -22,7 +22,7 @@ CounterModel _$CounterModelFromJson(Map<String, dynamic> json) {
 class _$CounterModelTearOff {
   const _$CounterModelTearOff();
 
-  _CounterModel call({int minValue = 0, int maxValue = 10, int value = 0}) {
+  _CounterModel call({int minValue = 1, int maxValue = 10, int value = 1}) {
     return _CounterModel(
       minValue: minValue,
       maxValue: maxValue,
@@ -135,7 +135,7 @@ class __$CounterModelCopyWithImpl<$Res> extends _$CounterModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CounterModel implements _CounterModel {
-  _$_CounterModel({this.minValue = 0, this.maxValue = 10, this.value = 0});
+  _$_CounterModel({this.minValue = 1, this.maxValue = 10, this.value = 1});
 
   factory _$_CounterModel.fromJson(Map<String, dynamic> json) =>
       _$$_CounterModelFromJson(json);

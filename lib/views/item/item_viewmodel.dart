@@ -43,6 +43,7 @@ class ItemViewModel extends BaseViewModel {
     if (activity == null) return;
     _activity = activity!.copyWith(saved: true);
     _saveService.addItemToList(activity!);
+    notifyListeners();
   }
 
   Future<void> onLoadNext() async {

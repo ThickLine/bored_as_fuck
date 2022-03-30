@@ -12,6 +12,7 @@ import 'package:baf/widgets/common/sheet_top_widget.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'dart:math' as math;
 import 'package:stacked/stacked.dart';
 
@@ -53,6 +54,7 @@ class ItemView extends StatelessWidget {
                       )
                     : Expanded(child: _list(model)),
                 // Controls
+
                 Container(
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   height: kScreenHeightPercentage(context) * 0.15,
@@ -234,23 +236,29 @@ class ItemView extends StatelessWidget {
               indent: 80,
               endIndent: 80,
             ),
-            GestureDetector(
-              onTap: model.onActivity,
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Flexible(
-                    child: Text(model.activity!.suggestion ?? "",
-                        textAlign: TextAlign.center,
-                        style:
-                            ktsDescriptionText.copyWith(color: kcWhiteColor)),
-                  )
-                ]),
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+              child: GestureDetector(
+                onTap: model.onActivity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Text(model.activity!.suggestion ?? "",
+                          textAlign: TextAlign.center,
+                          style:
+                              ktsDescriptionText.copyWith(color: kcWhiteColor)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
+        // Adds
+        const AppodealBanner(
+            adSize: AppodealBannerSize.BANNER, placement: "default"),
+        // Adds
       ],
     );
   }

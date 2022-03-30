@@ -9,6 +9,7 @@ import 'package:baf/services/util/stacked_services/snackbars/setup_snackbar_base
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:baf/core/shared/themes.dart' as themes;
 import 'package:stacked_themes/stacked_themes.dart';
@@ -25,10 +26,17 @@ Future main() async {
   setupSnackBarBase();
   setupBottomSheetUi();
   setupDialogUi();
-  runApp(MyApp());
+
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = dotenv.env['DSN'];
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(BAF()),
+  );
 }
 
-class MyApp extends StatelessWidget with PortraitModeMixin {
+class BAF extends StatelessWidget with PortraitModeMixin {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

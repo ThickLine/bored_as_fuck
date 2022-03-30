@@ -15,8 +15,8 @@ class CoreManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LifeCycleManager(
-      child: FeatureDiscovery(
-          recordStepsInSharedPreferences: false, child: child!),
+      child:
+          FeatureDiscovery(recordStepsInSharedPreferences: true, child: child!),
     );
   }
 }

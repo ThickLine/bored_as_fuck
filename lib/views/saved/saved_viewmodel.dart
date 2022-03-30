@@ -29,7 +29,7 @@ class SavedViewModel extends BaseViewModel {
 
   Future<void> onShare(ActivityModel data) async {
     Share.share("${data.activity}!  ${data.suggestion}",
-        subject: 'Hey, Bored as F found me this.');
+        subject: "Hey, 'Bored as F' found me this.");
   }
 
   Future<void> onRoute(ActivityModel item) async {
