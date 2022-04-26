@@ -54,7 +54,7 @@ class BAF extends StatelessWidget with PortraitModeMixin {
           themeMode,
         ) =>
             MaterialApp(
-          title: dotenv.env['NAME'] ?? "My Pocket",
+          title: dotenv.env['NAME'] ?? "BAF",
           theme: regularTheme,
           darkTheme: darkTheme,
           themeMode: themeMode,

@@ -8,9 +8,7 @@ class WrapperLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: SafeArea(
-        child: child ?? Container(),
-      ),
+      child: child ?? Container(),
     );
   }
 }

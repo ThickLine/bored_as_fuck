@@ -18,8 +18,12 @@ class StartUpViewModel extends BaseViewModel {
   Future<void> init() async {
     var prefs = _sharedPreferencesService;
     await _saveService.initItem();
-
-    await _appoDealService.initialization();
+    // Load AppoDeal
+    Timer? timer;
+    timer = Timer.periodic(const Duration(seconds: 1), (_) async {
+      var res = await _appoDealService.initialization();
+      if (res == true) timer!.cancel();
+    });
 
     bool? isHome = await prefs.getData(key: "isHome");
     if (isHome != null && isHome == true) {

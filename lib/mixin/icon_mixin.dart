@@ -19,7 +19,7 @@ class IconMixin {
       numberList.add(i);
     }
 
-    for (var e in numberList) {
+    for (int j = 0; j < numberList.length; j++) {
       iconList
           .add(const Icon(Icons.attach_money, size: 32, color: kcWhiteColor));
     }

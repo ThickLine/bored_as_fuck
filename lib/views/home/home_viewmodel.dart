@@ -1,5 +1,6 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
+import 'package:baf/services/appodeal_service.dart';
 import 'package:baf/services/shared_preferences_service.dart';
 
 import 'package:baf/views/config/config_view.dart';

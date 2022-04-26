@@ -19,7 +19,10 @@ class SheetTopWidget extends StatelessWidget {
 
         child: Stack(
           children: [
-            Container(padding: const EdgeInsets.only(top: 40), child: child),
+            Container(
+                padding: EdgeInsets.only(
+                    top: kScreenHeightPercentage(context) * 0.06),
+                child: child),
             const Positioned(
               left: 0,
               right: 0,

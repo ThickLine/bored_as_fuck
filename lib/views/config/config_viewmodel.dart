@@ -5,6 +5,7 @@ import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/config/config_model.dart';
 import 'package:baf/services/activity_service.dart';
+import 'package:baf/services/appodeal_service.dart';
 import 'package:baf/services/counter_service.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:baf/views/about/about_view.dart';
@@ -21,7 +22,6 @@ class ConfigViewModel extends ReactiveViewModel {
   final _saveService = locator<SaveService>();
 
   int? _statusIndex;
-
   int? get statusIndex => _statusIndex;
   List<String> get categoriesList => [
         "education",
