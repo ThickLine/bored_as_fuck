@@ -3,6 +3,9 @@ import 'package:baf/app/app.router.dart';
 import 'package:baf/core/managers/core_manager.dart';
 import 'package:baf/mixin/lock_phone.mixin.dart';
 import 'package:baf/models/activity/activity_model.dart';
+import 'package:baf/models/recipe/recipe_model.dart';
+import 'package:baf/models/story/story_model.dart';
+import 'package:baf/models/todo/todo_model.dart';
 import 'package:baf/services/util/stacked_services/bottom_sheet/setup_bottom_sheet_base.dart';
 import 'package:baf/services/util/stacked_services/modal/setup_dialoge_base.dart';
 import 'package:baf/services/util/stacked_services/snackbars/setup_snackbar_base.dart';
@@ -14,6 +17,8 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:baf/core/shared/themes.dart' as themes;
 import 'package:stacked_themes/stacked_themes.dart';
 
+import 'core/enum/systemwide_enums.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
@@ -21,6 +26,10 @@ Future main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ItemAdapter());
   Hive.registerAdapter(ActivityAdapter());
+  Hive.registerAdapter(TodoAdapter());
+  Hive.registerAdapter(StoryAdapter());
+  Hive.registerAdapter(RecipeAdapter());
+  Hive.registerAdapter(ActivityTypeAdapter());
   await Hive.openBox<ItemModel>("myActivity");
   setupLocator();
   setupSnackBarBase();

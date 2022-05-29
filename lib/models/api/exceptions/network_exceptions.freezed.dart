@@ -12,87 +12,7 @@ part of 'network_exceptions.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$NetworkExceptionsTearOff {
-  const _$NetworkExceptionsTearOff();
-
-  RequestCancelled requestCancelled() {
-    return const RequestCancelled();
-  }
-
-  UnauthorizedRequest unauthorizedRequest() {
-    return const UnauthorizedRequest();
-  }
-
-  BadRequest badRequest() {
-    return const BadRequest();
-  }
-
-  NotFound notFound(String reason) {
-    return NotFound(
-      reason,
-    );
-  }
-
-  MethodNotAllowed methodNotAllowed() {
-    return const MethodNotAllowed();
-  }
-
-  NotAcceptable notAcceptable() {
-    return const NotAcceptable();
-  }
-
-  RequestTimeout requestTimeout() {
-    return const RequestTimeout();
-  }
-
-  SendTimeout sendTimeout() {
-    return const SendTimeout();
-  }
-
-  Conflict conflict() {
-    return const Conflict();
-  }
-
-  InternalServerError internalServerError() {
-    return const InternalServerError();
-  }
-
-  NotImplemented notImplemented() {
-    return const NotImplemented();
-  }
-
-  ServiceUnavailable serviceUnavailable() {
-    return const ServiceUnavailable();
-  }
-
-  NoInternetConnection noInternetConnection() {
-    return const NoInternetConnection();
-  }
-
-  FormatException formatException() {
-    return const FormatException();
-  }
-
-  UnableToProcess unableToProcess() {
-    return const UnableToProcess();
-  }
-
-  DefaultError defaultError(String error) {
-    return DefaultError(
-      error,
-    );
-  }
-
-  UnexpectedError unexpectedError() {
-    return const UnexpectedError();
-  }
-}
-
-/// @nodoc
-const $NetworkExceptions = _$NetworkExceptionsTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$NetworkExceptions {
@@ -244,22 +164,22 @@ class _$NetworkExceptionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $RequestCancelledCopyWith<$Res> {
-  factory $RequestCancelledCopyWith(
-          RequestCancelled value, $Res Function(RequestCancelled) then) =
-      _$RequestCancelledCopyWithImpl<$Res>;
+abstract class _$$RequestCancelledCopyWith<$Res> {
+  factory _$$RequestCancelledCopyWith(
+          _$RequestCancelled value, $Res Function(_$RequestCancelled) then) =
+      __$$RequestCancelledCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RequestCancelledCopyWithImpl<$Res>
+class __$$RequestCancelledCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $RequestCancelledCopyWith<$Res> {
-  _$RequestCancelledCopyWithImpl(
-      RequestCancelled _value, $Res Function(RequestCancelled) _then)
-      : super(_value, (v) => _then(v as RequestCancelled));
+    implements _$$RequestCancelledCopyWith<$Res> {
+  __$$RequestCancelledCopyWithImpl(
+      _$RequestCancelled _value, $Res Function(_$RequestCancelled) _then)
+      : super(_value, (v) => _then(v as _$RequestCancelled));
 
   @override
-  RequestCancelled get _value => super._value as RequestCancelled;
+  _$RequestCancelled get _value => super._value as _$RequestCancelled;
 }
 
 /// @nodoc
@@ -278,13 +198,13 @@ class _$RequestCancelled
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.requestCancelled'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.requestCancelled'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RequestCancelled);
+        (other.runtimeType == runtimeType && other is _$RequestCancelled);
   }
 
   @override
@@ -448,22 +368,22 @@ abstract class RequestCancelled implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $UnauthorizedRequestCopyWith<$Res> {
-  factory $UnauthorizedRequestCopyWith(
-          UnauthorizedRequest value, $Res Function(UnauthorizedRequest) then) =
-      _$UnauthorizedRequestCopyWithImpl<$Res>;
+abstract class _$$UnauthorizedRequestCopyWith<$Res> {
+  factory _$$UnauthorizedRequestCopyWith(_$UnauthorizedRequest value,
+          $Res Function(_$UnauthorizedRequest) then) =
+      __$$UnauthorizedRequestCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UnauthorizedRequestCopyWithImpl<$Res>
+class __$$UnauthorizedRequestCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $UnauthorizedRequestCopyWith<$Res> {
-  _$UnauthorizedRequestCopyWithImpl(
-      UnauthorizedRequest _value, $Res Function(UnauthorizedRequest) _then)
-      : super(_value, (v) => _then(v as UnauthorizedRequest));
+    implements _$$UnauthorizedRequestCopyWith<$Res> {
+  __$$UnauthorizedRequestCopyWithImpl(
+      _$UnauthorizedRequest _value, $Res Function(_$UnauthorizedRequest) _then)
+      : super(_value, (v) => _then(v as _$UnauthorizedRequest));
 
   @override
-  UnauthorizedRequest get _value => super._value as UnauthorizedRequest;
+  _$UnauthorizedRequest get _value => super._value as _$UnauthorizedRequest;
 }
 
 /// @nodoc
@@ -481,15 +401,14 @@ class _$UnauthorizedRequest
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'NetworkExceptions.unauthorizedRequest'));
+    properties.add(
+        DiagnosticsProperty('type', 'NetworkExceptions.unauthorizedRequest'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UnauthorizedRequest);
+        (other.runtimeType == runtimeType && other is _$UnauthorizedRequest);
   }
 
   @override
@@ -653,21 +572,22 @@ abstract class UnauthorizedRequest implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $BadRequestCopyWith<$Res> {
-  factory $BadRequestCopyWith(
-          BadRequest value, $Res Function(BadRequest) then) =
-      _$BadRequestCopyWithImpl<$Res>;
+abstract class _$$BadRequestCopyWith<$Res> {
+  factory _$$BadRequestCopyWith(
+          _$BadRequest value, $Res Function(_$BadRequest) then) =
+      __$$BadRequestCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BadRequestCopyWithImpl<$Res>
+class __$$BadRequestCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $BadRequestCopyWith<$Res> {
-  _$BadRequestCopyWithImpl(BadRequest _value, $Res Function(BadRequest) _then)
-      : super(_value, (v) => _then(v as BadRequest));
+    implements _$$BadRequestCopyWith<$Res> {
+  __$$BadRequestCopyWithImpl(
+      _$BadRequest _value, $Res Function(_$BadRequest) _then)
+      : super(_value, (v) => _then(v as _$BadRequest));
 
   @override
-  BadRequest get _value => super._value as BadRequest;
+  _$BadRequest get _value => super._value as _$BadRequest;
 }
 
 /// @nodoc
@@ -683,14 +603,13 @@ class _$BadRequest with DiagnosticableTreeMixin implements BadRequest {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.badRequest'));
+    properties.add(DiagnosticsProperty('type', 'NetworkExceptions.badRequest'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is BadRequest);
+        (other.runtimeType == runtimeType && other is _$BadRequest);
   }
 
   @override
@@ -854,26 +773,28 @@ abstract class BadRequest implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $NotFoundCopyWith<$Res> {
-  factory $NotFoundCopyWith(NotFound value, $Res Function(NotFound) then) =
-      _$NotFoundCopyWithImpl<$Res>;
+abstract class _$$NotFoundCopyWith<$Res> {
+  factory _$$NotFoundCopyWith(
+          _$NotFound value, $Res Function(_$NotFound) then) =
+      __$$NotFoundCopyWithImpl<$Res>;
   $Res call({String reason});
 }
 
 /// @nodoc
-class _$NotFoundCopyWithImpl<$Res> extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $NotFoundCopyWith<$Res> {
-  _$NotFoundCopyWithImpl(NotFound _value, $Res Function(NotFound) _then)
-      : super(_value, (v) => _then(v as NotFound));
+class __$$NotFoundCopyWithImpl<$Res>
+    extends _$NetworkExceptionsCopyWithImpl<$Res>
+    implements _$$NotFoundCopyWith<$Res> {
+  __$$NotFoundCopyWithImpl(_$NotFound _value, $Res Function(_$NotFound) _then)
+      : super(_value, (v) => _then(v as _$NotFound));
 
   @override
-  NotFound get _value => super._value as NotFound;
+  _$NotFound get _value => super._value as _$NotFound;
 
   @override
   $Res call({
     Object? reason = freezed,
   }) {
-    return _then(NotFound(
+    return _then(_$NotFound(
       reason == freezed
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
@@ -907,7 +828,7 @@ class _$NotFound with DiagnosticableTreeMixin implements NotFound {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NotFound &&
+            other is _$NotFound &&
             const DeepCollectionEquality().equals(other.reason, reason));
   }
 
@@ -917,8 +838,8 @@ class _$NotFound with DiagnosticableTreeMixin implements NotFound {
 
   @JsonKey(ignore: true)
   @override
-  $NotFoundCopyWith<NotFound> get copyWith =>
-      _$NotFoundCopyWithImpl<NotFound>(this, _$identity);
+  _$$NotFoundCopyWith<_$NotFound> get copyWith =>
+      __$$NotFoundCopyWithImpl<_$NotFound>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1074,31 +995,31 @@ class _$NotFound with DiagnosticableTreeMixin implements NotFound {
 }
 
 abstract class NotFound implements NetworkExceptions {
-  const factory NotFound(String reason) = _$NotFound;
+  const factory NotFound(final String reason) = _$NotFound;
 
-  String get reason;
+  String get reason => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NotFoundCopyWith<NotFound> get copyWith =>
+  _$$NotFoundCopyWith<_$NotFound> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MethodNotAllowedCopyWith<$Res> {
-  factory $MethodNotAllowedCopyWith(
-          MethodNotAllowed value, $Res Function(MethodNotAllowed) then) =
-      _$MethodNotAllowedCopyWithImpl<$Res>;
+abstract class _$$MethodNotAllowedCopyWith<$Res> {
+  factory _$$MethodNotAllowedCopyWith(
+          _$MethodNotAllowed value, $Res Function(_$MethodNotAllowed) then) =
+      __$$MethodNotAllowedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MethodNotAllowedCopyWithImpl<$Res>
+class __$$MethodNotAllowedCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $MethodNotAllowedCopyWith<$Res> {
-  _$MethodNotAllowedCopyWithImpl(
-      MethodNotAllowed _value, $Res Function(MethodNotAllowed) _then)
-      : super(_value, (v) => _then(v as MethodNotAllowed));
+    implements _$$MethodNotAllowedCopyWith<$Res> {
+  __$$MethodNotAllowedCopyWithImpl(
+      _$MethodNotAllowed _value, $Res Function(_$MethodNotAllowed) _then)
+      : super(_value, (v) => _then(v as _$MethodNotAllowed));
 
   @override
-  MethodNotAllowed get _value => super._value as MethodNotAllowed;
+  _$MethodNotAllowed get _value => super._value as _$MethodNotAllowed;
 }
 
 /// @nodoc
@@ -1117,13 +1038,13 @@ class _$MethodNotAllowed
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.methodNotAllowed'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.methodNotAllowed'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MethodNotAllowed);
+        (other.runtimeType == runtimeType && other is _$MethodNotAllowed);
   }
 
   @override
@@ -1287,22 +1208,22 @@ abstract class MethodNotAllowed implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $NotAcceptableCopyWith<$Res> {
-  factory $NotAcceptableCopyWith(
-          NotAcceptable value, $Res Function(NotAcceptable) then) =
-      _$NotAcceptableCopyWithImpl<$Res>;
+abstract class _$$NotAcceptableCopyWith<$Res> {
+  factory _$$NotAcceptableCopyWith(
+          _$NotAcceptable value, $Res Function(_$NotAcceptable) then) =
+      __$$NotAcceptableCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NotAcceptableCopyWithImpl<$Res>
+class __$$NotAcceptableCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $NotAcceptableCopyWith<$Res> {
-  _$NotAcceptableCopyWithImpl(
-      NotAcceptable _value, $Res Function(NotAcceptable) _then)
-      : super(_value, (v) => _then(v as NotAcceptable));
+    implements _$$NotAcceptableCopyWith<$Res> {
+  __$$NotAcceptableCopyWithImpl(
+      _$NotAcceptable _value, $Res Function(_$NotAcceptable) _then)
+      : super(_value, (v) => _then(v as _$NotAcceptable));
 
   @override
-  NotAcceptable get _value => super._value as NotAcceptable;
+  _$NotAcceptable get _value => super._value as _$NotAcceptable;
 }
 
 /// @nodoc
@@ -1319,13 +1240,13 @@ class _$NotAcceptable with DiagnosticableTreeMixin implements NotAcceptable {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.notAcceptable'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.notAcceptable'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NotAcceptable);
+        (other.runtimeType == runtimeType && other is _$NotAcceptable);
   }
 
   @override
@@ -1489,22 +1410,22 @@ abstract class NotAcceptable implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $RequestTimeoutCopyWith<$Res> {
-  factory $RequestTimeoutCopyWith(
-          RequestTimeout value, $Res Function(RequestTimeout) then) =
-      _$RequestTimeoutCopyWithImpl<$Res>;
+abstract class _$$RequestTimeoutCopyWith<$Res> {
+  factory _$$RequestTimeoutCopyWith(
+          _$RequestTimeout value, $Res Function(_$RequestTimeout) then) =
+      __$$RequestTimeoutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RequestTimeoutCopyWithImpl<$Res>
+class __$$RequestTimeoutCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $RequestTimeoutCopyWith<$Res> {
-  _$RequestTimeoutCopyWithImpl(
-      RequestTimeout _value, $Res Function(RequestTimeout) _then)
-      : super(_value, (v) => _then(v as RequestTimeout));
+    implements _$$RequestTimeoutCopyWith<$Res> {
+  __$$RequestTimeoutCopyWithImpl(
+      _$RequestTimeout _value, $Res Function(_$RequestTimeout) _then)
+      : super(_value, (v) => _then(v as _$RequestTimeout));
 
   @override
-  RequestTimeout get _value => super._value as RequestTimeout;
+  _$RequestTimeout get _value => super._value as _$RequestTimeout;
 }
 
 /// @nodoc
@@ -1521,13 +1442,13 @@ class _$RequestTimeout with DiagnosticableTreeMixin implements RequestTimeout {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.requestTimeout'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.requestTimeout'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RequestTimeout);
+        (other.runtimeType == runtimeType && other is _$RequestTimeout);
   }
 
   @override
@@ -1691,22 +1612,22 @@ abstract class RequestTimeout implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $SendTimeoutCopyWith<$Res> {
-  factory $SendTimeoutCopyWith(
-          SendTimeout value, $Res Function(SendTimeout) then) =
-      _$SendTimeoutCopyWithImpl<$Res>;
+abstract class _$$SendTimeoutCopyWith<$Res> {
+  factory _$$SendTimeoutCopyWith(
+          _$SendTimeout value, $Res Function(_$SendTimeout) then) =
+      __$$SendTimeoutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SendTimeoutCopyWithImpl<$Res>
+class __$$SendTimeoutCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $SendTimeoutCopyWith<$Res> {
-  _$SendTimeoutCopyWithImpl(
-      SendTimeout _value, $Res Function(SendTimeout) _then)
-      : super(_value, (v) => _then(v as SendTimeout));
+    implements _$$SendTimeoutCopyWith<$Res> {
+  __$$SendTimeoutCopyWithImpl(
+      _$SendTimeout _value, $Res Function(_$SendTimeout) _then)
+      : super(_value, (v) => _then(v as _$SendTimeout));
 
   @override
-  SendTimeout get _value => super._value as SendTimeout;
+  _$SendTimeout get _value => super._value as _$SendTimeout;
 }
 
 /// @nodoc
@@ -1723,13 +1644,13 @@ class _$SendTimeout with DiagnosticableTreeMixin implements SendTimeout {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.sendTimeout'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.sendTimeout'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SendTimeout);
+        (other.runtimeType == runtimeType && other is _$SendTimeout);
   }
 
   @override
@@ -1893,19 +1814,21 @@ abstract class SendTimeout implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $ConflictCopyWith<$Res> {
-  factory $ConflictCopyWith(Conflict value, $Res Function(Conflict) then) =
-      _$ConflictCopyWithImpl<$Res>;
+abstract class _$$ConflictCopyWith<$Res> {
+  factory _$$ConflictCopyWith(
+          _$Conflict value, $Res Function(_$Conflict) then) =
+      __$$ConflictCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ConflictCopyWithImpl<$Res> extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $ConflictCopyWith<$Res> {
-  _$ConflictCopyWithImpl(Conflict _value, $Res Function(Conflict) _then)
-      : super(_value, (v) => _then(v as Conflict));
+class __$$ConflictCopyWithImpl<$Res>
+    extends _$NetworkExceptionsCopyWithImpl<$Res>
+    implements _$$ConflictCopyWith<$Res> {
+  __$$ConflictCopyWithImpl(_$Conflict _value, $Res Function(_$Conflict) _then)
+      : super(_value, (v) => _then(v as _$Conflict));
 
   @override
-  Conflict get _value => super._value as Conflict;
+  _$Conflict get _value => super._value as _$Conflict;
 }
 
 /// @nodoc
@@ -1921,13 +1844,13 @@ class _$Conflict with DiagnosticableTreeMixin implements Conflict {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'NetworkExceptions.conflict'));
+    properties.add(DiagnosticsProperty('type', 'NetworkExceptions.conflict'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Conflict);
+        (other.runtimeType == runtimeType && other is _$Conflict);
   }
 
   @override
@@ -2091,22 +2014,22 @@ abstract class Conflict implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $InternalServerErrorCopyWith<$Res> {
-  factory $InternalServerErrorCopyWith(
-          InternalServerError value, $Res Function(InternalServerError) then) =
-      _$InternalServerErrorCopyWithImpl<$Res>;
+abstract class _$$InternalServerErrorCopyWith<$Res> {
+  factory _$$InternalServerErrorCopyWith(_$InternalServerError value,
+          $Res Function(_$InternalServerError) then) =
+      __$$InternalServerErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InternalServerErrorCopyWithImpl<$Res>
+class __$$InternalServerErrorCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $InternalServerErrorCopyWith<$Res> {
-  _$InternalServerErrorCopyWithImpl(
-      InternalServerError _value, $Res Function(InternalServerError) _then)
-      : super(_value, (v) => _then(v as InternalServerError));
+    implements _$$InternalServerErrorCopyWith<$Res> {
+  __$$InternalServerErrorCopyWithImpl(
+      _$InternalServerError _value, $Res Function(_$InternalServerError) _then)
+      : super(_value, (v) => _then(v as _$InternalServerError));
 
   @override
-  InternalServerError get _value => super._value as InternalServerError;
+  _$InternalServerError get _value => super._value as _$InternalServerError;
 }
 
 /// @nodoc
@@ -2124,15 +2047,14 @@ class _$InternalServerError
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'NetworkExceptions.internalServerError'));
+    properties.add(
+        DiagnosticsProperty('type', 'NetworkExceptions.internalServerError'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InternalServerError);
+        (other.runtimeType == runtimeType && other is _$InternalServerError);
   }
 
   @override
@@ -2296,22 +2218,22 @@ abstract class InternalServerError implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $NotImplementedCopyWith<$Res> {
-  factory $NotImplementedCopyWith(
-          NotImplemented value, $Res Function(NotImplemented) then) =
-      _$NotImplementedCopyWithImpl<$Res>;
+abstract class _$$NotImplementedCopyWith<$Res> {
+  factory _$$NotImplementedCopyWith(
+          _$NotImplemented value, $Res Function(_$NotImplemented) then) =
+      __$$NotImplementedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NotImplementedCopyWithImpl<$Res>
+class __$$NotImplementedCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $NotImplementedCopyWith<$Res> {
-  _$NotImplementedCopyWithImpl(
-      NotImplemented _value, $Res Function(NotImplemented) _then)
-      : super(_value, (v) => _then(v as NotImplemented));
+    implements _$$NotImplementedCopyWith<$Res> {
+  __$$NotImplementedCopyWithImpl(
+      _$NotImplemented _value, $Res Function(_$NotImplemented) _then)
+      : super(_value, (v) => _then(v as _$NotImplemented));
 
   @override
-  NotImplemented get _value => super._value as NotImplemented;
+  _$NotImplemented get _value => super._value as _$NotImplemented;
 }
 
 /// @nodoc
@@ -2328,13 +2250,13 @@ class _$NotImplemented with DiagnosticableTreeMixin implements NotImplemented {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.notImplemented'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.notImplemented'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NotImplemented);
+        (other.runtimeType == runtimeType && other is _$NotImplemented);
   }
 
   @override
@@ -2498,22 +2420,22 @@ abstract class NotImplemented implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $ServiceUnavailableCopyWith<$Res> {
-  factory $ServiceUnavailableCopyWith(
-          ServiceUnavailable value, $Res Function(ServiceUnavailable) then) =
-      _$ServiceUnavailableCopyWithImpl<$Res>;
+abstract class _$$ServiceUnavailableCopyWith<$Res> {
+  factory _$$ServiceUnavailableCopyWith(_$ServiceUnavailable value,
+          $Res Function(_$ServiceUnavailable) then) =
+      __$$ServiceUnavailableCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ServiceUnavailableCopyWithImpl<$Res>
+class __$$ServiceUnavailableCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $ServiceUnavailableCopyWith<$Res> {
-  _$ServiceUnavailableCopyWithImpl(
-      ServiceUnavailable _value, $Res Function(ServiceUnavailable) _then)
-      : super(_value, (v) => _then(v as ServiceUnavailable));
+    implements _$$ServiceUnavailableCopyWith<$Res> {
+  __$$ServiceUnavailableCopyWithImpl(
+      _$ServiceUnavailable _value, $Res Function(_$ServiceUnavailable) _then)
+      : super(_value, (v) => _then(v as _$ServiceUnavailable));
 
   @override
-  ServiceUnavailable get _value => super._value as ServiceUnavailable;
+  _$ServiceUnavailable get _value => super._value as _$ServiceUnavailable;
 }
 
 /// @nodoc
@@ -2531,15 +2453,14 @@ class _$ServiceUnavailable
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'NetworkExceptions.serviceUnavailable'));
+    properties.add(
+        DiagnosticsProperty('type', 'NetworkExceptions.serviceUnavailable'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ServiceUnavailable);
+        (other.runtimeType == runtimeType && other is _$ServiceUnavailable);
   }
 
   @override
@@ -2703,22 +2624,22 @@ abstract class ServiceUnavailable implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $NoInternetConnectionCopyWith<$Res> {
-  factory $NoInternetConnectionCopyWith(NoInternetConnection value,
-          $Res Function(NoInternetConnection) then) =
-      _$NoInternetConnectionCopyWithImpl<$Res>;
+abstract class _$$NoInternetConnectionCopyWith<$Res> {
+  factory _$$NoInternetConnectionCopyWith(_$NoInternetConnection value,
+          $Res Function(_$NoInternetConnection) then) =
+      __$$NoInternetConnectionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoInternetConnectionCopyWithImpl<$Res>
+class __$$NoInternetConnectionCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $NoInternetConnectionCopyWith<$Res> {
-  _$NoInternetConnectionCopyWithImpl(
-      NoInternetConnection _value, $Res Function(NoInternetConnection) _then)
-      : super(_value, (v) => _then(v as NoInternetConnection));
+    implements _$$NoInternetConnectionCopyWith<$Res> {
+  __$$NoInternetConnectionCopyWithImpl(_$NoInternetConnection _value,
+      $Res Function(_$NoInternetConnection) _then)
+      : super(_value, (v) => _then(v as _$NoInternetConnection));
 
   @override
-  NoInternetConnection get _value => super._value as NoInternetConnection;
+  _$NoInternetConnection get _value => super._value as _$NoInternetConnection;
 }
 
 /// @nodoc
@@ -2736,15 +2657,14 @@ class _$NoInternetConnection
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'NetworkExceptions.noInternetConnection'));
+    properties.add(
+        DiagnosticsProperty('type', 'NetworkExceptions.noInternetConnection'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoInternetConnection);
+        (other.runtimeType == runtimeType && other is _$NoInternetConnection);
   }
 
   @override
@@ -2908,22 +2828,22 @@ abstract class NoInternetConnection implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $FormatExceptionCopyWith<$Res> {
-  factory $FormatExceptionCopyWith(
-          FormatException value, $Res Function(FormatException) then) =
-      _$FormatExceptionCopyWithImpl<$Res>;
+abstract class _$$FormatExceptionCopyWith<$Res> {
+  factory _$$FormatExceptionCopyWith(
+          _$FormatException value, $Res Function(_$FormatException) then) =
+      __$$FormatExceptionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FormatExceptionCopyWithImpl<$Res>
+class __$$FormatExceptionCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $FormatExceptionCopyWith<$Res> {
-  _$FormatExceptionCopyWithImpl(
-      FormatException _value, $Res Function(FormatException) _then)
-      : super(_value, (v) => _then(v as FormatException));
+    implements _$$FormatExceptionCopyWith<$Res> {
+  __$$FormatExceptionCopyWithImpl(
+      _$FormatException _value, $Res Function(_$FormatException) _then)
+      : super(_value, (v) => _then(v as _$FormatException));
 
   @override
-  FormatException get _value => super._value as FormatException;
+  _$FormatException get _value => super._value as _$FormatException;
 }
 
 /// @nodoc
@@ -2942,13 +2862,13 @@ class _$FormatException
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.formatException'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.formatException'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FormatException);
+        (other.runtimeType == runtimeType && other is _$FormatException);
   }
 
   @override
@@ -3112,22 +3032,22 @@ abstract class FormatException implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $UnableToProcessCopyWith<$Res> {
-  factory $UnableToProcessCopyWith(
-          UnableToProcess value, $Res Function(UnableToProcess) then) =
-      _$UnableToProcessCopyWithImpl<$Res>;
+abstract class _$$UnableToProcessCopyWith<$Res> {
+  factory _$$UnableToProcessCopyWith(
+          _$UnableToProcess value, $Res Function(_$UnableToProcess) then) =
+      __$$UnableToProcessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UnableToProcessCopyWithImpl<$Res>
+class __$$UnableToProcessCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $UnableToProcessCopyWith<$Res> {
-  _$UnableToProcessCopyWithImpl(
-      UnableToProcess _value, $Res Function(UnableToProcess) _then)
-      : super(_value, (v) => _then(v as UnableToProcess));
+    implements _$$UnableToProcessCopyWith<$Res> {
+  __$$UnableToProcessCopyWithImpl(
+      _$UnableToProcess _value, $Res Function(_$UnableToProcess) _then)
+      : super(_value, (v) => _then(v as _$UnableToProcess));
 
   @override
-  UnableToProcess get _value => super._value as UnableToProcess;
+  _$UnableToProcess get _value => super._value as _$UnableToProcess;
 }
 
 /// @nodoc
@@ -3146,13 +3066,13 @@ class _$UnableToProcess
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.unableToProcess'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.unableToProcess'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UnableToProcess);
+        (other.runtimeType == runtimeType && other is _$UnableToProcess);
   }
 
   @override
@@ -3316,29 +3236,29 @@ abstract class UnableToProcess implements NetworkExceptions {
 }
 
 /// @nodoc
-abstract class $DefaultErrorCopyWith<$Res> {
-  factory $DefaultErrorCopyWith(
-          DefaultError value, $Res Function(DefaultError) then) =
-      _$DefaultErrorCopyWithImpl<$Res>;
+abstract class _$$DefaultErrorCopyWith<$Res> {
+  factory _$$DefaultErrorCopyWith(
+          _$DefaultError value, $Res Function(_$DefaultError) then) =
+      __$$DefaultErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
 /// @nodoc
-class _$DefaultErrorCopyWithImpl<$Res>
+class __$$DefaultErrorCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $DefaultErrorCopyWith<$Res> {
-  _$DefaultErrorCopyWithImpl(
-      DefaultError _value, $Res Function(DefaultError) _then)
-      : super(_value, (v) => _then(v as DefaultError));
+    implements _$$DefaultErrorCopyWith<$Res> {
+  __$$DefaultErrorCopyWithImpl(
+      _$DefaultError _value, $Res Function(_$DefaultError) _then)
+      : super(_value, (v) => _then(v as _$DefaultError));
 
   @override
-  DefaultError get _value => super._value as DefaultError;
+  _$DefaultError get _value => super._value as _$DefaultError;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(DefaultError(
+    return _then(_$DefaultError(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -3372,7 +3292,7 @@ class _$DefaultError with DiagnosticableTreeMixin implements DefaultError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DefaultError &&
+            other is _$DefaultError &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -3382,8 +3302,8 @@ class _$DefaultError with DiagnosticableTreeMixin implements DefaultError {
 
   @JsonKey(ignore: true)
   @override
-  $DefaultErrorCopyWith<DefaultError> get copyWith =>
-      _$DefaultErrorCopyWithImpl<DefaultError>(this, _$identity);
+  _$$DefaultErrorCopyWith<_$DefaultError> get copyWith =>
+      __$$DefaultErrorCopyWithImpl<_$DefaultError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3539,31 +3459,31 @@ class _$DefaultError with DiagnosticableTreeMixin implements DefaultError {
 }
 
 abstract class DefaultError implements NetworkExceptions {
-  const factory DefaultError(String error) = _$DefaultError;
+  const factory DefaultError(final String error) = _$DefaultError;
 
-  String get error;
+  String get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DefaultErrorCopyWith<DefaultError> get copyWith =>
+  _$$DefaultErrorCopyWith<_$DefaultError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UnexpectedErrorCopyWith<$Res> {
-  factory $UnexpectedErrorCopyWith(
-          UnexpectedError value, $Res Function(UnexpectedError) then) =
-      _$UnexpectedErrorCopyWithImpl<$Res>;
+abstract class _$$UnexpectedErrorCopyWith<$Res> {
+  factory _$$UnexpectedErrorCopyWith(
+          _$UnexpectedError value, $Res Function(_$UnexpectedError) then) =
+      __$$UnexpectedErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UnexpectedErrorCopyWithImpl<$Res>
+class __$$UnexpectedErrorCopyWithImpl<$Res>
     extends _$NetworkExceptionsCopyWithImpl<$Res>
-    implements $UnexpectedErrorCopyWith<$Res> {
-  _$UnexpectedErrorCopyWithImpl(
-      UnexpectedError _value, $Res Function(UnexpectedError) _then)
-      : super(_value, (v) => _then(v as UnexpectedError));
+    implements _$$UnexpectedErrorCopyWith<$Res> {
+  __$$UnexpectedErrorCopyWithImpl(
+      _$UnexpectedError _value, $Res Function(_$UnexpectedError) _then)
+      : super(_value, (v) => _then(v as _$UnexpectedError));
 
   @override
-  UnexpectedError get _value => super._value as UnexpectedError;
+  _$UnexpectedError get _value => super._value as _$UnexpectedError;
 }
 
 /// @nodoc
@@ -3582,13 +3502,13 @@ class _$UnexpectedError
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkExceptions.unexpectedError'));
+        .add(DiagnosticsProperty('type', 'NetworkExceptions.unexpectedError'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UnexpectedError);
+        (other.runtimeType == runtimeType && other is _$UnexpectedError);
   }
 
   @override

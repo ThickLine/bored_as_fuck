@@ -1,3 +1,4 @@
+import 'package:baf/core/enum/systemwide_enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 part 'activity_model.freezed.dart';
@@ -18,17 +19,12 @@ class ItemModel with _$ItemModel {
 @freezed
 @HiveType(typeId: 1, adapterName: 'ActivityAdapter')
 class ActivityModel with _$ActivityModel {
-  factory ActivityModel(
-      {@HiveField(0) String? activity,
-      @HiveField(1) @Default(false) bool saved,
-      @HiveField(2) String? type,
-      @HiveField(3) int? participants,
-      @HiveField(4) double? price,
-      @HiveField(5) String? link,
-      @HiveField(6) String? key,
-      @HiveField(7) String? suggestion,
-      @HiveField(8) double? accessibility,
-      @HiveField(9) String? error}) = _ActivityModel;
+  factory ActivityModel({
+    @HiveField(0) String? title,
+    @HiveField(1) String? description,
+    @HiveField(2) ActivityType? type,
+    @HiveField(3) dynamic activity,
+  }) = _ActivityModel;
 
   factory ActivityModel.fromJson(Map<String, dynamic> json) =>
       _$ActivityModelFromJson(json);

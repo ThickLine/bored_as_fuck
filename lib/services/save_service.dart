@@ -17,7 +17,7 @@ class SaveService {
     _itemList = list?.items ?? [];
   }
 
-  void addItemToList(ActivityModel item) async {
+  Future<void> addItemToList(ActivityModel item) async {
     _itemList.add(item);
     await saveToHive();
   }

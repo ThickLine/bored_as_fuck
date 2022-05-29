@@ -51,43 +51,25 @@ class ActivityAdapter extends TypeAdapter<ActivityModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ActivityModel(
-      activity: fields[0] as String?,
-      saved: fields[1] as bool,
-      type: fields[2] as String?,
-      participants: fields[3] as int?,
-      price: fields[4] as double?,
-      link: fields[5] as String?,
-      key: fields[6] as String?,
-      suggestion: fields[7] as String?,
-      accessibility: fields[8] as double?,
-      error: fields[9] as String?,
+      title: fields[0] as String?,
+      description: fields[1] as String?,
+      type: fields[2] as ActivityType?,
+      activity: fields[3] as dynamic,
     );
   }
 
   @override
   void write(BinaryWriter writer, ActivityModel obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.activity)
+      ..write(obj.title)
       ..writeByte(1)
-      ..write(obj.saved)
+      ..write(obj.description)
       ..writeByte(2)
       ..write(obj.type)
       ..writeByte(3)
-      ..write(obj.participants)
-      ..writeByte(4)
-      ..write(obj.price)
-      ..writeByte(5)
-      ..write(obj.link)
-      ..writeByte(6)
-      ..write(obj.key)
-      ..writeByte(7)
-      ..write(obj.suggestion)
-      ..writeByte(8)
-      ..write(obj.accessibility)
-      ..writeByte(9)
-      ..write(obj.error);
+      ..write(obj.activity);
   }
 
   @override
@@ -118,28 +100,22 @@ Map<String, dynamic> _$$_ItemModelToJson(_$_ItemModel instance) =>
 
 _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
     _$_ActivityModel(
-      activity: json['activity'] as String?,
-      saved: json['saved'] as bool? ?? false,
-      type: json['type'] as String?,
-      participants: json['participants'] as int?,
-      price: (json['price'] as num?)?.toDouble(),
-      link: json['link'] as String?,
-      key: json['key'] as String?,
-      suggestion: json['suggestion'] as String?,
-      accessibility: (json['accessibility'] as num?)?.toDouble(),
-      error: json['error'] as String?,
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      type: $enumDecodeNullable(_$ActivityTypeEnumMap, json['type']),
+      activity: json['activity'],
     );
 
 Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
     <String, dynamic>{
+      'title': instance.title,
+      'description': instance.description,
+      'type': _$ActivityTypeEnumMap[instance.type],
       'activity': instance.activity,
-      'saved': instance.saved,
-      'type': instance.type,
-      'participants': instance.participants,
-      'price': instance.price,
-      'link': instance.link,
-      'key': instance.key,
-      'suggestion': instance.suggestion,
-      'accessibility': instance.accessibility,
-      'error': instance.error,
     };
+
+const _$ActivityTypeEnumMap = {
+  ActivityType.STORY: 'STORY',
+  ActivityType.RECIPE: 'RECIPE',
+  ActivityType.TODO: 'TODO',
+};

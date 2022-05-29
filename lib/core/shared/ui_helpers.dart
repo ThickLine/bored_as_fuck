@@ -39,7 +39,5 @@ const EdgeInsetsGeometry kPagePadding = EdgeInsets.only(
 
 /// Color [dark, light] based on background color
 Color calculateTextColor(Color background) {
-  return background.computeLuminance() >= 0.5
-      ? kcPlaceholderColor
-      : kcWhiteColor;
+  return background.computeLuminance() >= 0.5 ? kcBlackColor : kcWhiteColor;
 }

@@ -42,7 +42,7 @@ class ConfigView extends StatelessWidget {
           controller.selectIndex(model.statusIndex!);
         }
         if (isBottomSheet == true) return;
-        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           FeatureDiscovery.discoverFeatures(context, <String>[
             'feature1',
             'feature2',
@@ -161,7 +161,7 @@ class ConfigView extends StatelessWidget {
                               .map((el) => el.toUpperCase())
                               .toList()
                               .cast<String>(),
-                          onSelected: (i, c) {
+                          onSelected: (s, i, c) {
                             model.onCatogoriesSelect(i, c);
                             if (c == false) {
                               return controller.unselectIndex(i);
@@ -294,7 +294,7 @@ class ConfigView extends StatelessWidget {
       onOpen: () async {
         var status = true;
         if (isBottomSheet == true) return false;
-        WidgetsBinding.instance!.addPostFrameCallback((Duration duration) {
+        WidgetsBinding.instance.addPostFrameCallback((Duration duration) {
           ensureVisibleGlobalKey.currentState.ensureVisible();
           status = true;
         });

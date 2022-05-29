@@ -11,26 +11,34 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../models/activity/activity_model.dart';
+import '../models/recipe/recipe_model.dart';
+import '../models/story/story_model.dart';
+import '../models/todo/todo_model.dart';
 import '../views/about/about_view.dart';
 import '../views/config/config_view.dart';
 import '../views/home/home_view.dart';
-import '../views/item/item_view.dart';
+import '../views/recipe/view/recipe_view.dart';
 import '../views/saved/saved_view.dart';
 import '../views/startup/startup_view.dart';
+import '../views/story/view/story_view.dart';
+import '../views/todo/todo_view.dart';
 
 class Routes {
   static const String startUpView = '/';
   static const String homeView = '/home-view';
   static const String configView = '/config-view';
-  static const String itemView = '/item-view';
+  static const String storyView = '/story-view';
+  static const String recipeView = '/recipe-view';
+  static const String todoView = '/todo-view';
   static const String savedView = '/saved-view';
   static const String aboutView = '/about-view';
   static const all = <String>{
     startUpView,
     homeView,
     configView,
-    itemView,
+    storyView,
+    recipeView,
+    todoView,
     savedView,
     aboutView,
   };
@@ -43,7 +51,9 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.startUpView, page: StartUpView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.configView, page: ConfigView),
-    RouteDef(Routes.itemView, page: ItemView),
+    RouteDef(Routes.storyView, page: StoryView),
+    RouteDef(Routes.recipeView, page: RecipeView),
+    RouteDef(Routes.todoView, page: TodoView),
     RouteDef(Routes.savedView, page: SavedView),
     RouteDef(Routes.aboutView, page: AboutView),
   ];
@@ -77,14 +87,38 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
-    ItemView: (data) {
-      var args = data.getArgs<ItemViewArguments>(
-        orElse: () => ItemViewArguments(),
+    StoryView: (data) {
+      var args = data.getArgs<StoryViewArguments>(
+        orElse: () => StoryViewArguments(),
       );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => ItemView(
+        builder: (context) => StoryView(
           key: args.key,
-          activity: args.activity,
+          data: args.data,
+        ),
+        settings: data,
+      );
+    },
+    RecipeView: (data) {
+      var args = data.getArgs<RecipeViewArguments>(
+        orElse: () => RecipeViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => RecipeView(
+          key: args.key,
+          data: args.data,
+        ),
+        settings: data,
+      );
+    },
+    TodoView: (data) {
+      var args = data.getArgs<TodoViewArguments>(
+        orElse: () => TodoViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => TodoView(
+          key: args.key,
+          data: args.data,
         ),
         settings: data,
       );
@@ -129,11 +163,25 @@ class ConfigViewArguments {
       this.isBottomSheet = false});
 }
 
-/// ItemView arguments holder class
-class ItemViewArguments {
+/// StoryView arguments holder class
+class StoryViewArguments {
   final Key? key;
-  final ActivityModel? activity;
-  ItemViewArguments({this.key, this.activity});
+  final StoryModel? data;
+  StoryViewArguments({this.key, this.data});
+}
+
+/// RecipeView arguments holder class
+class RecipeViewArguments {
+  final Key? key;
+  final RecipeModel? data;
+  RecipeViewArguments({this.key, this.data});
+}
+
+/// TodoView arguments holder class
+class TodoViewArguments {
+  final Key? key;
+  final TodoModel? data;
+  TodoViewArguments({this.key, this.data});
 }
 
 /// SavedView arguments holder class

@@ -16,8 +16,6 @@ class ActivityService with ReactiveServiceMixin {
   final ReactiveValue<ConfigModel> _config = ReactiveValue<ConfigModel>(
       ConfigModel(price: PriceModel(), accessibility: AccessibilityModel()));
 
-  // ConfigModel _config = ConfigModel();
-
   ConfigModel get config => _config.value;
 
   Future<void> updateConfig(ConfigModel data) async {

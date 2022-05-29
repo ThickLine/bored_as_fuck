@@ -12,31 +12,11 @@ part of 'counter_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CounterModel _$CounterModelFromJson(Map<String, dynamic> json) {
   return _CounterModel.fromJson(json);
 }
-
-/// @nodoc
-class _$CounterModelTearOff {
-  const _$CounterModelTearOff();
-
-  _CounterModel call({int minValue = 1, int maxValue = 10, int value = 1}) {
-    return _CounterModel(
-      minValue: minValue,
-      maxValue: maxValue,
-      value: value,
-    );
-  }
-
-  CounterModel fromJson(Map<String, Object?> json) {
-    return CounterModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CounterModel = _$CounterModelTearOff();
 
 /// @nodoc
 mixin _$CounterModel {
@@ -90,24 +70,25 @@ class _$CounterModelCopyWithImpl<$Res> implements $CounterModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CounterModelCopyWith<$Res>
+abstract class _$$_CounterModelCopyWith<$Res>
     implements $CounterModelCopyWith<$Res> {
-  factory _$CounterModelCopyWith(
-          _CounterModel value, $Res Function(_CounterModel) then) =
-      __$CounterModelCopyWithImpl<$Res>;
+  factory _$$_CounterModelCopyWith(
+          _$_CounterModel value, $Res Function(_$_CounterModel) then) =
+      __$$_CounterModelCopyWithImpl<$Res>;
   @override
   $Res call({int minValue, int maxValue, int value});
 }
 
 /// @nodoc
-class __$CounterModelCopyWithImpl<$Res> extends _$CounterModelCopyWithImpl<$Res>
-    implements _$CounterModelCopyWith<$Res> {
-  __$CounterModelCopyWithImpl(
-      _CounterModel _value, $Res Function(_CounterModel) _then)
-      : super(_value, (v) => _then(v as _CounterModel));
+class __$$_CounterModelCopyWithImpl<$Res>
+    extends _$CounterModelCopyWithImpl<$Res>
+    implements _$$_CounterModelCopyWith<$Res> {
+  __$$_CounterModelCopyWithImpl(
+      _$_CounterModel _value, $Res Function(_$_CounterModel) _then)
+      : super(_value, (v) => _then(v as _$_CounterModel));
 
   @override
-  _CounterModel get _value => super._value as _CounterModel;
+  _$_CounterModel get _value => super._value as _$_CounterModel;
 
   @override
   $Res call({
@@ -115,7 +96,7 @@ class __$CounterModelCopyWithImpl<$Res> extends _$CounterModelCopyWithImpl<$Res>
     Object? maxValue = freezed,
     Object? value = freezed,
   }) {
-    return _then(_CounterModel(
+    return _then(_$_CounterModel(
       minValue: minValue == freezed
           ? _value.minValue
           : minValue // ignore: cast_nullable_to_non_nullable
@@ -140,14 +121,14 @@ class _$_CounterModel implements _CounterModel {
   factory _$_CounterModel.fromJson(Map<String, dynamic> json) =>
       _$$_CounterModelFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final int minValue;
-  @JsonKey()
   @override
+  @JsonKey()
   final int maxValue;
-  @JsonKey()
   @override
+  @JsonKey()
   final int value;
 
   @override
@@ -159,12 +140,13 @@ class _$_CounterModel implements _CounterModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CounterModel &&
+            other is _$_CounterModel &&
             const DeepCollectionEquality().equals(other.minValue, minValue) &&
             const DeepCollectionEquality().equals(other.maxValue, maxValue) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -174,8 +156,8 @@ class _$_CounterModel implements _CounterModel {
 
   @JsonKey(ignore: true)
   @override
-  _$CounterModelCopyWith<_CounterModel> get copyWith =>
-      __$CounterModelCopyWithImpl<_CounterModel>(this, _$identity);
+  _$$_CounterModelCopyWith<_$_CounterModel> get copyWith =>
+      __$$_CounterModelCopyWithImpl<_$_CounterModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -184,20 +166,22 @@ class _$_CounterModel implements _CounterModel {
 }
 
 abstract class _CounterModel implements CounterModel {
-  factory _CounterModel({int minValue, int maxValue, int value}) =
-      _$_CounterModel;
+  factory _CounterModel(
+      {final int minValue,
+      final int maxValue,
+      final int value}) = _$_CounterModel;
 
   factory _CounterModel.fromJson(Map<String, dynamic> json) =
       _$_CounterModel.fromJson;
 
   @override
-  int get minValue;
+  int get minValue => throw _privateConstructorUsedError;
   @override
-  int get maxValue;
+  int get maxValue => throw _privateConstructorUsedError;
   @override
-  int get value;
+  int get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CounterModelCopyWith<_CounterModel> get copyWith =>
+  _$$_CounterModelCopyWith<_$_CounterModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

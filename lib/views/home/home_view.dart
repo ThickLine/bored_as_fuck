@@ -2,6 +2,7 @@ import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/widgets/buttons/save_button.dart';
+import 'package:baf/widgets/common/curved_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:baf/views/home/home_viewmodel.dart';
@@ -15,100 +16,37 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       builder: (context, model, child) => WrapperLayout(
         child: Scaffold(
+          backgroundColor: Color(0xff185083).withOpacity(1.0),
           body: SizedBox(
             height: double.infinity,
-            child: Stack(
-              children: [
-                CustomPaint(
-                  size: Size(
-                      width,
-                      (width * 0.5)
-                          .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                  painter: RPSCustomPainter(),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: kScreenHeightPercentage(context, percentage: 0.85),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Row(
-                                children: const [
-                                  RotatedBox(
-                                    quarterTurns: 3,
-                                    child: Text(
-                                      "Bored?",
-                                      style: ktsDisplayText,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    "assets/bored_man.png",
-                                    height: 300,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            kHorizontalSpaceTiny,
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                CurvedListItemWiget(
+                  onPressed: model.onTodoRoute,
+                  title: 'Todo creator',
+                  time: 'TODAY 5:30 PM',
+                  color: kcTodoColor.withOpacity(1.0),
+                  nextColor: kcStoryColor,
                 ),
-                Positioned(
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  child: SizedBox(
-                    height: 200,
-                    child: Container(
-                      padding: const EdgeInsets.only(
-                          left: 20, right: 20, bottom: 10, top: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: const [
-                              Text(
-                                "Don’t get bored",
-                                style: ktsTitleText,
-                              ),
-                              kVerticalSpaceSmall,
-                              Text(
-                                "Get interesting activities that will keep you entertained for hours.",
-                                style: ktsDescriptionText,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SaveButtonWidget(
-                                backgroundColor: kcPlaceholderColor,
-                                onPressed: model.onRoute,
-                                title: "Start",
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                )
+                CurvedListItemWiget(
+                  onPressed: model.onStoryRoute,
+                  title: 'Horror story creator',
+                  time: 'TUESDAY 5:30 PM',
+                  color: kcStoryColor,
+                  nextColor: kcRecipeColor.withOpacity(1.0),
+                ),
+                CurvedListItemWiget(
+                  onPressed: model.onRecipeRoute,
+                  title: 'Recipe creator',
+                  time: 'FRIDAY 6:00 PM',
+                  color: kcRecipeColor,
+                ),
+                CurvedListItemWiget(
+                  onPressed: model.onSavedRoute,
+                  title: 'Saved Item',
+                  color: kcTodoColor,
+                ),
               ],
             ),
           ),

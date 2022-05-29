@@ -15,8 +15,11 @@ import '../services/appodeal_service.dart';
 import '../services/counter_service.dart';
 import '../services/network/api_client.dart';
 import '../services/network/default_client.dart';
+import '../services/recipe_service.dart';
 import '../services/save_service.dart';
 import '../services/shared_preferences_service.dart';
+import '../services/story_service.dart';
+import '../services/todo_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -35,6 +38,9 @@ Future setupLocator(
   locator.registerLazySingleton(() => SaveService());
   locator.registerLazySingleton(() => CounterService());
   locator.registerLazySingleton(() => AppoDealService());
+  locator.registerLazySingleton(() => RecipeService());
+  locator.registerLazySingleton(() => StoryService());
+  locator.registerLazySingleton(() => TodoService());
   locator.registerLazySingleton(() => ApiClient());
   locator.registerLazySingleton(() => DefaultClient());
   final sharedPreferencesService = await SharedPreferencesService.getInstance();

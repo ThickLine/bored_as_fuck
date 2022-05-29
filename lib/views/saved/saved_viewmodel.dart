@@ -1,5 +1,6 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.router.dart';
+import 'package:baf/mixin/route_mixin.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:share_plus/share_plus.dart';
@@ -28,12 +29,7 @@ class SavedViewModel extends BaseViewModel {
   }
 
   Future<void> onShare(ActivityModel data) async {
-    Share.share("${data.activity}!  ${data.suggestion}",
+    Share.share("${data.title}!  ${data.description}",
         subject: "Hey, 'Bored as F' found me this.");
-  }
-
-  Future<void> onRoute(ActivityModel item) async {
-    return _navigationService.clearTillFirstAndShow(Routes.itemView,
-        arguments: ItemViewArguments(activity: item));
   }
 }

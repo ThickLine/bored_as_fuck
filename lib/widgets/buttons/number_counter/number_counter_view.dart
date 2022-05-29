@@ -7,7 +7,9 @@ import 'package:stacked/stacked.dart';
 class NumberCounterView extends StatelessWidget {
   final void Function(int count)? onChanged;
   final int value;
-  const NumberCounterView({Key? key, required this.value, this.onChanged})
+  final bool isDivider;
+  const NumberCounterView(
+      {Key? key, required this.value, this.onChanged, this.isDivider = false})
       : super(key: key);
 
   @override
@@ -68,9 +70,11 @@ class NumberCounterView extends StatelessWidget {
                 )
               ],
             ),
-            const Divider(
-              thickness: 1.0,
-            )
+            isDivider
+                ? const Divider(
+                    thickness: 1.0,
+                  )
+                : Container()
           ],
         ),
       ),

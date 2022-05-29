@@ -3,6 +3,9 @@ import 'package:baf/core/enum/systemwide_enums.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
 import 'package:baf/views/config/config_view.dart';
+import 'package:baf/views/recipe/generator/recipe_generator_view.dart';
+import 'package:baf/views/story/generator/story_generator_view.dart';
+import 'package:baf/views/todo/generator/todo_generator_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -12,6 +15,12 @@ void setupBottomSheetUi() {
   final builders = {
     BottomSheetType.CONFIG_SHEET: (context, sheetRequest, completer) =>
         _ConfigWrapperBottomSheet(request: sheetRequest, completer: completer),
+    BottomSheetType.STORY_SHEET: (context, sheetRequest, completer) =>
+        StoryGeneratorView(request: sheetRequest, completer: completer),
+    BottomSheetType.RECIPE_SHEET: (context, sheetRequest, completer) =>
+        RecipeGeneratorView(request: sheetRequest, completer: completer),
+    BottomSheetType.TODO_SHEET: (context, sheetRequest, completer) =>
+        TodoGeneratorView(request: sheetRequest, completer: completer),
   };
 
   _bottomSheetService.setCustomSheetBuilders(builders);

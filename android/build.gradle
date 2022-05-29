@@ -3,6 +3,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven { url "https://artifactory.appodeal.com/appodeal" }
     }
 
     dependencies {
@@ -15,8 +17,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
-        maven { url "https://artifactory.appodeal.com/appodeal" }
 
     }
 }

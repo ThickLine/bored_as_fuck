@@ -94,14 +94,6 @@ class ConfigViewModel extends ReactiveViewModel {
     _activityService.setParticipant(data);
   }
 
-  Future<void> onRoute() async {
-    await _activityService.updateConfig(config);
-    ActivityModel res = await _activityService.fetchActivity();
-
-    return _navigationService.clearTillFirstAndShow(Routes.itemView,
-        arguments: ItemViewArguments(activity: res));
-  }
-
   Future<void> onSavedRoute() async {
     return await _navigationService.navigateWithTransition(const SavedView(),
         transition: "cupertino", duration: kPageDuration);

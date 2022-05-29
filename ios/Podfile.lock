@@ -1,136 +1,35 @@
 PODS:
-  - AdColony (4.7.2)
-  - Ads-Global (3.7.0.7):
-    - Ads-Global/BUAdSDK (= 3.7.0.7)
-  - Ads-Global/BUAdSDK (3.7.0.7):
-    - Ads-Global/BUFoundation
-    - Ads-Global/International
-  - Ads-Global/BUFoundation (3.7.0.7)
-  - Ads-Global/International (3.7.0.7)
-  - AmazonAd (3.1.0)
-  - AmazonPublisherServicesSDK (3.3.0)
-  - APDAdColonyAdapter (2.11.1.2):
-    - AdColony (= 4.7.2)
-    - Appodeal (= 2.11.1)
-    - BDMAdColonyAdapter (~> 1.9.0)
-  - APDAmazonAdsAdapter (2.11.1.2):
-    - AmazonAd (= 3.1.0)
-    - Appodeal (= 2.11.1)
-    - BDMAmazonAdapter (~> 1.9.0)
-  - APDAppLovinAdapter (2.11.1.2):
-    - AppLovinSDK (~> 11.1.0)
-    - Appodeal (= 2.11.1)
-  - APDBidMachineAdapter (2.11.1.2):
-    - Appodeal (= 2.11.1)
-    - BDMCriteoAdapter (~> 1.9.0)
-    - BDMIABAdapter (~> 1.9.0)
-    - BDMPangleAdapter (~> 1.9.0)
-    - BidMachine (= 1.9.0.1)
-  - APDFacebookAudienceAdapter (2.11.1.2):
-    - Appodeal (= 2.11.1)
-    - BDMFacebookAdapter (~> 1.9.0)
-    - FBAudienceNetwork (= 6.9.0)
-  - APDIronSourceAdapter (2.11.1.2):
-    - Appodeal (= 2.11.1)
-    - IronSourceSDK (= 7.1.14.0)
-  - APDMyTargetAdapter (2.11.1.2):
-    - Appodeal (= 2.11.1)
-    - BDMMyTargetAdapter (~> 1.9.0)
-    - myTargetSDK (= 5.15.0)
-  - APDOguryAdapter (2.11.1.1):
-    - Appodeal (= 2.11.1)
-    - OguryAds (~> 2.3.4)
-  - APDUnityAdapter (2.11.1.1):
-    - Appodeal (= 2.11.1)
-    - UnityAds (= 4.0.0)
-  - APDVungleAdapter (2.11.1.2):
-    - Appodeal (= 2.11.1)
-    - BDMVungleAdapter (~> 1.9.0)
-    - VungleSDK-iOS (= 6.10.6)
-  - APDYandexAdapter (2.11.1.1):
-    - Appodeal (= 2.11.1)
-    - YandexMobileAds (= 4.4.2)
-  - AppLovinSDK (11.1.2)
   - Appodeal (2.11.1):
     - Protobuf
     - StackAnalytics (~> 1.2.0)
     - StackIAB (~> 1.5.0)
     - StackModules (~> 1.1.6)
-  - BDMAdColonyAdapter (1.9.0.0):
-    - AdColony (= 4.7.2)
-    - BidMachine (~> 1.9.0.0)
-  - BDMAmazonAdapter (1.9.0.0):
-    - AmazonPublisherServicesSDK (= 3.3.0)
-    - BidMachine (~> 1.9.0.0)
-  - BDMCriteoAdapter (1.9.0.0):
-    - BidMachine (~> 1.9.0.0)
-    - CriteoPublisherSdk (= 4.3.3)
-  - BDMFacebookAdapter (1.9.0.1):
-    - BidMachine (~> 1.9.0.0)
-    - FBAudienceNetwork (= 6.9.0)
-  - BDMIABAdapter (1.9.0.0):
-    - BDMIABAdapter/IAB (= 1.9.0.0)
-  - BDMIABAdapter/IAB (1.9.0.0):
-    - BDMIABAdapter/MRAID
-    - BDMIABAdapter/NAST
-    - BDMIABAdapter/VAST
-  - BDMIABAdapter/MRAID (1.9.0.0):
-    - BidMachine (~> 1.9.0.0)
-    - StackIAB/StackMRAIDKit (~> 1.5.0)
-  - BDMIABAdapter/NAST (1.9.0.0):
-    - BidMachine (~> 1.9.0.0)
-    - StackIAB/StackNASTKit (~> 1.5.0)
-    - StackIAB/StackRichMedia (~> 1.5.0)
-  - BDMIABAdapter/VAST (1.9.0.0):
-    - BidMachine (~> 1.9.0.0)
-    - StackIAB/StackVASTKit (~> 1.5.0)
-  - BDMMyTargetAdapter (1.9.0.1):
-    - BidMachine (~> 1.9.0.0)
-    - myTargetSDK (= 5.15.0)
-  - BDMPangleAdapter (1.9.0.0):
-    - Ads-Global (= 3.7.0.7)
-    - BidMachine (~> 1.9.0.0)
-  - BDMVungleAdapter (1.9.0.1):
-    - BidMachine (~> 1.9.0.0)
-    - VungleSDK-iOS (= 6.10.6)
-  - BidMachine (1.9.0.1):
-    - BidMachine/Core (= 1.9.0.1)
-  - BidMachine/Core (1.9.0.1):
-    - Protobuf (~> 3.9)
-    - StackModules (~> 1.1.0)
-  - CriteoPublisherSdk (4.3.3):
-    - CriteoPublisherSdk/Sdk (= 4.3.3)
-  - CriteoPublisherSdk/Sdk (4.3.3)
-  - FBAudienceNetwork (6.9.0)
   - Flutter (1.0.0)
+  - flutter_keyboard_visibility (0.0.1):
+    - Flutter
+  - flutter_native_splash (0.0.1):
+    - Flutter
   - flutter_statusbarcolor_ns (0.0.1):
     - Flutter
-  - IronSourceSDK (7.1.14.0)
-  - myTargetSDK (5.15.0):
-    - myTrackerSDK (~> 3.0.3)
-  - myTrackerSDK (3.0.6)
-  - OguryAds (2.3.5):
-    - OguryAds/OMID (= 2.3.5)
-  - OguryAds/OMID (2.3.5)
   - package_info_plus (0.4.5):
     - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
-  - "permission_handler (5.1.0+2)":
+  - permission_handler_apple (9.0.4):
     - Flutter
-  - Protobuf (3.19.4)
-  - Sentry (7.10.2):
-    - Sentry/Core (= 7.10.2)
-  - Sentry/Core (7.10.2)
+  - Protobuf (3.21.0)
+  - Sentry (7.11.0):
+    - Sentry/Core (= 7.11.0)
+  - Sentry/Core (7.11.0)
   - sentry_flutter (0.0.1):
     - Flutter
     - FlutterMacOS
-    - Sentry (~> 7.10.1)
+    - Sentry (~> 7.11.0)
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
-  - stack_appodeal_flutter (1.1.0):
+  - stack_appodeal_flutter (1.2.1):
     - Appodeal (= 2.11.1)
     - Flutter
     - StackConsentManager (~> 1.1.2)
@@ -193,42 +92,19 @@ PODS:
     - StackModules/StackUIKit
   - StackModules/StackUIKit (1.1.12):
     - StackModules/StackFoundation
-  - UnityAds (4.0.0)
   - url_launcher_ios (0.0.1):
     - Flutter
   - vibration (1.7.4-nullsafety.0):
     - Flutter
-  - VungleSDK-iOS (6.10.6)
-  - YandexMobileAds (4.4.2):
-    - YandexMobileAds/Static (= 4.4.2)
-  - YandexMobileAds/Static (4.4.2):
-    - YandexMobileMetrica (< 4.0.0, >= 3.14.1)
-  - YandexMobileMetrica (3.17.0):
-    - YandexMobileMetrica/Static (= 3.17.0)
-  - YandexMobileMetrica/Static (3.17.0):
-    - YandexMobileMetrica/Static/Core (= 3.17.0)
-    - YandexMobileMetrica/Static/Crashes (= 3.17.0)
-  - YandexMobileMetrica/Static/Core (3.17.0)
-  - YandexMobileMetrica/Static/Crashes (3.17.0):
-    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
-  - APDAdColonyAdapter (= 2.11.1.2)
-  - APDAmazonAdsAdapter (= 2.11.1.2)
-  - APDAppLovinAdapter (= 2.11.1.2)
-  - APDBidMachineAdapter (= 2.11.1.2)
-  - APDFacebookAudienceAdapter (= 2.11.1.2)
-  - APDIronSourceAdapter (= 2.11.1.2)
-  - APDMyTargetAdapter (= 2.11.1.2)
-  - APDOguryAdapter (= 2.11.1.1)
-  - APDUnityAdapter (= 2.11.1.1)
-  - APDVungleAdapter (= 2.11.1.2)
-  - APDYandexAdapter (= 2.11.1.1)
   - Flutter (from `Flutter`)
+  - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - flutter_statusbarcolor_ns (from `.symlinks/plugins/flutter_statusbarcolor_ns/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
-  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
@@ -238,60 +114,29 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AdColony
-    - Ads-Global
-    - AmazonAd
-    - AmazonPublisherServicesSDK
-    - APDAdColonyAdapter
-    - APDAmazonAdsAdapter
-    - APDAppLovinAdapter
-    - APDBidMachineAdapter
-    - APDFacebookAudienceAdapter
-    - APDIronSourceAdapter
-    - APDMyTargetAdapter
-    - APDOguryAdapter
-    - APDUnityAdapter
-    - APDVungleAdapter
-    - APDYandexAdapter
-    - AppLovinSDK
     - Appodeal
-    - BDMAdColonyAdapter
-    - BDMAmazonAdapter
-    - BDMCriteoAdapter
-    - BDMFacebookAdapter
-    - BDMIABAdapter
-    - BDMMyTargetAdapter
-    - BDMPangleAdapter
-    - BDMVungleAdapter
-    - BidMachine
-    - CriteoPublisherSdk
-    - FBAudienceNetwork
-    - IronSourceSDK
-    - myTargetSDK
-    - myTrackerSDK
-    - OguryAds
     - Protobuf
     - Sentry
     - StackAnalytics
     - StackConsentManager
     - StackIAB
     - StackModules
-    - UnityAds
-    - VungleSDK-iOS
-    - YandexMobileAds
-    - YandexMobileMetrica
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_keyboard_visibility:
+    :path: ".symlinks/plugins/flutter_keyboard_visibility/ios"
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   flutter_statusbarcolor_ns:
     :path: ".symlinks/plugins/flutter_statusbarcolor_ns/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
-  permission_handler:
-    :path: ".symlinks/plugins/permission_handler/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   sentry_flutter:
     :path: ".symlinks/plugins/sentry_flutter/ios"
   share_plus:
@@ -306,60 +151,27 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/vibration/ios"
 
 SPEC CHECKSUMS:
-  AdColony: 970af2bff1e500c8a681bfcbd85f8054c0f57071
-  Ads-Global: 181a0b751db8694b6a50798977f52f0ae803673a
-  AmazonAd: 9adf416ea36ca2325ce2040c0cf124f071089904
-  AmazonPublisherServicesSDK: 12ec8a797b49796f2714d5f99235370e24bf93e6
-  APDAdColonyAdapter: cce524ec67a28192e793121cc0c9fe5540629dd2
-  APDAmazonAdsAdapter: 47c381a268b22cb5778aafe9abaec040b46c015f
-  APDAppLovinAdapter: 57bebf89d44dc99f69e51fdb3674f0e65b096425
-  APDBidMachineAdapter: 70e67b41ad54d7b312a07035ea287abc6d945f4c
-  APDFacebookAudienceAdapter: bb0fe2a9242677dc7420add5e08d96e3862b1302
-  APDIronSourceAdapter: 88d439fa27cdb7f9cf1601c1a959896cfc93bdc2
-  APDMyTargetAdapter: b72eb49b13fbba8a1cc4f2111af6162cd7a7d707
-  APDOguryAdapter: e8bf791426764d9f3b1ae6effa31c8c60b5148d7
-  APDUnityAdapter: 9a675e3a62f973287c97643ba3a9a400c5baa5c4
-  APDVungleAdapter: a465ccf66883f3b84267f86698995ccb506a08e8
-  APDYandexAdapter: a06d24bcfe1ee67816cc2374709bc1d33e19e151
-  AppLovinSDK: bba815eda03d1bf8a69c2cb2768d1efd1424ffc0
   Appodeal: 1188bd8b3a34557761ef79baa3a508b4b7961cf0
-  BDMAdColonyAdapter: f141f4b6422fd7fc827e3c454aebebd319ec834a
-  BDMAmazonAdapter: d63bbc92349bbfaa32714d245a93d2359a6da062
-  BDMCriteoAdapter: be9e5043107e4afd638a6d34cb2df71c146f1c4f
-  BDMFacebookAdapter: b3cdcbdd99bc731d6a94f14738a50c82f18d35ed
-  BDMIABAdapter: fa73edc43c1578458110a8801ad9de8d53bbddf0
-  BDMMyTargetAdapter: 41baa743309b094af5c964e177c934ce6d9c0891
-  BDMPangleAdapter: 6f6edce5e66a2d42c0981e6a6851dbadbac6480d
-  BDMVungleAdapter: ecebcc0ed6962b3e6369318c1a777757909f0687
-  BidMachine: 01fcded89ec3bdc9526859df5518e767da4e3499
-  CriteoPublisherSdk: e0c7343d21474ac9a5381c002f2b3f40438f86ba
-  FBAudienceNetwork: 83096d73433759c10f9cf9b3bad5e5cff58694cb
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
+  flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   flutter_statusbarcolor_ns: 68a360889d88d7915ae524e422aeab62e4063804
-  IronSourceSDK: 7359355050983d7efb5bb779f9129a32138c3c22
-  myTargetSDK: e821d1cf642c2a0785a0dddb1a10ba46a2737605
-  myTrackerSDK: 4fc38a0c56573d58761f3e85dbad483077fd0d2d
-  OguryAds: 8dccce073aea7e11ddb83f1122e8ee65bf33f3c3
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
-  path_provider_ios: 7d7ce634493af4477d156294792024ec3485acd5
-  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
-  Protobuf: 235750e4696ff59fb07d949a9dbbc92b3c0700fe
-  Sentry: 7bf9bfe713692cf87812e55f0999260494ba7982
-  sentry_flutter: 77ccdac346608b8ce7e428e7284e7a3e4e7f4a02
+  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  Protobuf: a205ef72105f3f024786a06589f1ca54b70265c4
+  Sentry: 0c5cd63d714187b4a39c331c1f0eb04ba7868341
+  sentry_flutter: efb3df2c203cd03aad255892a8d628a458656d14
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
-  stack_appodeal_flutter: 3973723162714e407b30f0bdec768d30f078463e
+  stack_appodeal_flutter: cc87122ccc8199d9dcb978ff7a2bba1a048f8769
   StackAnalytics: 012be5ae16c8f5005eb9a2e1557b37eaaf96f71d
   StackConsentManager: 667f84fb7ecfa997b978ce3dfdd9809ade0811cd
   StackIAB: 49e1b3215c061f2bbe39198af34edd502bdee1ae
   StackModules: ae9aafe7d76f2c99ac87bdcfe27451076fb5e8f8
-  UnityAds: 9649e17d2d255f91c0a84e00062a0d07d8fba8a5
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   vibration: 1ec279c4a1a7a646627b54039d812334b3f1114a
-  VungleSDK-iOS: c43c627392eaf4ceda029f069b8e458cc6fe112a
-  YandexMobileAds: 1306a03792ac2a6576e7e52f49f86a9e7e65c49b
-  YandexMobileMetrica: 9e713c16bb6aca0ba63b84c8d7b8b86d32f4ecc4
 
-PODFILE CHECKSUM: dca7c4f779339d702b08d1afdc314fe65d2a0f9a
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
 COCOAPODS: 1.11.3

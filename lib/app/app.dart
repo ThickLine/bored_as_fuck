@@ -3,11 +3,17 @@ import 'package:baf/services/appodeal_service.dart';
 import 'package:baf/services/counter_service.dart';
 import 'package:baf/services/network/api_client.dart';
 import 'package:baf/services/network/default_client.dart';
+import 'package:baf/services/recipe_service.dart';
 import 'package:baf/services/save_service.dart';
+import 'package:baf/services/story_service.dart';
+import 'package:baf/services/todo_service.dart';
 import 'package:baf/views/about/about_view.dart';
 import 'package:baf/views/config/config_view.dart';
 import 'package:baf/views/item/item_view.dart';
+import 'package:baf/views/recipe/view/recipe_view.dart';
 import 'package:baf/views/saved/saved_view.dart';
+import 'package:baf/views/story/view/story_view.dart';
+import 'package:baf/views/todo/todo_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:baf/services/shared_preferences_service.dart';
@@ -19,7 +25,9 @@ import 'package:baf/views/startup/startup_view.dart';
     MaterialRoute(page: StartUpView, initial: true),
     MaterialRoute(page: HomeView),
     MaterialRoute(page: ConfigView),
-    MaterialRoute(page: ItemView),
+    MaterialRoute(page: StoryView),
+    MaterialRoute(page: RecipeView),
+    MaterialRoute(page: TodoView),
     MaterialRoute(page: SavedView),
     MaterialRoute(page: AboutView)
   ],
@@ -36,6 +44,9 @@ import 'package:baf/views/startup/startup_view.dart';
     LazySingleton(classType: SaveService),
     LazySingleton(classType: CounterService),
     LazySingleton(classType: AppoDealService),
+    LazySingleton(classType: RecipeService),
+    LazySingleton(classType: StoryService),
+    LazySingleton(classType: TodoService),
 
 // Dependencies
     LazySingleton(classType: ApiClient),

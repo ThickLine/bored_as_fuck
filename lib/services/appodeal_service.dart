@@ -8,37 +8,49 @@ import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 class AppoDealService {
   final log = getLogger('AppoDealService');
 
+  final bool _isConsented = false;
+  bool get isConsented => _isConsented;
   String get key => dotenv.env['APPODEALKEY'] ?? "";
 
-  Future<bool> isInitAppoDeal() async {
-    return await initialization();
-  }
+  Future<void> checkConsent() async {
+    ConsentManager.requestConsentInfoUpdate(key);
 
-  Future<bool> initialization() async {
-    log.wtf(
-        "Initialization AppoDealService aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    await ConsentManager.requestConsentInfoUpdate(key);
-    var shouldShow = await ConsentManager.shouldShowConsentDialog();
-    var isLoaded = await ConsentManager.consentFormIsLoaded();
-    if (shouldShow == ShouldShow.TRUE) await ConsentManager.loadConsentForm();
-    // log.wtf("ConsentManager $shouldShow");
-    // log.wtf("ConsentManager $isLoaded");
-
-    if (isLoaded == true) await ConsentManager.showAsDialogConsentForm();
     ConsentManager.setConsentInfoUpdateListener(
-        (onConsentInfoUpdated, consent) => {log.wtf("ConsentManager $consent")},
-        (onFailedToUpdateConsentInfo, error) =>
-            {log.wtf("ConsentManager $error")});
+        (onConsentInfoUpdated, consent) {
+      print('PRINT: onConsentInfoUpdated $consent');
+    }, (onFailedToUpdateConsentInfo, error) {
+      print('PRINT: onFailedToUpdateConsentInfo $error');
+    });
 
-    if (shouldShow == ShouldShow.FALSE) {
-      await loadService();
-      return true;
+    var shouldShow = await ConsentManager.shouldShowConsentDialog();
+    print('PRINT: shouldShow $shouldShow');
+
+    if (shouldShow == ShouldShow.TRUE) {
+      ConsentManager.loadConsentForm();
+
+      var isLoaded = await ConsentManager.consentFormIsLoaded();
+      print('PRINT: isLoaded $isLoaded');
+      if (isLoaded == true) {
+        // ConsentManager.showAsDialogConsentForm();
+        // ConsentManager.showAsActivityConsentForm();
+        await ConsentManager.showAsDialogConsentForm();
+
+        ConsentManager.setConsentFormListener((onConsentFormLoaded) {
+          print('PRINT: onConsentFormLoaded');
+        }, (onConsentFormError, error) {
+          print('PRINT: onConsentFormError $error');
+        }, (onConsentFormOpened) {
+          print('PRINT: onConsentFormOpened');
+        }, (onConsentFormClosed, consent) {
+          initialization();
+          print('PRINT: onConsentFormClosed $consent');
+        });
+      }
     }
-
-    return false;
   }
 
-  Future<void> loadService() async {
+  Future<void> initialization() async {
+    await checkConsent();
     Appodeal.disableNetwork("admob");
     Appodeal.setTesting(kReleaseMode ? false : true); //only not release mode
     Appodeal.setLogLevel(Appodeal.LogLevelVerbose);
@@ -54,7 +66,7 @@ class AppoDealService {
         Appodeal.BANNER,
         Appodeal.MREC
       ],
-      boolConsent: false,
+      boolConsent: isConsented,
     );
   }
 }

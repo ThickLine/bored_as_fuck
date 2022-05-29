@@ -25,27 +25,11 @@ end
 
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
 
-
 flutter_ios_podfile_setup
-
-def appodeal
-  pod 'APDAdColonyAdapter', '2.11.1.2'
-  pod 'APDAmazonAdsAdapter', '2.11.1.2'
-  pod 'APDAppLovinAdapter', '2.11.1.2'
-  pod 'APDBidMachineAdapter', '2.11.1.2' # Required
-  pod 'APDFacebookAudienceAdapter', '2.11.1.2'
-  pod 'APDIronSourceAdapter', '2.11.1.2'
-  pod 'APDMyTargetAdapter', '2.11.1.2'
-  pod 'APDOguryAdapter', '2.11.1.1'
-  pod 'APDUnityAdapter', '2.11.1.1'
-  pod 'APDVungleAdapter', '2.11.1.2'
-  pod 'APDYandexAdapter', '2.11.1.1'
-end
 
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-  appodeal
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
