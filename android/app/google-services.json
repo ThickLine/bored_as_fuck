@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "678121329494",
+    "project_id": "baf-app",
+    "storage_bucket": "baf-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678121329494:android:7ca9189b339e0c10cb3cf7",
+        "android_client_info": {
+          "package_name": "app.baf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678121329494-55jv2van3jkrhj3doe6husdssblh4mlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQwIQBQcWdWUu7ekXXAW_5PlbzyCeVw0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678121329494-55jv2van3jkrhj3doe6husdssblh4mlm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "678121329494-2shig0io2ebntiad3blhq51nt4jkle0g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.baf"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

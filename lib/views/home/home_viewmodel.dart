@@ -44,7 +44,7 @@ class HomeViewModel extends IndexTrackingViewModel {
     ),
     CurvedListItemModel(
       title: 'about_list_title'.i18n(),
-      color: kcMainBackgroundColor,
+      color: kcTodoColor,
       type: ActivityType.ABOUT,
     )
   ];

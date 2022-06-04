@@ -114,22 +114,22 @@ class TodoView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        RoundedBackgroundText(
-                          "todo_suggestion".i18n(),
-                          style: ktsDescriptionText.copyWith(
-                              color: kcWhiteColor, fontWeight: FontWeight.bold),
-                        ),
-                        kHorizontalSpaceTiny,
                         Flexible(
                           child: RoundedBackgroundText(
-                            model.todo.activity?.toUpperCase() ?? "Story",
-                            style: ktsDescriptionText.copyWith(
-                                color: kcWhiteColor,
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                            // style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
+                              "${'todo_suggestion'.i18n()} ${model.todo.activity?.toUpperCase() ?? ''}",
+                              style: ktsDescriptionText.copyWith(
+                                  color: kcWhiteColor,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center),
                         ),
+                        // kHorizontalSpaceTiny,
+                        // RoundedBackgroundText(
+                        //   model.todo.activity?.toUpperCase() ?? "Story",
+                        //   style: ktsDescriptionText.copyWith(
+                        //       color: kcWhiteColor, fontWeight: FontWeight.bold),
+                        //   textAlign: TextAlign.center,
+                        //   // style: const TextStyle(fontWeight: FontWeight.bold),
+                        // ),
                       ],
                     ),
                     kVerticalSpaceSmall,

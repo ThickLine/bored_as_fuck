@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.router.dart';
 import 'package:baf/core/managers/core_manager.dart';
+import 'package:baf/firebase_options.dart';
 import 'package:baf/mixin/lock_phone.mixin.dart';
 import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/recipe/recipe_model.dart';
@@ -9,6 +12,8 @@ import 'package:baf/models/todo/todo_model.dart';
 import 'package:baf/services/util/stacked_services/bottom_sheet/setup_bottom_sheet_base.dart';
 import 'package:baf/services/util/stacked_services/modal/setup_dialoge_base.dart';
 import 'package:baf/services/util/stacked_services/snackbars/setup_snackbar_base.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,29 +27,36 @@ import 'package:stacked_themes/stacked_themes.dart';
 import 'core/enum/systemwide_enums.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
-  await ThemeManager.initialise();
-  await Hive.initFlutter();
-  Hive.registerAdapter(ItemAdapter());
-  Hive.registerAdapter(ActivityAdapter());
-  Hive.registerAdapter(TodoAdapter());
-  Hive.registerAdapter(StoryAdapter());
-  Hive.registerAdapter(RecipeAdapter());
-  Hive.registerAdapter(ActivityTypeAdapter());
-  await Hive.openBox<ItemModel>("myActivity");
-  setupLocator();
-  setupSnackBarBase();
-  setupBottomSheetUi();
-  setupDialogUi();
+  runZonedGuarded<Future<void>>(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await dotenv.load(fileName: ".env");
+    await ThemeManager.initialise();
+    await Hive.initFlutter();
+    Hive.registerAdapter(ItemAdapter());
+    Hive.registerAdapter(ActivityAdapter());
+    Hive.registerAdapter(TodoAdapter());
+    Hive.registerAdapter(StoryAdapter());
+    Hive.registerAdapter(RecipeAdapter());
+    Hive.registerAdapter(ActivityTypeAdapter());
+    await Hive.openBox<ItemModel>("myActivity");
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    setupLocator();
+    setupSnackBarBase();
+    setupBottomSheetUi();
+    setupDialogUi();
 
-  await SentryFlutter.init(
-    (options) {
-      options.dsn = dotenv.env['DSN'];
-      options.tracesSampleRate = 1.0;
-    },
-    appRunner: () => runApp(BAF()),
-  );
+    await SentryFlutter.init(
+      (options) {
+        options.dsn = dotenv.env['DSN'];
+        options.tracesSampleRate = 1.0;
+      },
+      appRunner: () => runApp(BAF()),
+    );
+  },
+      (error, stack) =>
+          FirebaseCrashlytics.instance.recordError(error, stack, fatal: true));
 }
 
 class BAF extends StatelessWidget with PortraitModeMixin {

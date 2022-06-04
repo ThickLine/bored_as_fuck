@@ -69,6 +69,9 @@ dependencies:
   loading_animations: ^2.2.0
   liquid_progress_indicator: ^0.4.0
   auto_size_text: ^3.0.0
+  firebase_core: ^1.17.1
+  firebase_crashlytics: ^2.8.1
+  firebase_performance: ^0.8.0+13
 
 
 

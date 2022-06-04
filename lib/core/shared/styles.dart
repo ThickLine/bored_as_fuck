@@ -24,7 +24,8 @@ const Color kcStoryColor = Color(0xffC4D6B0);
 const Color kcRecipeColor = Color(0xffF64740);
 const Color kcTodoColor = Color(0xff185083);
 // const Color kcSaveColor = Color(0xff998888);
-const Color kcSaveColor = Color(0xffC4CAD0);
+// const Color kcSaveColor = Color(0xffC4CAD0);
+const Color kcSaveColor = Color(0xff0EAAA5);
 
 // TextStyle
 const TextStyle ktsDisplayText = TextStyle(
