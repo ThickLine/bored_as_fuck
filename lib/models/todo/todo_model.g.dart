@@ -16,12 +16,41 @@ class TodoAdapter extends TypeAdapter<TodoModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TodoModel();
+    return TodoModel(
+      activity: fields[0] as String?,
+      type: fields[1] as String?,
+      participants: fields[2] as int?,
+      price: fields[3] as double?,
+      link: fields[4] as String?,
+      key: fields[5] as String?,
+      suggestion: fields[6] as String?,
+      accessibility: fields[7] as double?,
+      saved: fields[8] as bool,
+    );
   }
 
   @override
   void write(BinaryWriter writer, TodoModel obj) {
-    writer.writeByte(0);
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.activity)
+      ..writeByte(1)
+      ..write(obj.type)
+      ..writeByte(2)
+      ..write(obj.participants)
+      ..writeByte(3)
+      ..write(obj.price)
+      ..writeByte(4)
+      ..write(obj.link)
+      ..writeByte(5)
+      ..write(obj.key)
+      ..writeByte(6)
+      ..write(obj.suggestion)
+      ..writeByte(7)
+      ..write(obj.accessibility)
+      ..writeByte(8)
+      ..write(obj.saved);
   }
 
   @override

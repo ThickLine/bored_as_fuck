@@ -7,6 +7,7 @@ import 'package:baf/views/todo/todo_viewmodel.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:baf/widgets/buttons/circle_button.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:rounded_background_text/rounded_background_text.dart';
 import 'package:stacked/stacked.dart';
 import 'dart:math' as math;
@@ -23,7 +24,7 @@ class TodoView extends StatelessWidget {
         isLoading: model.busy(busyObjectKey),
         isError: model.hasErrorForKey(busyObjectKey),
         backgroundColor: kcTodoColor,
-        title: 'Todo generator',
+        title: 'todo_title'.i18n(),
         leftIcon: CircleButtonWidget(
           onPressed: model.onGenerator,
           backgroundColor: kcTodoColor.withOpacity(0.1),
@@ -35,12 +36,23 @@ class TodoView extends StatelessWidget {
             size: 32.0,
           ),
         ),
+        trailing: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: model.onShare,
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.share,
+              size: 25,
+              color: kcWhiteColor,
+            ),
+          ),
+        ),
         rightIcon: CircleButtonWidget(
           onPressed: model.todo.saved == true ? null : model.onSavedItem,
           backgroundColor: kcTodoColor.withOpacity(0.1),
           isText: false,
-          child: Icon(
-            // Icons.arrow_forward_sharp,
+          child: const Icon(
             Icons.favorite,
             color: kcWhiteColor,
             size: 32.0,
@@ -72,9 +84,10 @@ class TodoView extends StatelessWidget {
                       flex: 3,
                       child: Center(
                         child: AutoSizeText(
-                            model.todo.type?.toUpperCase() ?? "Story",
-                            minFontSize: 12,
-                            maxLines: 2,
+                            model.todo.type?.toUpperCase() ??
+                                "todo_type".i18n(),
+                            minFontSize: 10,
+                            maxLines: 1,
                             style: ktsLableText.copyWith(
                                 color: kcWhiteColor,
                                 fontWeight: FontWeight.bold)),
@@ -86,8 +99,8 @@ class TodoView extends StatelessWidget {
                           angle: math.pi / 12.0,
                           child: Container(
                               padding: const EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
                                 children:
                                     IconMixin.getMIcon(model.todo.price ?? 0),
                               )),
@@ -101,6 +114,12 @@ class TodoView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        RoundedBackgroundText(
+                          "todo_suggestion".i18n(),
+                          style: ktsDescriptionText.copyWith(
+                              color: kcWhiteColor, fontWeight: FontWeight.bold),
+                        ),
+                        kHorizontalSpaceTiny,
                         Flexible(
                           child: RoundedBackgroundText(
                             model.todo.activity?.toUpperCase() ?? "Story",
@@ -112,6 +131,12 @@ class TodoView extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    kVerticalSpaceSmall,
+                    Image.asset(
+                      "assets/logo.png",
+                      width: 60,
+                      height: 60,
                     ),
                     kVerticalSpaceSmall,
                     Row(

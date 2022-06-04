@@ -47,8 +47,11 @@ class CircleButtonWidget extends StatelessWidget {
                 await Future.delayed(
                   const Duration(seconds: 1),
                 );
-                await onPressed!();
+
                 controller.reverse();
+                if (controller.status == AnimationStatus.reverse) {
+                  await onPressed!();
+                }
               } catch (e) {
                 controller.reverse();
               }

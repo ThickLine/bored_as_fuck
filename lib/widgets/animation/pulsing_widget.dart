@@ -11,6 +11,7 @@ class PulsingWidget extends StatefulWidget {
 
   const PulsingWidget({@required this.child, this.duration, this.tween})
       : assert(child != null);
+  @override
   _PulsingWidget createState() => _PulsingWidget();
 }
 

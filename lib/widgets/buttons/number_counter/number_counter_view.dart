@@ -34,12 +34,12 @@ class NumberCounterView extends StatelessWidget {
                         onChanged!(model.counter.value);
                       },
                       elevation: 1.5,
+                      backgroundColor: Colors.white,
                       child: const Icon(
                         Icons.remove,
                         color: kcBlackColor,
                         size: 30,
                       ),
-                      backgroundColor: Colors.white,
                     ),
                   ),
                 ),
@@ -58,13 +58,13 @@ class NumberCounterView extends StatelessWidget {
                         model.addValue();
                         onChanged!(model.counter.value);
                       },
+                      backgroundColor: Colors.white,
                       elevation: 1.5,
                       child: const Icon(
                         Icons.add,
                         color: kcBlackColor,
                         size: 30,
                       ),
-                      backgroundColor: Colors.white,
                     ),
                   ),
                 )

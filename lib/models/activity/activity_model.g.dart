@@ -118,4 +118,6 @@ const _$ActivityTypeEnumMap = {
   ActivityType.STORY: 'STORY',
   ActivityType.RECIPE: 'RECIPE',
   ActivityType.TODO: 'TODO',
+  ActivityType.SAVE: 'SAVE',
+  ActivityType.ABOUT: 'ABOUT',
 };

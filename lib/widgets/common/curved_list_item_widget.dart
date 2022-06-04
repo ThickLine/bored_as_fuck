@@ -1,20 +1,19 @@
+import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
 class CurvedListItemWiget extends StatelessWidget {
   final String? title;
-  final String? time;
-  final String? people;
-  final IconData? icon;
+  final String? subtitle;
   final Color? color;
+  final bool isLast;
   final Color? nextColor;
   final void Function()? onPressed;
   const CurvedListItemWiget({
     Key? key,
     this.title,
-    this.time,
-    this.icon,
-    this.people,
+    this.subtitle,
     this.color,
+    this.isLast = false,
     this.onPressed,
     this.nextColor,
   }) : super(key: key);
@@ -26,8 +25,8 @@ class CurvedListItemWiget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: color,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(80.0),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(isLast ? 0 : 80.0),
           ),
         ),
         padding: const EdgeInsets.only(
@@ -39,18 +38,24 @@ class CurvedListItemWiget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                time ?? "",
-                style: TextStyle(color: Colors.white, fontSize: 12),
-              ),
-              const SizedBox(
-                height: 2,
-              ),
-              Text(
                 title ?? "",
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
+              ),
+              kVerticalSpaceSmall,
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      subtitle ?? "",
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ),
+                  Expanded(child: const SizedBox()),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

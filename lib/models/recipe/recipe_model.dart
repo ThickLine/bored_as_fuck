@@ -8,9 +8,9 @@ part 'recipe_model.g.dart';
 @HiveType(typeId: 2, adapterName: 'RecipeAdapter')
 class RecipeModel with _$RecipeModel {
   factory RecipeModel({
-    List<String>? ingredients,
-    String? recipe,
-    @Default(false) bool saved,
+    @HiveField(0) List<String>? ingredients,
+    @HiveField(1) String? recipe,
+    @HiveField(2) @Default(false) bool saved,
   }) = _RecipeModel;
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) =>

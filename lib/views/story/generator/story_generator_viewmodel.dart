@@ -1,7 +1,7 @@
 import 'package:baf/app/app.locator.dart';
 import 'package:baf/app/app.logger.dart';
 import 'package:baf/models/story/story_model.dart';
-import 'package:baf/services/story_service.dart';
+import 'package:localization/localization.dart';
 import 'package:stacked/stacked.dart';
 import 'package:baf/views/story/generator/story_generator_view.form.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,6 +12,11 @@ class StoryGeneratorViewModel extends FormViewModel {
 
   StoryModel _form = StoryModel();
   StoryModel get form => _form;
+
+  Future<void> init(StoryModel data) async {
+    _form = data;
+  }
+
   @override
   void setFormStatus() {
     _form = form.copyWith(
@@ -20,19 +25,17 @@ class StoryGeneratorViewModel extends FormViewModel {
 
     // Set a validation message for the entire form
     if (topicValue == null || topicValue!.isEmpty) {
-      setTopicValidationMessage('Topic is mandatory');
+      setTopicValidationMessage('validation_topic_required'.i18n());
     }
   }
 
-  Future<void> init(StoryModel data) async {
-    _form = data;
-  }
-
+  // Story line selector
   void onLineCountChanged(int value) {
     _form = form.copyWith(count: value.toString());
   }
 
-  Future<void> onGenerator() async {
+  // Return user selection
+  Future<void> onSubmit() async {
     return _bottomSheetService
         .completeSheet(SheetResponse(confirmed: true, data: form));
   }

@@ -15,7 +15,7 @@ class ProgressBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LiquidLinearProgressIndicator(
         backgroundColor: backgroundColor,
-        valueColor: AlwaysStoppedAnimation(kcPrimaryColor),
+        valueColor: const AlwaysStoppedAnimation(kcPrimaryColor),
         borderColor: kcDarkBackgroundColor,
         borderWidth: 5.0,
         center: Text(

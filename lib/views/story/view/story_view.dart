@@ -4,11 +4,9 @@ import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/page_layout.dart';
 import 'package:baf/models/story/story_model.dart';
 import 'package:baf/views/story/view/story_viewmodel.dart';
-import 'package:baf/widgets/animation/progress_bar_widget.dart';
 import 'package:baf/widgets/animation/pulsing_widget.dart';
 import 'package:baf/widgets/buttons/circle_button.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:rounded_background_text/rounded_background_text.dart';
 import 'package:stacked/stacked.dart';
 import 'dart:math' as math;
@@ -47,6 +45,17 @@ class StoryView extends StatelessWidget {
             Icons.favorite,
             color: kcWhiteColor,
             size: 32.0,
+          ),
+        ),
+        trailing: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: model.onShare,
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.share,
+              size: 25,
+            ),
           ),
         ),
         child: RefreshIndicator(

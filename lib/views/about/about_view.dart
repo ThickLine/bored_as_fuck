@@ -1,9 +1,11 @@
 import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
+import 'package:baf/layout/page_layout.dart';
 import 'package:baf/views/about/about_viewmodel.dart';
 import 'package:baf/widgets/buttons/action_button_widget.dart';
 import 'package:baf/widgets/common/appbar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:stacked/stacked.dart';
 
 class AboutView extends StatelessWidget {
@@ -12,29 +14,10 @@ class AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AboutViewModel>.reactive(
-      builder: (context, model, child) => Scaffold(
-        backgroundColor: kcLightBackgroundColor,
-        appBar: AppBarWidget(
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ActionButtonWidget(
-              color: kcLightBackgroundColor.withOpacity(0.8),
-              elevation: 2,
-              child: const Icon(Icons.arrow_back, size: 16),
-              onPressed: Navigator.of(context).pop,
-            ),
-          ),
-          backgroundColor: kcLightBackgroundColor,
-          toolbarHeight: 100, // default is 56
-          toolbarOpacity: 0.5,
-          elevation: 0,
-          title: const Text(
-            "About",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: kcWhiteColor),
-          ),
-        ),
-        body: Container(
+      builder: (context, model, child) => PageLayout(
+        title: "About App",
+        backgroundColor: kcMainBackgroundColor,
+        child: Container(
           padding: kPagePadding,
           height: kScreenHeightPercentage(context) * 1,
           child: Stack(children: [
@@ -42,7 +25,7 @@ class AboutView extends StatelessWidget {
               children: [
                 Flexible(
                   child: Text(
-                    "The Bored as f is a fun project that helps you find things to do when you're bored! The goal is to convert unproductive time to productive, fun ideas that can help you overcome boredom.",
+                    "about_description".i18n(),
                     style: ktsTitleText.copyWith(color: kcWhiteColor),
                   ),
                 )
@@ -54,11 +37,10 @@ class AboutView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Image.asset(
-                    "assets/peace.png",
-                    width: 150,
-                    height: 150,
-                  ),
+                  Text(
+                    "Version ${model.version}",
+                    style: ktsCaptionText,
+                  )
                 ],
               ),
             ),

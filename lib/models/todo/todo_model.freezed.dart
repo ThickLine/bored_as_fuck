@@ -20,14 +20,23 @@ TodoModel _$TodoModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TodoModel {
+  @HiveField(0)
   String? get activity => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get type => throw _privateConstructorUsedError;
+  @HiveField(2)
   int? get participants => throw _privateConstructorUsedError;
+  @HiveField(3)
   double? get price => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get link => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get key => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get suggestion => throw _privateConstructorUsedError;
+  @HiveField(7)
   double? get accessibility => throw _privateConstructorUsedError;
+  @HiveField(8)
   bool get saved => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,15 +50,15 @@ abstract class $TodoModelCopyWith<$Res> {
   factory $TodoModelCopyWith(TodoModel value, $Res Function(TodoModel) then) =
       _$TodoModelCopyWithImpl<$Res>;
   $Res call(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      bool saved});
+      {@HiveField(0) String? activity,
+      @HiveField(1) String? type,
+      @HiveField(2) int? participants,
+      @HiveField(3) double? price,
+      @HiveField(4) String? link,
+      @HiveField(5) String? key,
+      @HiveField(6) String? suggestion,
+      @HiveField(7) double? accessibility,
+      @HiveField(8) bool saved});
 }
 
 /// @nodoc
@@ -120,15 +129,15 @@ abstract class _$$_TodoModelCopyWith<$Res> implements $TodoModelCopyWith<$Res> {
       __$$_TodoModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? activity,
-      String? type,
-      int? participants,
-      double? price,
-      String? link,
-      String? key,
-      String? suggestion,
-      double? accessibility,
-      bool saved});
+      {@HiveField(0) String? activity,
+      @HiveField(1) String? type,
+      @HiveField(2) int? participants,
+      @HiveField(3) double? price,
+      @HiveField(4) String? link,
+      @HiveField(5) String? key,
+      @HiveField(6) String? suggestion,
+      @HiveField(7) double? accessibility,
+      @HiveField(8) bool saved});
 }
 
 /// @nodoc
@@ -198,37 +207,46 @@ class __$$_TodoModelCopyWithImpl<$Res> extends _$TodoModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TodoModel implements _TodoModel {
   _$_TodoModel(
-      {this.activity,
-      this.type,
-      this.participants,
-      this.price,
-      this.link,
-      this.key,
-      this.suggestion,
-      this.accessibility,
-      this.saved = false});
+      {@HiveField(0) this.activity,
+      @HiveField(1) this.type,
+      @HiveField(2) this.participants,
+      @HiveField(3) this.price,
+      @HiveField(4) this.link,
+      @HiveField(5) this.key,
+      @HiveField(6) this.suggestion,
+      @HiveField(7) this.accessibility,
+      @HiveField(8) this.saved = false});
 
   factory _$_TodoModel.fromJson(Map<String, dynamic> json) =>
       _$$_TodoModelFromJson(json);
 
   @override
+  @HiveField(0)
   final String? activity;
   @override
+  @HiveField(1)
   final String? type;
   @override
+  @HiveField(2)
   final int? participants;
   @override
+  @HiveField(3)
   final double? price;
   @override
+  @HiveField(4)
   final String? link;
   @override
+  @HiveField(5)
   final String? key;
   @override
+  @HiveField(6)
   final String? suggestion;
   @override
+  @HiveField(7)
   final double? accessibility;
   @override
   @JsonKey()
+  @HiveField(8)
   final bool saved;
 
   @override
@@ -282,36 +300,45 @@ class _$_TodoModel implements _TodoModel {
 
 abstract class _TodoModel implements TodoModel {
   factory _TodoModel(
-      {final String? activity,
-      final String? type,
-      final int? participants,
-      final double? price,
-      final String? link,
-      final String? key,
-      final String? suggestion,
-      final double? accessibility,
-      final bool saved}) = _$_TodoModel;
+      {@HiveField(0) final String? activity,
+      @HiveField(1) final String? type,
+      @HiveField(2) final int? participants,
+      @HiveField(3) final double? price,
+      @HiveField(4) final String? link,
+      @HiveField(5) final String? key,
+      @HiveField(6) final String? suggestion,
+      @HiveField(7) final double? accessibility,
+      @HiveField(8) final bool saved}) = _$_TodoModel;
 
   factory _TodoModel.fromJson(Map<String, dynamic> json) =
       _$_TodoModel.fromJson;
 
   @override
+  @HiveField(0)
   String? get activity => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String? get type => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   int? get participants => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   double? get price => throw _privateConstructorUsedError;
   @override
+  @HiveField(4)
   String? get link => throw _privateConstructorUsedError;
   @override
+  @HiveField(5)
   String? get key => throw _privateConstructorUsedError;
   @override
+  @HiveField(6)
   String? get suggestion => throw _privateConstructorUsedError;
   @override
+  @HiveField(7)
   double? get accessibility => throw _privateConstructorUsedError;
   @override
+  @HiveField(8)
   bool get saved => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

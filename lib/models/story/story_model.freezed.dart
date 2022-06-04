@@ -20,9 +20,13 @@ StoryModel _$StoryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StoryModel {
+  @HiveField(0)
   String? get topic => throw _privateConstructorUsedError;
+  @HiveField(1)
   bool get saved => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get count => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get story => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +40,11 @@ abstract class $StoryModelCopyWith<$Res> {
   factory $StoryModelCopyWith(
           StoryModel value, $Res Function(StoryModel) then) =
       _$StoryModelCopyWithImpl<$Res>;
-  $Res call({String? topic, bool saved, String? count, String? story});
+  $Res call(
+      {@HiveField(0) String? topic,
+      @HiveField(1) bool saved,
+      @HiveField(2) String? count,
+      @HiveField(3) String? story});
 }
 
 /// @nodoc
@@ -82,7 +90,11 @@ abstract class _$$_StoryModelCopyWith<$Res>
           _$_StoryModel value, $Res Function(_$_StoryModel) then) =
       __$$_StoryModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? topic, bool saved, String? count, String? story});
+  $Res call(
+      {@HiveField(0) String? topic,
+      @HiveField(1) bool saved,
+      @HiveField(2) String? count,
+      @HiveField(3) String? story});
 }
 
 /// @nodoc
@@ -126,20 +138,28 @@ class __$$_StoryModelCopyWithImpl<$Res> extends _$StoryModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_StoryModel implements _StoryModel {
-  _$_StoryModel({this.topic, this.saved = false, this.count = "1", this.story});
+  _$_StoryModel(
+      {@HiveField(0) this.topic,
+      @HiveField(1) this.saved = false,
+      @HiveField(2) this.count = "1",
+      @HiveField(3) this.story});
 
   factory _$_StoryModel.fromJson(Map<String, dynamic> json) =>
       _$$_StoryModelFromJson(json);
 
   @override
+  @HiveField(0)
   final String? topic;
   @override
   @JsonKey()
+  @HiveField(1)
   final bool saved;
   @override
   @JsonKey()
+  @HiveField(2)
   final String? count;
   @override
+  @HiveField(3)
   final String? story;
 
   @override
@@ -180,21 +200,25 @@ class _$_StoryModel implements _StoryModel {
 
 abstract class _StoryModel implements StoryModel {
   factory _StoryModel(
-      {final String? topic,
-      final bool saved,
-      final String? count,
-      final String? story}) = _$_StoryModel;
+      {@HiveField(0) final String? topic,
+      @HiveField(1) final bool saved,
+      @HiveField(2) final String? count,
+      @HiveField(3) final String? story}) = _$_StoryModel;
 
   factory _StoryModel.fromJson(Map<String, dynamic> json) =
       _$_StoryModel.fromJson;
 
   @override
+  @HiveField(0)
   String? get topic => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   bool get saved => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   String? get count => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   String? get story => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

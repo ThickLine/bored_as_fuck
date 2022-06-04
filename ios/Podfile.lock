@@ -1,9 +1,4 @@
 PODS:
-  - Appodeal (2.11.1):
-    - Protobuf
-    - StackAnalytics (~> 1.2.0)
-    - StackIAB (~> 1.5.0)
-    - StackModules (~> 1.1.6)
   - Flutter (1.0.0)
   - flutter_keyboard_visibility (0.0.1):
     - Flutter
@@ -17,7 +12,6 @@ PODS:
     - Flutter
   - permission_handler_apple (9.0.4):
     - Flutter
-  - Protobuf (3.21.0)
   - Sentry (7.11.0):
     - Sentry/Core (= 7.11.0)
   - Sentry/Core (7.11.0)
@@ -29,69 +23,6 @@ PODS:
     - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
-  - stack_appodeal_flutter (1.2.1):
-    - Appodeal (= 2.11.1)
-    - Flutter
-    - StackConsentManager (~> 1.1.2)
-  - StackAnalytics (1.2.1):
-    - StackAnalytics/Full (= 1.2.1)
-    - StackModules (~> 1.1.0)
-  - StackAnalytics/Base (1.2.1):
-    - StackModules (~> 1.1.0)
-  - StackAnalytics/Crashes (1.2.1):
-    - StackModules (~> 1.1.0)
-  - StackAnalytics/Full (1.2.1):
-    - StackAnalytics/Base
-    - StackAnalytics/Crashes
-    - StackModules (~> 1.1.0)
-  - StackConsentManager (1.1.2)
-  - StackIAB (1.5.2):
-    - StackIAB/StackIABAssets (= 1.5.2)
-    - StackIAB/StackMRAIDKit (= 1.5.2)
-    - StackIAB/StackNASTKit (= 1.5.2)
-    - StackIAB/StackOpenMeasure (= 1.5.2)
-    - StackIAB/StackRichMedia (= 1.5.2)
-    - StackIAB/StackVASTAssets (= 1.5.2)
-    - StackIAB/StackVASTKit (= 1.5.2)
-    - StackIAB/StackVideoPlayer (= 1.5.2)
-    - StackIAB/StackXML (= 1.5.2)
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackIABAssets (1.5.2):
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackMRAIDKit (1.5.2):
-    - StackIAB/StackIABAssets
-    - StackIAB/StackOpenMeasure
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackNASTKit (1.5.2):
-    - StackIAB/StackVASTKit
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackOpenMeasure (1.5.2):
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackRichMedia (1.5.2):
-    - StackIAB/StackIABAssets
-    - StackIAB/StackVASTAssets
-    - StackIAB/StackVideoPlayer
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackVASTAssets (1.5.2):
-    - StackIAB/StackIABAssets
-    - StackIAB/StackXML
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackVASTKit (1.5.2):
-    - StackIAB/StackMRAIDKit
-    - StackIAB/StackVASTAssets
-    - StackIAB/StackVideoPlayer
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackVideoPlayer (1.5.2):
-    - StackModules (~> 1.1.7)
-  - StackIAB/StackXML (1.5.2):
-    - StackModules (~> 1.1.7)
-  - StackModules (1.1.12):
-    - StackModules/StackProductPresentation (= 1.1.12)
-  - StackModules/StackFoundation (1.1.12)
-  - StackModules/StackProductPresentation (1.1.12):
-    - StackModules/StackUIKit
-  - StackModules/StackUIKit (1.1.12):
-    - StackModules/StackFoundation
   - url_launcher_ios (0.0.1):
     - Flutter
   - vibration (1.7.4-nullsafety.0):
@@ -108,19 +39,12 @@ DEPENDENCIES:
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
-  - stack_appodeal_flutter (from `.symlinks/plugins/stack_appodeal_flutter/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - vibration (from `.symlinks/plugins/vibration/ios`)
 
 SPEC REPOS:
   trunk:
-    - Appodeal
-    - Protobuf
     - Sentry
-    - StackAnalytics
-    - StackConsentManager
-    - StackIAB
-    - StackModules
 
 EXTERNAL SOURCES:
   Flutter:
@@ -143,15 +67,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
-  stack_appodeal_flutter:
-    :path: ".symlinks/plugins/stack_appodeal_flutter/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
   vibration:
     :path: ".symlinks/plugins/vibration/ios"
 
 SPEC CHECKSUMS:
-  Appodeal: 1188bd8b3a34557761ef79baa3a508b4b7961cf0
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
@@ -159,16 +80,10 @@ SPEC CHECKSUMS:
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
-  Protobuf: a205ef72105f3f024786a06589f1ca54b70265c4
   Sentry: 0c5cd63d714187b4a39c331c1f0eb04ba7868341
   sentry_flutter: efb3df2c203cd03aad255892a8d628a458656d14
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
-  stack_appodeal_flutter: cc87122ccc8199d9dcb978ff7a2bba1a048f8769
-  StackAnalytics: 012be5ae16c8f5005eb9a2e1557b37eaaf96f71d
-  StackConsentManager: 667f84fb7ecfa997b978ce3dfdd9809ade0811cd
-  StackIAB: 49e1b3215c061f2bbe39198af34edd502bdee1ae
-  StackModules: ae9aafe7d76f2c99ac87bdcfe27451076fb5e8f8
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   vibration: 1ec279c4a1a7a646627b54039d812334b3f1114a
 

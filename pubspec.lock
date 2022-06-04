@@ -91,7 +91,7 @@ packages:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.8"
+    version: "2.0.9"
   build_runner:
     dependency: "direct dev"
     description:
@@ -168,7 +168,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   crypto:
     dependency: transitive
     description:
@@ -182,7 +182,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   dart_style:
     dependency: transitive
     description:
@@ -293,13 +293,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_native_splash:
     dependency: "direct main"
     description:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   flutter_statusbarcolor_ns:
     dependency: transitive
     description:
@@ -318,7 +323,7 @@ packages:
       name: flutter_typeahead
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.7"
+    version: "4.0.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -492,6 +497,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
+  localization:
+    dependency: "direct main"
+    description:
+      name: localization
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   logger:
     dependency: "direct main"
     description:
@@ -631,7 +643,7 @@ packages:
       name: path_provider_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   path_provider_macos:
     dependency: transitive
     description:
@@ -652,7 +664,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.6"
+    version: "2.0.7"
   permission_handler:
     dependency: "direct main"
     description:
@@ -764,7 +776,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.3"
+    version: "0.27.4"
   sentry:
     dependency: transitive
     description:
@@ -785,7 +797,7 @@ packages:
       name: share_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.4"
+    version: "4.0.6"
   share_plus_linux:
     dependency: transitive
     description:
@@ -799,28 +811,28 @@ packages:
       name: share_plus_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
       name: share_plus_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   share_plus_web:
     dependency: transitive
     description:
       name: share_plus_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   share_plus_windows:
     dependency: transitive
     description:
       name: share_plus_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -933,13 +945,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
-  stack_appodeal_flutter:
-    dependency: "direct main"
-    description:
-      name: stack_appodeal_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.1"
   stack_trace:
     dependency: "direct main"
     description:
@@ -953,21 +958,21 @@ packages:
       name: stacked
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.6"
+    version: "2.3.9"
   stacked_core:
     dependency: transitive
     description:
       name: stacked_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.2.0"
   stacked_generator:
     dependency: "direct dev"
     description:
       name: stacked_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2"
+    version: "0.7.1"
   stacked_hooks:
     dependency: "direct main"
     description:
@@ -981,7 +986,7 @@ packages:
       name: stacked_services
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.22+1"
+    version: "0.8.25"
   stacked_themes:
     dependency: "direct main"
     description:

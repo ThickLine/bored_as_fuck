@@ -11,7 +11,9 @@ import 'package:baf/services/util/stacked_services/modal/setup_dialoge_base.dart
 import 'package:baf/services/util/stacked_services/snackbars/setup_snackbar_base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:localization/localization.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:baf/core/shared/themes.dart' as themes;
@@ -50,7 +52,7 @@ class BAF extends StatelessWidget with PortraitModeMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
+    LocalJsonLocalization.delegate.directories = ['lib/i18n'];
     return CoreManager(
       child: ThemeBuilder(
         defaultThemeMode: ThemeMode.light,
@@ -66,6 +68,14 @@ class BAF extends StatelessWidget with PortraitModeMixin {
           title: dotenv.env['NAME'] ?? "BAF",
           theme: regularTheme,
           darkTheme: darkTheme,
+          localizationsDelegates: [
+            // delegate from flutter_localization
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            // delegate from localization package.
+            LocalJsonLocalization.delegate,
+          ],
           themeMode: themeMode,
           navigatorKey: StackedService.navigatorKey,
           onGenerateRoute: StackedRouter().onGenerateRoute,

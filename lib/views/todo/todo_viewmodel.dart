@@ -5,6 +5,8 @@ import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:baf/services/todo_service.dart';
 import 'package:intl/intl.dart';
+import 'package:localization/localization.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -33,11 +35,13 @@ class TodoViewModel extends BaseViewModel {
     if (data == null) await createRandom();
   }
 
+  // Create random todo
   Future<void> createRandom() async {
     await fetchActivity(config);
     notifyListeners();
   }
 
+  /// Fetch todo activity
   Future<void> fetchActivity(ConfigModel data) async {
     _todo = await runBusyFuture(_todoService.fetchActivity(data),
         busyObject: busyObjectKey);
@@ -58,6 +62,7 @@ class TodoViewModel extends BaseViewModel {
     }
   }
 
+  /// Save item to activity service
   Future<void> onSavedItem() async {
     _todo = todo.copyWith(saved: true);
     ActivityModel activity = ActivityModel(
@@ -68,6 +73,12 @@ class TodoViewModel extends BaseViewModel {
 
     _saveService.addItemToList(activity);
     notifyListeners();
+  }
+
+  /// Share or copy [todo] to clipboard
+  Future<void> onShare() async {
+    Share.share("${todo.activity}!  ${todo.suggestion}",
+        subject: "share_text".i18n());
   }
 
   /// [String] format double to currency string

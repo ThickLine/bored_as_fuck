@@ -8,6 +8,7 @@ import 'package:baf/widgets/animation/progress_bar_widget.dart';
 import 'package:baf/widgets/animation/pulsing_widget.dart';
 import 'package:baf/widgets/buttons/circle_button.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:rounded_background_text/rounded_background_text.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:stacked/stacked.dart';
@@ -26,7 +27,7 @@ class RecipeView extends StatelessWidget {
         isLoading: model.busy(busyObjectKey),
         isError: model.hasErrorForKey(busyObjectKey),
         backgroundColor: kcRecipeColor,
-        title: 'Recipe generator',
+        title: 'recipe_title'.i18n(),
         leftIcon: CircleButtonWidget(
           onPressed: model.onGenerator,
           backgroundColor: kcRecipeColor,
@@ -36,6 +37,18 @@ class RecipeView extends StatelessWidget {
             Icons.settings,
             color: kcWhiteColor,
             size: 32.0,
+          ),
+        ),
+        trailing: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: model.onShare,
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.share,
+              size: 25,
+              color: kcWhiteColor,
+            ),
           ),
         ),
         rightIcon: CircleButtonWidget(
@@ -67,7 +80,7 @@ class RecipeView extends StatelessWidget {
                         )),
                     Expanded(
                       child: Center(
-                        child: AutoSizeText("Recipe",
+                        child: AutoSizeText("recipe_subtitle".i18n(),
                             maxLines: 2,
                             minFontSize: 14,
                             style: ktsTitleText.copyWith(color: kcWhiteColor)),

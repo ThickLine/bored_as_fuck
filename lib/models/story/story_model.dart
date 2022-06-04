@@ -8,10 +8,10 @@ part 'story_model.g.dart';
 @HiveType(typeId: 3, adapterName: 'StoryAdapter')
 class StoryModel with _$StoryModel {
   factory StoryModel(
-      {String? topic,
-      @Default(false) bool saved,
-      @Default("1") String? count,
-      String? story}) = _StoryModel;
+      {@HiveField(0) String? topic,
+      @HiveField(1) @Default(false) bool saved,
+      @HiveField(2) @Default("1") String? count,
+      @HiveField(3) String? story}) = _StoryModel;
 
   factory StoryModel.fromJson(Map<String, dynamic> json) =>
       _$StoryModelFromJson(json);

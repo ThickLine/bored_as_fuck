@@ -16,12 +16,26 @@ class StoryAdapter extends TypeAdapter<StoryModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return StoryModel();
+    return StoryModel(
+      topic: fields[0] as String?,
+      saved: fields[1] as bool,
+      count: fields[2] as String?,
+      story: fields[3] as String?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, StoryModel obj) {
-    writer.writeByte(0);
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.topic)
+      ..writeByte(1)
+      ..write(obj.saved)
+      ..writeByte(2)
+      ..write(obj.count)
+      ..writeByte(3)
+      ..write(obj.story);
   }
 
   @override

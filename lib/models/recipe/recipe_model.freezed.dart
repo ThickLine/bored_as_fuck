@@ -20,11 +20,17 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecipeModel {
+  @HiveField(0)
   List<String>? get ingredients => throw _privateConstructorUsedError;
+  @HiveField(0)
   set ingredients(List<String>? value) => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get recipe => throw _privateConstructorUsedError;
+  @HiveField(1)
   set recipe(String? value) => throw _privateConstructorUsedError;
+  @HiveField(2)
   bool get saved => throw _privateConstructorUsedError;
+  @HiveField(2)
   set saved(bool value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +44,10 @@ abstract class $RecipeModelCopyWith<$Res> {
   factory $RecipeModelCopyWith(
           RecipeModel value, $Res Function(RecipeModel) then) =
       _$RecipeModelCopyWithImpl<$Res>;
-  $Res call({List<String>? ingredients, String? recipe, bool saved});
+  $Res call(
+      {@HiveField(0) List<String>? ingredients,
+      @HiveField(1) String? recipe,
+      @HiveField(2) bool saved});
 }
 
 /// @nodoc
@@ -79,7 +88,10 @@ abstract class _$$_RecipeModelCopyWith<$Res>
           _$_RecipeModel value, $Res Function(_$_RecipeModel) then) =
       __$$_RecipeModelCopyWithImpl<$Res>;
   @override
-  $Res call({List<String>? ingredients, String? recipe, bool saved});
+  $Res call(
+      {@HiveField(0) List<String>? ingredients,
+      @HiveField(1) String? recipe,
+      @HiveField(2) bool saved});
 }
 
 /// @nodoc
@@ -118,17 +130,23 @@ class __$$_RecipeModelCopyWithImpl<$Res> extends _$RecipeModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RecipeModel implements _RecipeModel {
-  _$_RecipeModel({this.ingredients, this.recipe, this.saved = false});
+  _$_RecipeModel(
+      {@HiveField(0) this.ingredients,
+      @HiveField(1) this.recipe,
+      @HiveField(2) this.saved = false});
 
   factory _$_RecipeModel.fromJson(Map<String, dynamic> json) =>
       _$$_RecipeModelFromJson(json);
 
   @override
+  @HiveField(0)
   List<String>? ingredients;
   @override
+  @HiveField(1)
   String? recipe;
   @override
   @JsonKey()
+  @HiveField(2)
   bool saved;
 
   @override
@@ -149,16 +167,21 @@ class _$_RecipeModel implements _RecipeModel {
 
 abstract class _RecipeModel implements RecipeModel {
   factory _RecipeModel(
-      {List<String>? ingredients, String? recipe, bool saved}) = _$_RecipeModel;
+      {@HiveField(0) List<String>? ingredients,
+      @HiveField(1) String? recipe,
+      @HiveField(2) bool saved}) = _$_RecipeModel;
 
   factory _RecipeModel.fromJson(Map<String, dynamic> json) =
       _$_RecipeModel.fromJson;
 
   @override
+  @HiveField(0)
   List<String>? get ingredients => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String? get recipe => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   bool get saved => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

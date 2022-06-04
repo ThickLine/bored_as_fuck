@@ -1,6 +1,9 @@
+import 'package:baf/app/app.router.dart';
+import 'package:baf/core/enum/systemwide_enums.dart';
 import 'package:baf/core/shared/styles.dart';
 import 'package:baf/core/shared/ui_helpers.dart';
 import 'package:baf/layout/wrapper_layout.dart';
+import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/widgets/buttons/save_button.dart';
 import 'package:baf/widgets/common/curved_list_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,42 +21,76 @@ class HomeView extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Color(0xff185083).withOpacity(1.0),
           body: SizedBox(
-            height: double.infinity,
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: <Widget>[
-                CurvedListItemWiget(
-                  onPressed: model.onTodoRoute,
-                  title: 'Todo creator',
-                  time: 'TODAY 5:30 PM',
-                  color: kcTodoColor.withOpacity(1.0),
-                  nextColor: kcStoryColor,
-                ),
-                CurvedListItemWiget(
-                  onPressed: model.onStoryRoute,
-                  title: 'Horror story creator',
-                  time: 'TUESDAY 5:30 PM',
-                  color: kcStoryColor,
-                  nextColor: kcRecipeColor.withOpacity(1.0),
-                ),
-                CurvedListItemWiget(
-                  onPressed: model.onRecipeRoute,
-                  title: 'Recipe creator',
-                  time: 'FRIDAY 6:00 PM',
-                  color: kcRecipeColor,
-                ),
-                CurvedListItemWiget(
-                  onPressed: model.onSavedRoute,
-                  title: 'Saved Item',
-                  color: kcTodoColor,
-                ),
-              ],
-            ),
-          ),
+              height: double.infinity,
+              child: ListView.builder(
+                  itemCount: model.list.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CurvedListItemWiget(
+                      onPressed: () => route(context, model.list[index].type!),
+                      title: model.list[index].title,
+                      subtitle: model.list[index].subtitle,
+                      color: model.list[index].color,
+                      isLast: index + 1 == model.list.length,
+                      nextColor: index + 1 < model.list.length
+                          ? model.list[index + 1].color
+                          : null,
+                    );
+                  })
+
+              // ListView(
+              //   scrollDirection: Axis.vertical,
+              //   children: <Widget>[
+              //     CurvedListItemWiget(
+              //       onPressed: model.onTodoRoute,
+              //       title: 'Todo creator',
+              //       subtitle: 'TODAY 5:30 PM',
+              //       color: kcTodoColor.withOpacity(1.0),
+              //       nextColor: kcStoryColor,
+              //     ),
+              //     CurvedListItemWiget(
+              //       onPressed: model.onStoryRoute,
+              //       title: 'Horror story creator',
+              //       subtitle: 'TUESDAY 5:30 PM',
+              //       color: kcStoryColor,
+              //       nextColor: kcRecipeColor.withOpacity(1.0),
+              //     ),
+              //     CurvedListItemWiget(
+              //       onPressed: model.onRecipeRoute,
+              //       title: 'Recipe creator',
+              //       subtitle: 'FRIDAY 6:00 PM',
+              //       color: kcRecipeColor,
+              //       nextColor: kcSaveColor.withOpacity(1.0),
+              //     ),
+              //     CurvedListItemWiget(
+              //       onPressed: model.onSavedRoute,
+              //       title: 'Saved Item',
+              //       color: kcSaveColor,
+              //     ),
+              //   ],
+              // ),
+              ),
         ),
       ),
       viewModelBuilder: () => HomeViewModel(),
     );
+  }
+}
+
+Future<void> route(context, ActivityType data) {
+  switch (data) {
+    case ActivityType.STORY:
+      return Navigator.pushNamed(
+        context,
+        Routes.storyView,
+      );
+    case ActivityType.TODO:
+      return Navigator.pushNamed(context, Routes.todoView);
+    case ActivityType.RECIPE:
+      return Navigator.pushNamed(context, Routes.recipeView);
+    case ActivityType.SAVE:
+      return Navigator.pushNamed(context, Routes.savedView);
+    default:
+      return Navigator.pushNamed(context, Routes.aboutView);
   }
 }
 

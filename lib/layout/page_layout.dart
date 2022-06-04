@@ -12,8 +12,12 @@ class PageLayout extends StatelessWidget {
   final bool isError;
   final Widget? leftIcon;
   final Widget? rightIcon;
+  final Widget? trailing;
   final void Function()? onPressed;
+  final void Function()? onPressTap;
   final Color backgroundColor;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
   const PageLayout(
       {Key? key,
       required this.child,
@@ -21,8 +25,12 @@ class PageLayout extends StatelessWidget {
       this.title,
       this.leftIcon,
       this.rightIcon,
+      this.trailing,
       this.isLoading = false,
       this.isError = false,
+      this.onPressTap,
+      this.floatingActionButton,
+      this.floatingActionButtonLocation,
       this.onPressed})
       : super(key: key);
 
@@ -69,14 +77,34 @@ class PageLayout extends StatelessWidget {
                     slivers: [
                       CupertinoSliverNavigationBar(
                         backgroundColor: backgroundColor,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: calculateTextColor(backgroundColor),
+                            width: 0.5,
+                          ),
+                        ),
                         leading: CupertinoNavigationBarBackButton(
                           onPressed: onPressed ?? () => Navigator.pop(context),
-                          color: CupertinoColors.label,
+                          color: calculateTextColor(backgroundColor),
                         ),
-                        largeTitle: Text(title ?? ""),
+                        largeTitle: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              title ?? "",
+                              style: ktsTitleText.copyWith(
+                                color: calculateTextColor(backgroundColor),
+                              ),
+                            ),
+                            trailing ?? Container()
+                          ],
+                        ),
                       ),
                       SliverFillRemaining(
                           child: Scaffold(
+                              floatingActionButton: floatingActionButton,
+                              floatingActionButtonLocation:
+                                  floatingActionButtonLocation,
                               backgroundColor: backgroundColor,
                               body: Padding(
                                 padding:
@@ -99,7 +127,9 @@ class PageLayout extends StatelessWidget {
                                               )),
                                         ],
                                       )
-                                    : child,
+                                    : GestureDetector(
+                                        onForcePressEnd: (v) => onPressTap!(),
+                                        child: child),
                               ))),
                     ],
                   ),

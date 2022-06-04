@@ -9,7 +9,7 @@ import 'package:baf/widgets/slider/range_slider_widget.dart';
 import 'package:baf/widgets/text/section_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
-import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:localization/localization.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -37,7 +37,7 @@ class TodoGeneratorView extends StatelessWidget {
             model.resetConfig();
             controller.unselectAll();
           },
-          child: const Text("Reset"),
+          child: Text("reset".i18n()),
         ),
         child: Column(
           children: [
@@ -47,7 +47,7 @@ class TodoGeneratorView extends StatelessWidget {
                   children: [
                     SectionTiteWidget(
                       isTooltip: false,
-                      title: "Filter by price range",
+                      title: "todo_price_title".i18n(),
                       child: RangeSliderWidget(
                         lowValue: model.form.price?.min ?? 0,
                         highValue: model.form.price?.max ?? 0,
@@ -64,7 +64,7 @@ class TodoGeneratorView extends StatelessWidget {
                     kVerticalSpaceMedium,
                     SectionTiteWidget(
                       isTooltip: false,
-                      title: "Filter by category",
+                      title: "todo_category_title".i18n(),
                       child: GroupButton(
                         enableDeselect: true,
                         options: GroupButtonOptions(
@@ -95,16 +95,16 @@ class TodoGeneratorView extends StatelessWidget {
                     kVerticalSpaceMedium,
                     SectionTiteWidget(
                       isTooltip: true,
-                      title: "Filter by accessibility",
-                      tooltipText: "Lower easier to acquire",
+                      title: "todo_accessibility_title".i18n(),
+                      tooltipText: "todo_accessibility_tooltip".i18n(),
                       child: RangeSliderWidget(
                         lowValue: model.form.accessibility?.min ?? 0,
                         highValue: model.form.accessibility?.max ?? 0,
                         from: 0,
                         maxValue: 1.0,
                         step: 0.01,
-                        textMin: "Min accessibility",
-                        textMax: "Max accessibility",
+                        textMin: "todo_accessibility_text_min".i18n(),
+                        textMax: "todo_accessibility_text_max".i18n(),
                         onDragging: (handlerIndex, lowerValue, upperValue) =>
                             model.onAccessibilitySliderValues(
                                 handlerIndex: handlerIndex,
@@ -115,7 +115,7 @@ class TodoGeneratorView extends StatelessWidget {
                     kVerticalSpaceMedium,
                     SectionTiteWidget(
                       isTooltip: false,
-                      title: "Filter by participant",
+                      title: "todo_participant_title".i18n(),
                       child: NumberCounterView(
                         key: key,
                         onChanged: model.onParticipant,
@@ -128,8 +128,8 @@ class TodoGeneratorView extends StatelessWidget {
                       children: [
                         SaveButtonWidget(
                           backgroundColor: kcPrimaryColor,
-                          onPressed: model.onGenerator,
-                          title: "Generate",
+                          onPressed: model.onSubmit,
+                          title: "generate_button".i18n(),
                         ),
                       ],
                     ),

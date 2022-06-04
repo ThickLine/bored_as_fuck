@@ -82,7 +82,7 @@ class __$$_ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
   }) {
     return _then(_$_ItemModel(
       items: items == freezed
-          ? _value._items
+          ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<ActivityModel>?,
     ));
@@ -92,21 +92,14 @@ class __$$_ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ItemModel implements _ItemModel {
-  _$_ItemModel({@HiveField(0) final List<ActivityModel>? items})
-      : _items = items;
+  _$_ItemModel({@HiveField(0) this.items});
 
   factory _$_ItemModel.fromJson(Map<String, dynamic> json) =>
       _$$_ItemModelFromJson(json);
 
-  final List<ActivityModel>? _items;
   @override
   @HiveField(0)
-  List<ActivityModel>? get items {
-    final value = _items;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final List<ActivityModel>? items;
 
   @override
   String toString() {
@@ -118,13 +111,13 @@ class _$_ItemModel implements _ItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemModel &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other.items, items));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
 
   @JsonKey(ignore: true)
   @override

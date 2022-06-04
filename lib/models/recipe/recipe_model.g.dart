@@ -16,12 +16,23 @@ class RecipeAdapter extends TypeAdapter<RecipeModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return RecipeModel();
+    return RecipeModel(
+      ingredients: (fields[0] as List?)?.cast<String>(),
+      recipe: fields[1] as String?,
+      saved: fields[2] as bool,
+    );
   }
 
   @override
   void write(BinaryWriter writer, RecipeModel obj) {
-    writer.writeByte(0);
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.ingredients)
+      ..writeByte(1)
+      ..write(obj.recipe)
+      ..writeByte(2)
+      ..write(obj.saved);
   }
 
   @override

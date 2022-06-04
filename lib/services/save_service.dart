@@ -18,12 +18,15 @@ class SaveService {
   }
 
   Future<void> addItemToList(ActivityModel item) async {
+    log.wtf("save");
     _itemList.add(item);
+    log.wtf(item.toJson());
     await saveToHive();
   }
 
   Future<void> saveToHive() async {
     Box<ItemModel> box = Boxes.getFile();
+    log.wtf(item.toJson());
     box.put("myActivity", item);
   }
 

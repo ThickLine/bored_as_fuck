@@ -22,7 +22,9 @@ enum ActivityType {
   @HiveField(1)
   RECIPE,
   @HiveField(2)
-  TODO
+  TODO,
+  SAVE,
+  ABOUT
 }
 
 enum BottomSheetType {

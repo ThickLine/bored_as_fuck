@@ -9,13 +9,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import '../models/recipe/recipe_model.dart';
 import '../models/story/story_model.dart';
 import '../models/todo/todo_model.dart';
 import '../views/about/about_view.dart';
-import '../views/config/config_view.dart';
 import '../views/home/home_view.dart';
 import '../views/recipe/view/recipe_view.dart';
 import '../views/saved/saved_view.dart';
@@ -26,7 +24,6 @@ import '../views/todo/todo_view.dart';
 class Routes {
   static const String startUpView = '/';
   static const String homeView = '/home-view';
-  static const String configView = '/config-view';
   static const String storyView = '/story-view';
   static const String recipeView = '/recipe-view';
   static const String todoView = '/todo-view';
@@ -35,7 +32,6 @@ class Routes {
   static const all = <String>{
     startUpView,
     homeView,
-    configView,
     storyView,
     recipeView,
     todoView,
@@ -50,7 +46,6 @@ class StackedRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.startUpView, page: StartUpView),
     RouteDef(Routes.homeView, page: HomeView),
-    RouteDef(Routes.configView, page: ConfigView),
     RouteDef(Routes.storyView, page: StoryView),
     RouteDef(Routes.recipeView, page: RecipeView),
     RouteDef(Routes.todoView, page: TodoView),
@@ -69,21 +64,6 @@ class StackedRouter extends RouterBase {
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const HomeView(),
-        settings: data,
-      );
-    },
-    ConfigView: (data) {
-      var args = data.getArgs<ConfigViewArguments>(
-        orElse: () => ConfigViewArguments(),
-      );
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => ConfigView(
-          key: args.key,
-          scrollController: args.scrollController,
-          request: args.request,
-          completer: args.completer,
-          isBottomSheet: args.isBottomSheet,
-        ),
         settings: data,
       );
     },
@@ -147,21 +127,6 @@ class StackedRouter extends RouterBase {
 /// ************************************************************************
 /// Arguments holder classes
 /// *************************************************************************
-
-/// ConfigView arguments holder class
-class ConfigViewArguments {
-  final Key? key;
-  final ScrollController? scrollController;
-  final SheetRequest<dynamic>? request;
-  final dynamic Function(SheetResponse<dynamic>)? completer;
-  final bool isBottomSheet;
-  ConfigViewArguments(
-      {this.key,
-      this.scrollController,
-      this.request,
-      this.completer,
-      this.isBottomSheet = false});
-}
 
 /// StoryView arguments holder class
 class StoryViewArguments {

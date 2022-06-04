@@ -6,6 +6,8 @@ import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/story/story_model.dart';
 import 'package:baf/services/save_service.dart';
 import 'package:baf/services/story_service.dart';
+import 'package:localization/localization.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -26,23 +28,13 @@ class StoryViewModel extends BaseViewModel {
     if (data != null) _form = data;
   }
 
-  // void setModelBusy() {
-  //   setBusy(true);
-  //   // Do things here
-  //   setBusy(false);
-  // }
-
-  // void setBusyOnProperty() {
-  //   setBusyForObject(_form, true);
-  //   // Fetch updated human data
-  //   setBusyForObject(_form, false);
-  // }
-
+  // Create random story
   Future<void> createRandom() async {
     var item = await StoryMixin.createRandomStory() ?? StoryModel();
     await fetchActivity(item);
   }
 
+  /// Fetch [story] activity
   Future<void> fetchActivity(StoryModel data) async {
     _form = await runBusyFuture(_storyService.fetchActivity(data),
         throwException: true, busyObject: busyObjectKey);
@@ -57,11 +49,10 @@ class StoryViewModel extends BaseViewModel {
         enterBottomSheetDuration: const Duration(milliseconds: 500),
         data: form);
 
-    if (res?.confirmed == true) {
-      await fetchActivity(res?.data);
-    }
+    if (res?.confirmed == true) await fetchActivity(res?.data);
   }
 
+  // Save item to activity service
   Future<void> onSavedItem() async {
     _form = form.copyWith(saved: true);
     ActivityModel activity = ActivityModel(
@@ -72,5 +63,10 @@ class StoryViewModel extends BaseViewModel {
 
     await _saveService.addItemToList(activity);
     notifyListeners();
+  }
+
+  /// Share or copy [story] to clipboard
+  Future<void> onShare() async {
+    Share.share("${form.topic}!  ${form.story}", subject: "share_text".i18n());
   }
 }

@@ -13,7 +13,7 @@ const Color kcBackgroundColor = Color(0xffF6F5F5);
 const Color kcDarkPlaceholderColor = Color(0xff8B9BAC);
 const Color kcPlaceholderColor = Color(0xffBFBFBF);
 const Color kcBlackBackgroundColor = Color.fromRGBO(12, 13, 52, 1);
-const Color kcLightBackgroundColor = Color(0xff2CB9B0);
+const Color kcMainBackgroundColor = Color(0xff102E4A);
 
 const Color kcAccentColor = Color.fromRGBO(63, 90, 166, 1);
 const Color kcErrorColor = Color(0xffB00020);
@@ -23,6 +23,8 @@ const Color kcDarkBackgroundColor = Color(0xff0C0D34);
 const Color kcStoryColor = Color(0xffC4D6B0);
 const Color kcRecipeColor = Color(0xffF64740);
 const Color kcTodoColor = Color(0xff185083);
+// const Color kcSaveColor = Color(0xff998888);
+const Color kcSaveColor = Color(0xffC4CAD0);
 
 // TextStyle
 const TextStyle ktsDisplayText = TextStyle(

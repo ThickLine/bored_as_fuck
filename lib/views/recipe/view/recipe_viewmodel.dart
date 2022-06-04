@@ -7,6 +7,8 @@ import 'package:baf/models/activity/activity_model.dart';
 import 'package:baf/models/recipe/recipe_model.dart';
 import 'package:baf/services/recipe_service.dart';
 import 'package:baf/services/save_service.dart';
+import 'package:localization/localization.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -29,22 +31,25 @@ class RecipeViewModel extends BaseViewModel {
     await onConcent();
   }
 
+  /// Recipe [warning]
   Future<void> onConcent() async {
     var res = await _dialogService.showConfirmationDialog(
-        title: "Use with common sense",
-        description: "For entertainment purposes only",
-        confirmationTitle: "I understand");
+        title: "recipe_warning_title".i18n(),
+        description: "recipe_warning_description".i18n(),
+        confirmationTitle: "recipe_warning_confirm".i18n());
 
     if (res?.confirmed == false) {
       return _navigationService.pushNamedAndRemoveUntil(Routes.homeView);
     }
   }
 
+  // Create random one if no data is passed
   Future<void> createRandom() async {
     _form.ingredients = await RecipeMixin.createRandomRecipe();
     await fetchActivity(form);
   }
 
+  // Fetch [recipe] activity
   Future<void> fetchActivity(RecipeModel data) async {
     _form = await runBusyFuture(_recipeService.fetchActivity(data),
         busyObject: busyObjectKey);
@@ -60,25 +65,28 @@ class RecipeViewModel extends BaseViewModel {
         data: form);
 
     if (res?.confirmed == true) {
+      if (res?.data.ingredients.isEmpty) return await createRandom();
       await fetchActivity(res?.data);
     }
   }
 
+  // Save item to activity service
   Future<void> onSavedItem() async {
-    try {
-      _form = form.copyWith(saved: true);
-      ActivityModel activity = ActivityModel(
-          activity: form,
-          title: form.recipe,
-          description: form.ingredients?.join(", "),
-          type: ActivityType.RECIPE);
+    _form = form.copyWith(saved: true);
+    ActivityModel activity = ActivityModel(
+        activity: form,
+        title: form.recipe,
+        description: form.ingredients?.join(", "),
+        type: ActivityType.RECIPE);
 
-      log.wtf(activity);
-      await _saveService.addItemToList(activity);
-    } catch (e) {
-      log.e(e);
-    }
+    await _saveService.addItemToList(activity);
 
     notifyListeners();
+  }
+
+  /// Share or copy [recipe] to clipboard
+  Future<void> onShare() async {
+    Share.share("${form.ingredients}!  ${form.recipe}",
+        subject: "share_text".i18n());
   }
 }
